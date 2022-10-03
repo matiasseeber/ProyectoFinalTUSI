@@ -12,6 +12,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import Helpers.Helpers;
+import SQLLiteHelpers.SQLite_OpenHelperUsers;
 
 public class RegistroUsuario extends AppCompatActivity {
 
@@ -24,6 +25,7 @@ public class RegistroUsuario extends AppCompatActivity {
     private EditText txtAge;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
+    private SQLite_OpenHelperUsers DB_Users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +58,16 @@ public class RegistroUsuario extends AppCompatActivity {
     public boolean isFormValid(){
         boolean isFormValid = true;
         String requiredError = "Este campo es requerido.";
+        DB_Users = new SQLite_OpenHelperUsers (this,"TPFinal",null,1);
         if(txtUserName.getText().toString().isEmpty()) {
             txtUserName.setError(requiredError);
             isFormValid = false;
         }
-        //if(isUserNameAlreadyInUse(txtUserName.getText().toString().isEmpty()))
-        //{
-        //  txtUserName.setError("Este nombre de usuario ya esta en uso.");
-        //  isFormValid = false;
-        //}
+        if(DB_Users.isUserNameLareadyInUse(txtUserName.getText().toString()))
+        {
+            txtUserName.setError("Este nombre de usuario ya esta en uso.");
+            isFormValid = false;
+        }
         if(txtName.getText().toString().isEmpty()) {
             txtName.setError(requiredError);
             isFormValid = false;
