@@ -49,6 +49,7 @@ public class SQLite_OpenHelperUsers extends SQLiteOpenHelper {
         return fila.moveToFirst();
     }
 
+    /*
     public long Insert(String matricula, String tiempo, String IdUsuario){
 
         ContentValues Content = new ContentValues();
@@ -57,5 +58,5 @@ public class SQLite_OpenHelperUsers extends SQLiteOpenHelper {
         Content.put("IdUsuario",IdUsuario);
 
         return this.getWritableDatabase().insert("parqueosTable",null,Content);
-    }
+    }*/
 }
