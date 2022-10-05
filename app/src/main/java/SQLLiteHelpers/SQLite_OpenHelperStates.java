@@ -8,6 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
+import Entidades.Provincias;
+
 public class SQLite_OpenHelperStates extends SQLiteOpenHelper {
 
     public SQLite_OpenHelperStates(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
@@ -20,7 +24,7 @@ public class SQLite_OpenHelperStates extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-}
+    }
 
     public void AbrirBD(){
         this.getWritableDatabase();
@@ -30,7 +34,7 @@ public class SQLite_OpenHelperStates extends SQLiteOpenHelper {
         this.close();
     }
 
-    public long Insert(String Nombre, String Correo, String Contraseña){
+    public long Insert(String Nombre){
 
         ContentValues Content = new ContentValues();
         Content.put("Nombre",Nombre);
@@ -38,14 +42,13 @@ public class SQLite_OpenHelperStates extends SQLiteOpenHelper {
         return this.getWritableDatabase().insert("Provincias",null,Content);
     }
 
-    /*
-    public long Insert(String matricula, String tiempo, String IdUsuario){
+    public ArrayList<Provincias> GetAllStates(){
+        ArrayList<Provincias> provincias = new ArrayList<>();
+        Cursor fila = this.getWritableDatabase().rawQuery("select * from Provincias", null);
+        if(fila.moveToFirst())
+        {
 
-        ContentValues Content = new ContentValues();
-        Content.put("matricula",matricula);
-        Content.put("tiempo",tiempo);
-        Content.put("IdUsuario",IdUsuario);
-
-        return this.getWritableDatabase().insert("parqueosTable",null,Content);
-    }*/
+        }
+        return provincias;
+    }
 }
