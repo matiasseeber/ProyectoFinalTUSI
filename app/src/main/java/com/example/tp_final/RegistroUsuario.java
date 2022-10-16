@@ -10,6 +10,10 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
+import Database.DBUsuariosInsert;
+import Entidades.Clientes;
 import Helpers.Helpers;
 import SQLLiteHelpers.SQLite_OpenHelperUsers;
 
@@ -24,8 +28,7 @@ public class RegistroUsuario extends AppCompatActivity {
     private EditText txtAge;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
-    private SQLite_OpenHelperUsers DB_Users;
-
+    private ArrayList<EditText> editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +49,16 @@ public class RegistroUsuario extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Genero);
         spnGenero.setAdapter(adapter);
         spnGenero.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        editTexts = new ArrayList<>();
+        editTexts.add(txtUserName);
+        editTexts.add(txtName);
+        editTexts.add(txtSurname);
+        editTexts.add(txtDni);
+        editTexts.add(txtAge);
+        editTexts.add(txtEmail);
+        editTexts.add(txtPassword);
+        editTexts.add(txtConfirmPassword);
     }
 
     public void ClickBack (View view){
@@ -60,11 +73,6 @@ public class RegistroUsuario extends AppCompatActivity {
         DB_Users = new SQLite_OpenHelperUsers (this,"TPFinal",null,1);
         if(txtUserName.getText().toString().isEmpty()) {
             txtUserName.setError(requiredError);
-            isFormValid = false;
-        }
-        if(DB_Users.isUserNameLareadyInUse(txtUserName.getText().toString()))
-        {
-            txtUserName.setError("Este nombre de usuario ya esta en uso.");
             isFormValid = false;
         }
         if(txtName.getText().toString().isEmpty()) {
@@ -90,7 +98,7 @@ public class RegistroUsuario extends AppCompatActivity {
         if(txtEmail.getText().toString().isEmpty()) {
             txtEmail.setError(requiredError);
             isFormValid = false;
-        }else if(Helpers.doesStringMatchRegexp(txtEmail.getText().toString(), ".+@.+\\..+")) {
+        }else if(!Helpers.doesStringMatchRegexp(txtEmail.getText().toString(), ".+@.+\\..+")) {
             txtEmail.setError("Este campo debe cumplir con el siguiente formato: ejemplo@gmail.com");
             isFormValid = false;
         }
@@ -103,9 +111,10 @@ public class RegistroUsuario extends AppCompatActivity {
             isFormValid = false;
         }
         if(!txtPassword.getText().toString().isEmpty() && !txtConfirmPassword.getText().toString().isEmpty()){
-            if(txtPassword.getText().toString() != txtConfirmPassword.getText().toString())
-            txtConfirmPassword.setError("Ambas contraseñas deben ser iguales");
-            isFormValid = false;
+            if(!txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())){
+                txtConfirmPassword.setError("Ambas contraseñas deben ser iguales");
+                isFormValid = false;
+            }
         }
         return isFormValid;
     }
@@ -113,6 +122,18 @@ public class RegistroUsuario extends AppCompatActivity {
     public void OnClickSignUp(View view){
         if(!isFormValid())
             return;
-
+        Clientes clientes = new Clientes();
+        clientes.setNombreUsuario(txtUserName.getText().toString());
+        clientes.setNombre(txtName.getText().toString());
+        clientes.setApellido(txtSurname.getText().toString());
+        clientes.setDni(Integer.parseInt(txtDni.getText().toString()));
+        clientes.setSexo(spnGenero.getSelectedItem().toString());
+        clientes.setEdad(Integer.parseInt(txtAge.getText().toString()));
+        clientes.setCod_localidad(1);
+        clientes.setEmail(txtEmail.getText().toString());
+        clientes.setContraseña(txtPassword.getText().toString());
+        DBUsuariosInsert db = new DBUsuariosInsert(this.getApplicationContext(), clientes);
+        db.setEditTexts(editTexts);
+        db.execute();
     }
 }
