@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import Database.DBUsuariosInsert;
 import Entidades.Clientes;
 import Helpers.Helpers;
-import SQLLiteHelpers.SQLite_OpenHelperUsers;
-
 public class RegistroUsuario extends AppCompatActivity {
 
     private Spinner spnGenero;
@@ -70,7 +68,6 @@ public class RegistroUsuario extends AppCompatActivity {
     public boolean isFormValid(){
         boolean isFormValid = true;
         String requiredError = "Este campo es requerido.";
-        DB_Users = new SQLite_OpenHelperUsers (this,"TPFinal",null,1);
         if(txtUserName.getText().toString().isEmpty()) {
             txtUserName.setError(requiredError);
             isFormValid = false;
