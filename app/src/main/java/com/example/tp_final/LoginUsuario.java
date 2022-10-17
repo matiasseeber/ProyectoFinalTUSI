@@ -47,8 +47,11 @@ public class LoginUsuario extends AppCompatActivity {
     }
 
     public void IniciarSesion(View view){
-        if(Validar()){
+        /*if(Validar()){
 
-        }
+        }*/
+        Intent i = new Intent (this,Navigation_drawer.class);
+        startActivity(i);
+        this.finish();
     }
 }
