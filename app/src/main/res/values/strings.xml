@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">TP_FINAL</string>
+    <string name="UserMode">Modo Usuario</string>
+    <string name="StoreMode">Modo Comercio</string>
+    <string name="InicioUsuario">Inicio</string>
+    <string name="NombreUsuario">Nombre de Usuario</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
 </resources>
