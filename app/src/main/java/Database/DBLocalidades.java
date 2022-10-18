@@ -42,13 +42,19 @@ public class DBLocalidades extends AsyncTask<Boolean, Void, Boolean> {
     @Override
     protected Boolean doInBackground(Boolean... Boolean) {
 
+        localidades = new ArrayList<Localidad>();
+
+        if(localidades.size() > 0)
+            return true;
+
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery("Select * from Localidades");
-
-            localidades = new ArrayList<Localidad>();
+            Localidad localidadDefault = new Localidad();
+            localidadDefault.setDescripcion("Seleccione una localidad");
+            localidades.add(localidadDefault);
             rs.beforeFirst();
             while (rs.next()) {
                 Localidad localidad = new Localidad();

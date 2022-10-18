@@ -11,6 +11,8 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import Database.DBRedirectOnLogin;
+
 public class LoginUsuario extends AppCompatActivity {
 
     private EditText txtNombre;
@@ -47,11 +49,17 @@ public class LoginUsuario extends AppCompatActivity {
     }
 
     public void IniciarSesion(View view){
-        /*if(Validar()){
-
-        }*/
-        Intent i = new Intent (this,Navigation_drawer.class);
-        startActivity(i);
-        this.finish();
+        if(!Validar())
+            return;
+        DBRedirectOnLogin redirectOnLogin = new DBRedirectOnLogin();
+        redirectOnLogin.setContext(getApplicationContext());
+        String query = "Select * from Clientes where nombreUsuario = '" + txtNombre.getText().toString() + "' and contraseña = '" + txtContraseña.getText().toString() + "'";
+        redirectOnLogin.setQuery(query);
+        Intent intent = new Intent(getApplicationContext(), Navigation_drawer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        redirectOnLogin.setRedirectionIntent(intent);
+        redirectOnLogin.setMessageNotExists("No existe ese usuario.");
+        redirectOnLogin.setMessageExists("Inicio de sesion exitoso.");
+        redirectOnLogin.execute();
     }
 }

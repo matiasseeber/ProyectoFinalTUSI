@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import Database.DBLocalidades;
+
 public class RegistroComercio extends AppCompatActivity {
 
     private Spinner spnLocalidades;
@@ -18,11 +20,10 @@ public class RegistroComercio extends AppCompatActivity {
         setContentView(R.layout.activity_registro_comercio);
 
         spnLocalidades=(Spinner) findViewById(R.id.spnLocalidad);
-
-        String [] Localidades = {"Seleccione una localidad"};
-
-        ArrayAdapter <String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Localidades);
-        spnLocalidades.setAdapter(adapter);
+        DBLocalidades dbLocalidades = new DBLocalidades();
+        dbLocalidades.setContext(getApplicationContext());
+        dbLocalidades.setSpinner(spnLocalidades);
+        dbLocalidades.execute();
     }
 
     public void ClickBack(View view){

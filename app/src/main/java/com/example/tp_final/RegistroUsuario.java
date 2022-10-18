@@ -104,6 +104,10 @@ public class RegistroUsuario extends AppCompatActivity {
             ((TextView)spnGenero.getSelectedView()).setError(requiredError);
             isFormValid = false;
         }
+        if(spnLocalidades.getSelectedItemPosition() == 0) {
+            ((TextView)spnLocalidades.getSelectedView()).setError(requiredError);
+            isFormValid = false;
+        }
         if(txtEmail.getText().toString().isEmpty()) {
             txtEmail.setError(requiredError);
             isFormValid = false;
