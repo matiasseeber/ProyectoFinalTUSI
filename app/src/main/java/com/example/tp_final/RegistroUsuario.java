@@ -5,17 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import Helpers.Helpers;
+import java.util.ArrayList;
 
+import Database.DBLocalidades;
+import Database.DBUsuariosInsert;
+import Entidades.Clientes;
+import Entidades.Localidad;
+import Helpers.Helpers;
 public class RegistroUsuario extends AppCompatActivity {
 
     private Spinner spnGenero;
+    private Spinner spnLocalidades;
     private EditText txtUserName;
     private EditText txtName;
     private EditText txtSurname;
@@ -24,13 +30,14 @@ public class RegistroUsuario extends AppCompatActivity {
     private EditText txtAge;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
-
+    private ArrayList<EditText> editTexts;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registro_usuario);
 
         spnGenero = (Spinner) findViewById(R.id.spnGenero);
+        spnLocalidades = (Spinner) findViewById(R.id.spnLocalidadUsuario);
         txtUserName = (EditText) findViewById(R.id.txtNombreUsu);
         txtName = (EditText) findViewById(R.id.txtNombre);
         txtSurname = (EditText) findViewById(R.id.txtApellido);
@@ -45,6 +52,23 @@ public class RegistroUsuario extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Genero);
         spnGenero.setAdapter(adapter);
         spnGenero.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        DBLocalidades dbLocalidades = new DBLocalidades();
+        dbLocalidades.setContext(getApplicationContext());
+        dbLocalidades.setSpinner(spnLocalidades);
+        dbLocalidades.execute();
+
+        spnLocalidades.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        editTexts = new ArrayList<>();
+        editTexts.add(txtUserName);
+        editTexts.add(txtName);
+        editTexts.add(txtSurname);
+        editTexts.add(txtDni);
+        editTexts.add(txtAge);
+        editTexts.add(txtEmail);
+        editTexts.add(txtPassword);
+        editTexts.add(txtConfirmPassword);
     }
 
     public void ClickBack (View view){
@@ -60,11 +84,6 @@ public class RegistroUsuario extends AppCompatActivity {
             txtUserName.setError(requiredError);
             isFormValid = false;
         }
-        //if(isUserNameAlreadyInUse(txtUserName.getText().toString().isEmpty()))
-        //{
-        //  txtUserName.setError("Este nombre de usuario ya esta en uso.");
-        //  isFormValid = false;
-        //}
         if(txtName.getText().toString().isEmpty()) {
             txtName.setError(requiredError);
             isFormValid = false;
@@ -88,7 +107,7 @@ public class RegistroUsuario extends AppCompatActivity {
         if(txtEmail.getText().toString().isEmpty()) {
             txtEmail.setError(requiredError);
             isFormValid = false;
-        }else if(Helpers.doesStringMatchRegexp(txtEmail.getText().toString(), ".+@.+\\..+")) {
+        }else if(!Helpers.doesStringMatchRegexp(txtEmail.getText().toString(), ".+@.+\\..+")) {
             txtEmail.setError("Este campo debe cumplir con el siguiente formato: ejemplo@gmail.com");
             isFormValid = false;
         }
@@ -101,9 +120,10 @@ public class RegistroUsuario extends AppCompatActivity {
             isFormValid = false;
         }
         if(!txtPassword.getText().toString().isEmpty() && !txtConfirmPassword.getText().toString().isEmpty()){
-            if(txtPassword.getText().toString() != txtConfirmPassword.getText().toString())
-            txtConfirmPassword.setError("Ambas contraseñas deben ser iguales");
-            isFormValid = false;
+            if(!txtPassword.getText().toString().equals(txtConfirmPassword.getText().toString())){
+                txtConfirmPassword.setError("Ambas contraseñas deben ser iguales");
+                isFormValid = false;
+            }
         }
         return isFormValid;
     }
@@ -111,6 +131,19 @@ public class RegistroUsuario extends AppCompatActivity {
     public void OnClickSignUp(View view){
         if(!isFormValid())
             return;
-
+        Clientes clientes = new Clientes();
+        clientes.setNombreUsuario(txtUserName.getText().toString());
+        clientes.setNombre(txtName.getText().toString());
+        clientes.setApellido(txtSurname.getText().toString());
+        clientes.setDni(Integer.parseInt(txtDni.getText().toString()));
+        clientes.setSexo(spnGenero.getSelectedItem().toString());
+        clientes.setEdad(Integer.parseInt(txtAge.getText().toString()));
+        Localidad localidad = (Localidad) spnLocalidades.getSelectedItem();
+        clientes.setCod_localidad(localidad.getId());
+        clientes.setEmail(txtEmail.getText().toString());
+        clientes.setContraseña(txtPassword.getText().toString());
+        DBUsuariosInsert db = new DBUsuariosInsert(this.getApplicationContext(), clientes);
+        db.setEditTexts(editTexts);
+        db.execute();
     }
 }
