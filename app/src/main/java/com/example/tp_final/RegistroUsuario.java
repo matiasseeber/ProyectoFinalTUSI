@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -12,12 +13,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import Database.DBLocalidades;
 import Database.DBUsuariosInsert;
 import Entidades.Clientes;
+import Entidades.Localidad;
 import Helpers.Helpers;
 public class RegistroUsuario extends AppCompatActivity {
 
     private Spinner spnGenero;
+    private Spinner spnLocalidades;
     private EditText txtUserName;
     private EditText txtName;
     private EditText txtSurname;
@@ -33,6 +37,7 @@ public class RegistroUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_registro_usuario);
 
         spnGenero = (Spinner) findViewById(R.id.spnGenero);
+        spnLocalidades = (Spinner) findViewById(R.id.spnLocalidadUsuario);
         txtUserName = (EditText) findViewById(R.id.txtNombreUsu);
         txtName = (EditText) findViewById(R.id.txtNombre);
         txtSurname = (EditText) findViewById(R.id.txtApellido);
@@ -47,6 +52,13 @@ public class RegistroUsuario extends AppCompatActivity {
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item,Genero);
         spnGenero.setAdapter(adapter);
         spnGenero.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+
+        DBLocalidades dbLocalidades = new DBLocalidades();
+        dbLocalidades.setContext(getApplicationContext());
+        dbLocalidades.setSpinner(spnLocalidades);
+        dbLocalidades.execute();
+
+        spnLocalidades.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
 
         editTexts = new ArrayList<>();
         editTexts.add(txtUserName);
@@ -126,7 +138,8 @@ public class RegistroUsuario extends AppCompatActivity {
         clientes.setDni(Integer.parseInt(txtDni.getText().toString()));
         clientes.setSexo(spnGenero.getSelectedItem().toString());
         clientes.setEdad(Integer.parseInt(txtAge.getText().toString()));
-        clientes.setCod_localidad(1);
+        Localidad localidad = (Localidad) spnLocalidades.getSelectedItem();
+        clientes.setCod_localidad(localidad.getId());
         clientes.setEmail(txtEmail.getText().toString());
         clientes.setContraseña(txtPassword.getText().toString());
         DBUsuariosInsert db = new DBUsuariosInsert(this.getApplicationContext(), clientes);
