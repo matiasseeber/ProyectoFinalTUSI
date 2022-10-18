@@ -60,6 +60,7 @@ public class LoginUsuario extends AppCompatActivity {
         redirectOnLogin.setRedirectionIntent(intent);
         redirectOnLogin.setMessageNotExists("No existe ese usuario.");
         redirectOnLogin.setMessageExists("Inicio de sesion exitoso.");
+        redirectOnLogin.setUserName(txtNombre.getText().toString());
         redirectOnLogin.execute();
     }
 }

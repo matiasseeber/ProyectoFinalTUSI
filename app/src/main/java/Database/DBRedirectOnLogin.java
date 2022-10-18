@@ -1,8 +1,11 @@
 package Database;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
@@ -25,6 +28,7 @@ public class DBRedirectOnLogin extends AsyncTask<Boolean, Void, Boolean> {
     private String messageExists;
     private String messageNotExists;
     private Intent redirectionIntent;
+    private String userName;
 
     public DBRedirectOnLogin() {
     }
@@ -34,6 +38,14 @@ public class DBRedirectOnLogin extends AsyncTask<Boolean, Void, Boolean> {
         this.query = query;
         this.messageExists = messageExists;
         this.messageNotExists = messageNotExists;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public Intent getRedirectionIntent() {
@@ -100,6 +112,13 @@ public class DBRedirectOnLogin extends AsyncTask<Boolean, Void, Boolean> {
     protected void onPostExecute(Boolean response) {
         if(response){
             Toast.makeText(context, response ? messageExists : messageNotExists, Toast.LENGTH_LONG).show();
+
+            SharedPreferences sharedPref = context.getSharedPreferences(
+                    "MySharedPref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPref.edit();
+            myEdit.putString("username", userName);
+            myEdit.commit();
+
             context.startActivity(redirectionIntent);
         }
         else
