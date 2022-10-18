@@ -61,15 +61,17 @@
         android:id="@+id/btnRegistrarseC"
         android:layout_width="153dp"
         android:layout_height="51dp"
-        android:layout_marginStart="128dp"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="16dp"
         android:text="registrarse"
+        android:textSize="15sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
 
     <ScrollView
         android:id="@+id/scrollView3"
-        android:layout_width="374dp"
-        android:layout_height="388dp"
+        android:layout_width="378dp"
+        android:layout_height="367dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -153,6 +155,37 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/ImageComercio"
+                    android:layout_width="130dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#B3B3B3"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/btnImagenComercio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="150dp"
+                    android:layout_marginEnd="120dp"
+                    android:text="Seleccionar"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.3"
+                    app:layout_constraintStart_toStartOf="@id/ImageComercio"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="No Image" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
         </LinearLayout>
+
+
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
