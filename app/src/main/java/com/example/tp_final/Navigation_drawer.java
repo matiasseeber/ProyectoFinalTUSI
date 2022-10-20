@@ -11,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -22,6 +23,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
     public NavigationView navigationView;
     public Toolbar toolbar;
     public ActionBarDrawerToggle toggle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
