@@ -22,22 +22,15 @@ import java.sql.Statement;
 
 import Database.DataDB;
 
-public class DBRedirectOnLogin extends AsyncTask<Boolean, Void, Boolean> {
+public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private String query;
-    private String messageExists;
-    private String messageNotExists;
-    private Intent redirectionIntent;
-    private String userName;
+    private String messageExists = null;
+    private String messageNotExists = null;
+    private Intent redirectionIntent = null;
+    private String userName = null;
 
-    public DBRedirectOnLogin() {
-    }
-
-    public DBRedirectOnLogin(Context context, String query, String messageExists, String messageNotExists){
-        this.context = context;
-        this.query = query;
-        this.messageExists = messageExists;
-        this.messageNotExists = messageNotExists;
+    public DBCheckIfRecordExists() {
     }
 
     public String getUserName() {
@@ -113,13 +106,17 @@ public class DBRedirectOnLogin extends AsyncTask<Boolean, Void, Boolean> {
         if(response){
             Toast.makeText(context, response ? messageExists : messageNotExists, Toast.LENGTH_LONG).show();
 
-            SharedPreferences sharedPref = context.getSharedPreferences(
-                    "MySharedPref", Context.MODE_PRIVATE);
-            SharedPreferences.Editor myEdit = sharedPref.edit();
-            myEdit.putString("username", userName);
-            myEdit.commit();
+            if(userName != null) {
+                SharedPreferences sharedPref = context.getSharedPreferences(
+                        "MySharedPref", Context.MODE_PRIVATE);
+                SharedPreferences.Editor myEdit = sharedPref.edit();
+                myEdit.putString("username", userName);
+                myEdit.commit();
+            }
 
-            context.startActivity(redirectionIntent);
+            if(redirectionIntent != null){
+                context.startActivity(redirectionIntent);
+            }
         }
         else
         {

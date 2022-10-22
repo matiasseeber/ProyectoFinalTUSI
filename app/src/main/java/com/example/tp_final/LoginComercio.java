@@ -11,6 +11,9 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import Database.DBCheckIfRecordExists;
+import Database.DBQueryBussineses;
+
 public class LoginComercio extends AppCompatActivity {
 
     private EditText txtIdentificador;
@@ -47,8 +50,15 @@ public class LoginComercio extends AppCompatActivity {
     }
 
     public void IniciarSesion(View view){
-        if(Validar()){
-
-        }
+        if(!Validar())
+            return;
+        DBCheckIfRecordExists dbCheckIfRecordExists = new DBCheckIfRecordExists();
+        dbCheckIfRecordExists.setMessageExists("Inicio de sesion exitoso.");
+        dbCheckIfRecordExists.setMessageExists("No existe ese usuario.");
+        Intent intent = new Intent(getApplicationContext(), Navigation_drawer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        dbCheckIfRecordExists.setRedirectionIntent(intent);
+        dbCheckIfRecordExists.setUserName(txtIdentificador.getText().toString());
+        dbCheckIfRecordExists.execute();
     }
 }

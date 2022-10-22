@@ -22,6 +22,7 @@ public class DBQueryBussineses extends AsyncTask<Boolean, Void, Boolean> {
     private String message = "";
     private ImageView imageView;
     private Comercio comercio;
+    private Boolean CheckIfBussinesExists = false;
     private Bitmap bitmap;
 
     public DBQueryBussineses() {
@@ -30,7 +31,6 @@ public class DBQueryBussineses extends AsyncTask<Boolean, Void, Boolean> {
     public Comercio getComercio() {
         return comercio;
     }
-
     public void setComercio(Comercio comercio) {
         this.comercio = comercio;
     }

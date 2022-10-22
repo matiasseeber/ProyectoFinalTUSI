@@ -9,8 +9,17 @@ public class Comercio {
     private int vatNumber;
     private int district;
     private boolean state;
+    private String password;
 
     public Comercio() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getImageValue() {

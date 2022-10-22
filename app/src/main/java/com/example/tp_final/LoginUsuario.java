@@ -11,7 +11,7 @@ import android.widget.EditText;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import Database.DBRedirectOnLogin;
+import Database.DBCheckIfRecordExists;
 
 public class LoginUsuario extends AppCompatActivity {
 
@@ -51,7 +51,7 @@ public class LoginUsuario extends AppCompatActivity {
     public void IniciarSesion(View view){
         if(!Validar())
             return;
-        DBRedirectOnLogin redirectOnLogin = new DBRedirectOnLogin();
+        DBCheckIfRecordExists redirectOnLogin = new DBCheckIfRecordExists();
         redirectOnLogin.setContext(getApplicationContext());
         String query = "Select * from Clientes where nombreUsuario = '" + txtNombre.getText().toString() + "' and contraseña = '" + txtContraseña.getText().toString() + "'";
         redirectOnLogin.setQuery(query);
