@@ -67,9 +67,9 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
         int insertedRows = 0;
         try {
             if(doesBussinessAlreadyExist("Select * from Comercios where Cuil = " + comercio.getVatNumber())) {
-                message = "Un usuario ya esta utizando ese dni.";
+                message = "Un Comercio ya se encuentra registrado con este CUIL.";
             }else if(doesBussinessAlreadyExist("Select * from Comercios where Email = '" + comercio.getEmail() + "'")) {
-                message = "Un usuario ya esta utizando ese email.";
+                message = "Un Comercio ya tiene registrado ese email.";
             }else{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
@@ -97,5 +97,6 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
+
     }
 }
