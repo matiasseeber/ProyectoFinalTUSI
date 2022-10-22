@@ -1,9 +1,14 @@
 package Database;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.tp_final.LoginComercio;
+import com.example.tp_final.LoginUsuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -73,7 +78,7 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
             }else{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                PreparedStatement preparedStatement = con.prepareStatement("insert into Comercios (Email, Cuil, nombre, Dirección, cod_localidad, logo, estado) values (?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = con.prepareStatement("insert into Comercios (Email, Cuil, nombre, Dirección, cod_localidad, logo, estado, contraseña) values (?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, comercio.getEmail());
                 preparedStatement.setInt(2, comercio.getVatNumber());
                 preparedStatement.setString(3, comercio.getName());
@@ -81,6 +86,7 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
                 preparedStatement.setInt(5, comercio.getDistrict());
                 preparedStatement.setString(6, comercio.getImageValue());
                 preparedStatement.setBoolean(7, true);
+                preparedStatement.setString(8, comercio.getPassword());
                 insertedRows = preparedStatement.executeUpdate();
             }
         }
@@ -97,6 +103,11 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
-
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+        if(response)  {
+            Intent intent = new Intent(context, LoginComercio.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
     }
 }
