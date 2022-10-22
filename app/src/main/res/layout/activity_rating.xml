@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".Rating_activity">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="325dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/tituloPopUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="84dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Puntua tu pedido"
+            android:textColor="@color/Primary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:background="#0000"
+            android:foregroundGravity="right"
+            android:onClick="clickClose"
+            app:layout_constraintStart_toEndOf="@+id/tituloPopUp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_delete" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imgComercioPopUp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        app:srcCompat="@drawable/mc" />
+
+    <TextView
+        android:id="@+id/ComercioPopUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MC´Donalds"
+        android:textAlignment="center"
+        android:textSize="15dp" />
+
+    <RatingBar
+        android:id="@+id/ratingBarPopUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:numStars="5"
+        android:rating="3.5"
+        android:stepSize="0.5"
+        android:theme="@style/RatingBar.Yellow"
+        android:outlineSpotShadowColor="#ECC81B"/>
+
+    <Button
+        android:id="@+id/btnEnviarPopUp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:onClick="clickSend"
+        android:text="Enviar" />
+
+</LinearLayout>

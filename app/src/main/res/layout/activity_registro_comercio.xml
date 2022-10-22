@@ -34,7 +34,7 @@
         android:layout_marginTop="-200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/circle" />
+        app:srcCompat="@drawable/radius" />
 
     <ImageView
         android:id="@+id/btnAtrasRegistro2"
