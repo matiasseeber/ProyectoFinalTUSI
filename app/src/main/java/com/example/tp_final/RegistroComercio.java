@@ -155,6 +155,7 @@ public class RegistroComercio extends AppCompatActivity {
         comercio.setEmail(txtEmail.getText().toString());
         comercio.setName(txtBussinesName.getText().toString());
         comercio.setPassword(txtPassword.getText().toString());
+        comercio.setVatNumber(Integer.parseInt(txtVatNumber.getText().toString()));
         comercio.setState(true);
         Localidad localidad = (Localidad)spnLocalidades.getSelectedItem();
         comercio.setDistrict(localidad.getId());

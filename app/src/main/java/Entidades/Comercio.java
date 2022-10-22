@@ -1,5 +1,7 @@
 package Entidades;
 
+import android.text.Editable;
+
 public class Comercio {
     private int id;
     private String email;
@@ -85,4 +87,5 @@ public class Comercio {
     public void setState(boolean state) {
         this.state = state;
     }
+
 }
