@@ -1,5 +1,7 @@
 package Entidades;
 
+import android.text.Editable;
+
 public class Comercio {
     private int id;
     private String email;
@@ -9,8 +11,17 @@ public class Comercio {
     private int vatNumber;
     private int district;
     private boolean state;
+    private String password;
 
     public Comercio() {
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getImageValue() {
@@ -76,4 +87,5 @@ public class Comercio {
     public void setState(boolean state) {
         this.state = state;
     }
+
 }

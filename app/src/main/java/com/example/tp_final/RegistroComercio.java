@@ -99,6 +99,7 @@ public class RegistroComercio extends AppCompatActivity {
         String requiredError = "Este campo es requerido.";
         if(imageView.getDrawable() == null){
             Toast.makeText(getApplicationContext(), "Se debe de seleccionar una imagen.", Toast.LENGTH_LONG).show();
+            isFormValid = false;
         }
         if(txtBussinesName.getText().toString().isEmpty()) {
             txtBussinesName.setError(requiredError);
@@ -154,12 +155,15 @@ public class RegistroComercio extends AppCompatActivity {
         comercio.setAddress(txtAddress.getText().toString());
         comercio.setEmail(txtEmail.getText().toString());
         comercio.setName(txtBussinesName.getText().toString());
+        comercio.setPassword(txtPassword.getText().toString());
+        comercio.setVatNumber(Integer.parseInt(txtVatNumber.getText().toString()));
         comercio.setState(true);
         Localidad localidad = (Localidad)spnLocalidades.getSelectedItem();
         comercio.setDistrict(localidad.getId());
         DBInsertBussines dbInsertBussines = new DBInsertBussines();
         dbInsertBussines.setContext(getApplicationContext());
         dbInsertBussines.setComercio(comercio);
+        dbInsertBussines.setMessage("El registro fue dado de alta correctamente.");
         dbInsertBussines.execute();
     }
 }

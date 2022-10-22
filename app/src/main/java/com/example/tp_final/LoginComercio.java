@@ -13,6 +13,8 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import Database.DBForgotPassword;
+import Database.DBCheckIfRecordExists;
+import Database.DBQueryBussineses;
 
 public class LoginComercio extends AppCompatActivity {
 
@@ -60,10 +62,17 @@ public class LoginComercio extends AppCompatActivity {
     }
 
     public void IniciarSesion(View view){
-        if(Validar()){
-
-        }
-        Intent i = new Intent(this,Navigation_drawer.class);
-        startActivity(i);
+        if(!Validar())
+            return;
+        DBCheckIfRecordExists dbCheckIfRecordExists = new DBCheckIfRecordExists();
+        dbCheckIfRecordExists.setContext(getApplicationContext());
+        dbCheckIfRecordExists.setMessageExists("Inicio de sesion exitoso.");
+        dbCheckIfRecordExists.setMessageNotExists("No existe ese usuario.");
+        dbCheckIfRecordExists.setQuery("select * from Comercios where Cuil = " + txtIdentificador.getText().toString() + " and contraseña = '" + txtContraseña.getText().toString() + "';");
+        Intent intent = new Intent(getApplicationContext(), Navigation_drawer.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        dbCheckIfRecordExists.setRedirectionIntent(intent);
+        dbCheckIfRecordExists.setUserName(txtIdentificador.getText().toString());
+        dbCheckIfRecordExists.execute();
     }
 }
