@@ -17,13 +17,22 @@
         android:theme="@style/Theme.TP_FINAL"
         tools:targetApi="31">
         <activity
-            android:name=".Navigation_drawer"
+            android:name=".PopUp_ValidacionComercio"
             android:exported="false"
-            />
+            android:theme="@style/Theme.AppCompat.Dialog"/>
+        <activity
+            android:name=".Recupero_Passw"
+            android:exported="false" />
+        <activity
+            android:name=".Rating_activity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
+            android:name=".Navigation_drawer"
+            android:exported="false" />
         <activity
             android:name=".RegistroComercio"
-            android:exported="false"
-            />
+            android:exported="false" />
         <activity
             android:name=".RegistroUsuario"
             android:exported="false" />
