@@ -1,12 +1,13 @@
 package Entidades;
 
-import android.text.Editable;
+import android.graphics.Bitmap;
 
 public class Comercio {
     private int id;
     private String email;
     private String name;
     private String address;
+    private Bitmap bitmap;
     private String imageValue;
     private int vatNumber;
     private int district;
@@ -14,6 +15,14 @@ public class Comercio {
     private String password;
 
     public Comercio() {
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public String getPassword() {

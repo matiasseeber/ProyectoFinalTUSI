@@ -11,6 +11,7 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
+import Database.DBComercio;
 import Entidades.Comercio;
 import adapters.BussinesAdapter;
 
@@ -31,21 +32,13 @@ private GridView gridView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comercio, container, false);
-        /*ArrayList<Comercio> elementos = new ArrayList<Comercio>();
-
-        Comercio comercios = new Comercio();
-        comercios.setName("MC'Donals");
-        comercios.setId(123);
-
-        elementos.add(comercios);
-
         View view = inflater.inflate(R.layout.fragment_comercio, container, false);
         gridView = (GridView) view.findViewById(R.id.dgvComercios);
-        gridView.setVerticalSpacing(70);
-
-        gridView.setAdapter(new BussinesAdapter(view.getContext(),elementos));
-
-        return view;*/
+        gridView.setVerticalSpacing(5);
+        DBComercio dbComercio = new DBComercio();
+        dbComercio.setContext(view.getContext());
+        dbComercio.setGrid(gridView);
+        dbComercio.execute();
+        return view;
     }
 }
