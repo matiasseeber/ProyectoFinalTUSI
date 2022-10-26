@@ -13,9 +13,8 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/radius"
-        android:baselineAlignBottom="false"
+        android:layout_marginTop="16dp"
+        android:background="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 

@@ -12,9 +12,9 @@ import android.widget.TextView;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
+import Database.DBForgotPassword;
 import Database.DBCheckIfRecordExists;
 import Database.DBQueryBussineses;
-import Database.DBForgotPassword;
 
 public class LoginComercio extends AppCompatActivity {
 
