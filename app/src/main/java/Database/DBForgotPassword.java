@@ -4,10 +4,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import com.example.tp_final.LoginComercio;
 import com.example.tp_final.LoginUsuario;
+import com.example.tp_final.Recupero_Passw;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -23,19 +25,40 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private Comercio comercio;
     private String message;
+    private String Accion;
+    private String query;
 
-    private ArrayList<EditText> editTexts;
+    public String getQuery() {
+        return query;
+    }
 
-    public void setEditTexts(ArrayList<EditText> editTexts) {
-        this.editTexts = editTexts;
+    public void setQuery(String query) {
+        this.query = query;
+    }
+
+    public String getAccion() {
+        return Accion;
+    }
+
+    public void setAccion(String accion) {
+        Accion = accion;
+    }
+
+    public Comercio getComercio() {
+        return comercio;
+    }
+
+    public void setComercio(Comercio comercio) {
+        this.comercio = comercio;
     }
 
     public DBForgotPassword() {
     }
 
-    public DBForgotPassword(Context context, Comercio comercio){
+    public DBForgotPassword(Context context, Comercio comercio, String Accion){
         this.context = context;
         this.comercio = comercio;
+        this.Accion=Accion;
     }
 
     public Context getContext() {
@@ -52,12 +75,10 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
-
-            boolean exist=false;
-
-            while(rs.next()){
-                comercio.setId(rs.getInt(0));
-                exist=true;
+            rs.first();
+            boolean exist = rs.next();
+            if(exist){
+                comercio.setId(rs.getInt("id"));
             }
             return exist;
         }
@@ -70,16 +91,15 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
     public boolean UpdatePassword(){
         int Rows=0;
         try {
-            if(!existeComercio("Select * from Comercios where Email = " + comercio.getEmail())) {
+            if(!existeComercio(this.query)) {
                 message = "No hay ningún Comercio registrado con el mail ingresado";
             }
             else{
-
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                PreparedStatement preparedStatement = con.prepareStatement("Update Comercios set = ? where Email = ?;", Statement.RETURN_GENERATED_KEYS);
-                preparedStatement.setInt(1, comercio.getId());
-                preparedStatement.setString(2, comercio.getEmail());
+                PreparedStatement preparedStatement = con.prepareStatement("Update Comercios set contraseña= ? where id = ?;", Statement.RETURN_GENERATED_KEYS);
+                preparedStatement.setString(1, comercio.getPassword());
+                preparedStatement.setInt(2, comercio.getId());
                 Rows = preparedStatement.executeUpdate();
             }
         }
@@ -91,27 +111,47 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected Boolean doInBackground(Boolean... Boolean) {
-        return UpdatePassword();
-    }
 
-    public void emptyAllControls(){
-        for(int i = 0; i < editTexts.size(); i++){
-            EditText editText = editTexts.get(i);
-            editText.setText("");
-        }
+      switch (this.getAccion()){
+          case "Validation":
+              return existeComercio(this.query);
+          case "Update":
+              return UpdatePassword();
+          default:
+              return false;
+      }
     }
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if(response)  {
-            emptyAllControls();
-            message = "Tu contraseña ha sido restaurada exitosamente.";
+        switch(this.getAccion()){
+            case "Validation":
+                if(!response)  {
+                    //emptyAllControls();
+                    message = "No hay ningún Comercio registrado con el mail ingresado.";
+                }
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                if(response)  {
+                    Intent intent = new Intent(context, Recupero_Passw.class);
+                    context.startActivity(intent);
+                }
+                break;
+            case "Update":
+                if(response)  {
+                    //emptyAllControls();
+                    message = "Tu contraseña ha sido restaurada exitosamente.";
+                }
+                else{
+                    message = "Tu contraseña no pudo ser restaurada.";
+                }
+                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+                if(response)  {
+                    Intent intent = new Intent(context, LoginComercio.class);
+                    context.startActivity(intent);
+                }
+                break;
         }
-        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-        if(response)  {
-            Intent intent = new Intent(context, LoginComercio.class);
-            context.startActivity(intent);
-        }
+
     }
 
 
