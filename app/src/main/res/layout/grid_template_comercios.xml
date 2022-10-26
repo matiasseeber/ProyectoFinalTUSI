@@ -2,26 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutItemGrvListadoComercios"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/imgLogoComercio"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginStart="17dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/radius"
-        android:src="@drawable/mc"
+        android:baselineAlignBottom="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
-        android:id="@+id/txtNombreComercio"
+        android:id="@+id/txtNombreComercio_ComerciosCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="14dp"
         android:text="MC Donalds"
         android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
@@ -47,7 +50,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:text="4.0"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -61,7 +64,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="225dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/star"
         app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
         app:layout_constraintTop_toTopOf="parent"></ImageView>
@@ -71,7 +74,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="56dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="52dp"
         android:text="Direccion 123"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
