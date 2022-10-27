@@ -38,7 +38,7 @@ public class PedidosFragment extends Fragment {
         btnCalificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(v.getContext(),Rating_activity.class));
+                startActivity(new Intent(v.getContext(),PopUpFinalpedido.class));
             }
         });
 

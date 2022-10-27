@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PopUp_AgregarProducto">
+
+    <ImageButton
+        android:id="@+id/imgRemove"
+        android:layout_width="56dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="340dp"
+        android:background="@android:color/transparent"
+        android:onClick="ClickRemove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/removeproduct"
+        />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="332dp"
+        android:layout_marginTop="4dp"
+        android:background="#0000"
+        android:foregroundGravity="right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_delete" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="257dp"
+        android:layout_height="315dp"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="8dp"
+        android:alpha="0.6"
+        app:layout_constraintStart_toEndOf="@+id/imageView15"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:srcCompat="@drawable/circle2" />
+
+    <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="205dp"
+        android:layout_height="235dp"
+        android:layout_marginStart="-130dp"
+        android:layout_marginTop="-110dp"
+        android:alpha="0.8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/radius" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="180dp"
+        android:layout_height="215dp"
+        android:layout_marginStart="-70dp"
+        android:layout_marginTop="172dp"
+        android:alpha="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/radius" />
+
+    <ImageView
+        android:id="@+id/imgProductoSeleccionado"
+        android:layout_width="152dp"
+        android:layout_height="148dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/comercio" />
+
+    <TextView
+        android:id="@+id/txtNombreProductoSeleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Hamburguesa Super"
+        android:background="@android:color/transparent"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtDescripcionProdSeleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Una rica hamburguesa"
+        android:background="@android:color/transparent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgProductoSeleccionado" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="$"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/txtPrecioProdSeleccionado"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionProdSeleccionado" />
+
+    <TextView
+        android:id="@+id/txtPrecioProdSeleccionado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="20dp"
+        android:text="2000"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtDescripcionProdSeleccionado" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:onClick="ClickAddProduct"
+        android:text="Añadir"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtCantProdSeleccionado" />
+
+    <ImageButton
+        android:id="@+id/imgAdd"
+        android:layout_width="56dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="340dp"
+        android:background="@android:color/transparent"
+        android:onClick="ClickAdd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.681"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/addproduct" />
+
+    <EditText
+        android:id="@+id/txtCantProdSeleccionado"
+        android:layout_width="74dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPrecioProdSeleccionado" />
+</androidx.constraintlayout.widget.ConstraintLayout>
