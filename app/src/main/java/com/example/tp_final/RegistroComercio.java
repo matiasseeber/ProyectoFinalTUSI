@@ -2,7 +2,6 @@ package com.example.tp_final;
 
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContract;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,7 +13,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -27,7 +25,6 @@ import java.util.Base64;
 
 import Database.DBInsertBussines;
 import Database.DBLocalidades;
-import Database.DBQueryBussineses;
 import Entidades.Comercio;
 import Entidades.Localidad;
 import Helpers.Helpers;
@@ -55,7 +52,7 @@ public class RegistroComercio extends AppCompatActivity {
         btnPick=(Button) findViewById(R.id.btnImagenComercio);
         spnLocalidades=(Spinner) findViewById(R.id.spnLocalidad);
         btnRegistrarse = (Button) findViewById(R.id.btnRegistrarseC);
-        txtBussinesName = (EditText) findViewById(R.id.txtNombreComercio);
+        txtBussinesName = (EditText) findViewById(R.id.txtNombreComercio_ComerciosCliente);
         txtAddress = (EditText) findViewById(R.id.txtDireccionC);
         txtEmail = (EditText) findViewById(R.id.txtEmailC);
         txtVatNumber = (EditText) findViewById(R.id.txtCuilC);
@@ -159,7 +156,7 @@ public class RegistroComercio extends AppCompatActivity {
         comercio.setVatNumber(Integer.parseInt(txtVatNumber.getText().toString()));
         comercio.setState(true);
         Localidad localidad = (Localidad)spnLocalidades.getSelectedItem();
-        comercio.setDistrict(localidad.getId());
+        comercio.setLocalidad(localidad);
         DBInsertBussines dbInsertBussines = new DBInsertBussines();
         dbInsertBussines.setContext(getApplicationContext());
         dbInsertBussines.setComercio(comercio);

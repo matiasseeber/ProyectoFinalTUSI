@@ -83,7 +83,8 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
                 preparedStatement.setString(7, usuario.getSexo());
                 preparedStatement.setInt(8, usuario.getEdad());
                 preparedStatement.setInt(9, usuario.getCod_localidad());
-                preparedStatement.setBoolean(10, true);
+                boolean estado = true;
+                preparedStatement.setBoolean(10, estado);
                 insertedRows = preparedStatement.executeUpdate();
             }
         }

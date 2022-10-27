@@ -71,19 +71,19 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
     public boolean insertBussiness(){
         int insertedRows = 0;
         try {
-            if(doesBussinessAlreadyExist("Select * from Comercios where Cuil = " + comercio.getVatNumber())) {
+            if(doesBussinessAlreadyExist("Select * from Comercios where cuil = " + comercio.getVatNumber())) {
                 message = "Un Comercio ya se encuentra registrado con este CUIL.";
-            }else if(doesBussinessAlreadyExist("Select * from Comercios where Email = '" + comercio.getEmail() + "'")) {
+            }else if(doesBussinessAlreadyExist("Select * from Comercios where email = '" + comercio.getEmail() + "'")) {
                 message = "Un Comercio ya tiene registrado ese email.";
             }else{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                PreparedStatement preparedStatement = con.prepareStatement("insert into Comercios (Email, Cuil, nombre, Dirección, cod_localidad, logo, estado, contraseña) values (?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = con.prepareStatement("insert into Comercios (email, cuil, nombre, direccion, cod_localidad, image, estado, contraseña) values (?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, comercio.getEmail());
                 preparedStatement.setInt(2, comercio.getVatNumber());
                 preparedStatement.setString(3, comercio.getName());
                 preparedStatement.setString(4, comercio.getAddress());
-                preparedStatement.setInt(5, comercio.getDistrict());
+                preparedStatement.setInt(5, comercio.getLocalidad().getId());
                 preparedStatement.setString(6, comercio.getImageValue());
                 preparedStatement.setBoolean(7, true);
                 preparedStatement.setString(8, comercio.getPassword());

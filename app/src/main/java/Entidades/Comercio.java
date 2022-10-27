@@ -1,19 +1,36 @@
 package Entidades;
 
-import android.text.Editable;
+import android.graphics.Bitmap;
 
 public class Comercio {
     private int id;
     private String email;
     private String name;
     private String address;
+    private Bitmap bitmap;
     private String imageValue;
     private int vatNumber;
-    private int district;
-    private boolean state;
+    private Localidad localidad;
     private String password;
+    private boolean estado;
 
     public Comercio() {
+    }
+
+    public Bitmap getBitmap() {
+        return bitmap;
+    }
+
+    public boolean getEstado() {
+        return estado;
+    }
+
+    public void setState(boolean estado) {
+        this.estado = estado;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+        this.bitmap = bitmap;
     }
 
     public String getPassword() {
@@ -72,20 +89,11 @@ public class Comercio {
         this.address = address;
     }
 
-    public int getDistrict() {
-        return district;
+    public Localidad getLocalidad() {
+        return localidad;
     }
 
-    public void setDistrict(int district) {
-        this.district = district;
+    public void setLocalidad(Localidad localidad) {
+        this.localidad = localidad;
     }
-
-    public boolean isState() {
-        return state;
-    }
-
-    public void setState(boolean state) {
-        this.state = state;
-    }
-
 }

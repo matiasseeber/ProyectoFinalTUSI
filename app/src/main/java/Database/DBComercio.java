@@ -1,5 +1,9 @@
 package Database;
 
+import Entidades.Comercio;
+import Helpers.Helpers;
+import adapters.BussinesAdapter;
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.EditText;
@@ -8,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.mysql.jdbc.Blob;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,86 +21,88 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Entidades.Comercio;
-import adapters.BussinesAdapter;
+public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
-public class DBComercio extends AsyncTask<Boolean, Void, String> {
     private Comercio comercio;
     private GridView grid;
     private Context context;
-    private EditText txtEstrellas;
-    private EditText txtNombreComercio;
-    private EditText txtDistancia;
-    private ImageView imgComercio;
     private ArrayList<Comercio> comercios;
-    private Boolean isInsertion;
-    private Boolean isIdSearch;
-    private Boolean wasRecordInserted = false;
+    private int cod_localidad = -1;
 
-    private Boolean returnAllRecords = false;
+    public DBComercio() {
+    }
 
-    public DBComercio(Context context, EditText txtId, EditText txtNombreComercio, EditText txtDistancia,EditText txtEstrellas,  Boolean isInsertion, Boolean isIdSearch, Spinner spinner) {
+    public DBComercio(
+            Context context
+    ) {
         this.context = context;
-        this. txtNombreComercio = txtNombreComercio;
-        this.txtEstrellas= txtEstrellas;
-        this.txtDistancia=txtDistancia;
-        this.isInsertion = isInsertion;
-        this.isIdSearch = isIdSearch;
     }
 
-    public Boolean getIdSearch() {
-        return isIdSearch;
+    public int getCod_localidad() {
+        return cod_localidad;
     }
 
-    public void setIdSearch(Boolean idSearch) {
-        isIdSearch = idSearch;
+    public void setCod_localidad(int cod_localidad) {
+        this.cod_localidad = cod_localidad;
     }
 
-    public Boolean isInsertion(){
-        return this.isInsertion;
+    public GridView getGrid() {
+        return grid;
     }
 
-    public Comercio getComercio() {
-        return comercio;
+    public void setGrid(GridView grid) {
+        this.grid = grid;
     }
 
-    public void setComercio(Comercio comercio) {
-        this.comercio = comercio;
+    public Context getContext() {
+        return context;
     }
 
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
-    public void Cargar_Comercios(){
+    public void CargarComercios() {
         comercios = new ArrayList<Comercio>();
         try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                Statement st = con.createStatement();
-                ResultSet rs = st.executeQuery("Select * from comercios where id = " + comercio.getId());
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    DataDB.urlMySQL,
+                    DataDB.user,
+                    DataDB.pass
+            );
+            Statement st = con.createStatement();
+            String query = "Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id";
+            if(cod_localidad != -1){
+                query += " where cod_localidad = " + cod_localidad;
+            }
+            query += ";";
 
-                while (rs.next()){
-                    comercio.setId(rs.getInt("id"));
-                    comercio.setName(rs.getString("nombre"));
-                    comercio.setImageValue(rs.getString("cod_imagen"));
+            ResultSet rs = st.executeQuery(
+                query
+            );
 
-                    comercios.add(comercio);
-                }
-        }
-        catch(Exception e) {
+            while (rs.next()) {
+                Comercio comercio1 = new Comercio();
+                comercio1.setId(rs.getInt(1));
+                comercio1.setName(rs.getString(2));
+                comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(5)));
+                comercio1.setAddress(rs.getString(12) + " - " + rs.getString(4));
+                comercios.add(comercio1);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
-
     @Override
-    protected String doInBackground(Boolean... booleans) {
+    protected Boolean doInBackground(Boolean... booleans) {
+        CargarComercios();
         return null;
     }
 
     @Override
-    protected void onPostExecute(String msg) {
-       grid.setAdapter(new BussinesAdapter(context,comercios));
+    protected void onPostExecute(Boolean response) {
+        grid.setAdapter(new BussinesAdapter(context, comercios));
     }
-
-
-    }
+}

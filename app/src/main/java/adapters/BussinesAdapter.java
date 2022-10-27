@@ -5,7 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
 import java.util.ArrayList;
 import com.example.tp_final.R;
 import Entidades.Comercio;
@@ -13,6 +18,10 @@ import Entidades.Comercio;
 public class BussinesAdapter extends BaseAdapter {
     private ArrayList<Comercio> elementos;
     private Context context;
+    private EditText txtEstrellas;
+    private EditText txtNombreComercio;
+    private EditText txtDistancia;
+    private ImageView imgComercio;
 
     public BussinesAdapter(Context context, ArrayList<Comercio> elementos) {
         this.context = context;
@@ -45,12 +54,14 @@ public class BussinesAdapter extends BaseAdapter {
         }
 
         TextView txtIdComercio = (TextView) view.findViewById(R.id.txtIdComercio);
-        TextView txtNombreComercio = (TextView) view.findViewById(R.id.txtNombreComercio);
+        TextView txtNombreComercio = (TextView) view.findViewById(R.id.txtNombreComercio_ComerciosCliente);
+        TextView txtDireccion = (TextView) view.findViewById(R.id.txtDireccion);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imgLogoComercio);
 
-
-        txtIdComercio.setText(getItem(position).getId());
-        txtNombreComercio.setText(getItem(position).getName());
-
+        txtIdComercio.setText(String.valueOf(getItem(position).getId()));
+        txtNombreComercio.setText(String.valueOf(getItem(position).getName()));
+        txtDireccion.setText(getItem(position).getAddress());
+        imageView.setImageBitmap(getItem(position).getBitmap());
 
         return view;
     }

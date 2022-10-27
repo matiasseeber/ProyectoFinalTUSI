@@ -1,21 +1,29 @@
 package com.example.tp_final;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.Spinner;
 
 import java.util.ArrayList;
 
+import Database.DBComercio;
+import Database.DBLocalidades;
 import Entidades.Comercio;
+import Entidades.Localidad;
 import adapters.BussinesAdapter;
 
 public class ComercioFragment extends Fragment {
-private GridView gridView;
+    private GridView gridView;
+    private Spinner filtroComercioLocalidadesSpinner;
 
 
     public ComercioFragment() {
@@ -29,23 +37,41 @@ private GridView gridView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                                Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_comercio, container, false);
-        /*ArrayList<Comercio> elementos = new ArrayList<Comercio>();
-
-        Comercio comercios = new Comercio();
-        comercios.setName("MC'Donals");
-        comercios.setId(123);
-
-        elementos.add(comercios);
-
         View view = inflater.inflate(R.layout.fragment_comercio, container, false);
+        filtroComercioLocalidadesSpinner = (Spinner) view.findViewById(R.id.filtroComercioLocalidadesSpinner);
+        DBLocalidades dbLocalidades = new DBLocalidades();
+        dbLocalidades.setContext(getActivity().getApplicationContext());
+        dbLocalidades.setSpinner(filtroComercioLocalidadesSpinner);
+        dbLocalidades.execute();
         gridView = (GridView) view.findViewById(R.id.dgvComercios);
-        gridView.setVerticalSpacing(70);
+        gridView.setVerticalSpacing(5);
+        DBComercio dbComercio = new DBComercio();
+        dbComercio.setContext(view.getContext());
+        dbComercio.setGrid(gridView);
+        dbComercio.execute();
+        filtroComercioLocalidadesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position != 0)
+                    OnItemSelected((Localidad) filtroComercioLocalidadesSpinner.getSelectedItem());
+            }
 
-        gridView.setAdapter(new BussinesAdapter(view.getContext(),elementos));
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-        return view;*/
+            }
+        });
+        return view;
+    }
+
+    public void OnItemSelected(Localidad localidad){
+        gridView.setVerticalSpacing(5);
+        DBComercio dbComercio = new DBComercio();
+        dbComercio.setContext(getActivity().getApplicationContext());
+        dbComercio.setGrid(gridView);
+        dbComercio.setCod_localidad(localidad.getId());
+        dbComercio.execute();
     }
 }
