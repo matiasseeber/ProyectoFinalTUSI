@@ -156,7 +156,7 @@ public class RegistroComercio extends AppCompatActivity {
         comercio.setVatNumber(Integer.parseInt(txtVatNumber.getText().toString()));
         comercio.setState(true);
         Localidad localidad = (Localidad)spnLocalidades.getSelectedItem();
-        comercio.setDistrict(localidad.getId());
+        comercio.setLocalidad(localidad);
         DBInsertBussines dbInsertBussines = new DBInsertBussines();
         dbInsertBussines.setContext(getApplicationContext());
         dbInsertBussines.setComercio(comercio);
