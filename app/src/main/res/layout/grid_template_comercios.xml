@@ -22,7 +22,7 @@
         android:id="@+id/txtNombreComercio_ComerciosCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="14dp"
         android:text="MC Donalds"
         android:textSize="20dp"
@@ -69,12 +69,11 @@
         app:layout_constraintTop_toTopOf="parent"></ImageView>
 
     <TextView
-        android:id="@+id/txtDistancia"
+        android:id="@+id/txtDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="52dp"
-        android:text="Direccion 123"
         android:textSize="16dp"
         app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
         app:layout_constraintTop_toTopOf="parent">

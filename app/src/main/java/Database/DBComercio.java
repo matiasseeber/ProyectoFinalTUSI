@@ -27,21 +27,23 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
     private GridView grid;
     private Context context;
     private ArrayList<Comercio> comercios;
+    private int cod_localidad = -1;
 
     public DBComercio() {
     }
 
     public DBComercio(
-            Context context,
-            EditText txtId,
-            EditText txtNombreComercio,
-            EditText txtDistancia,
-            EditText txtEstrellas,
-            Boolean isInsertion,
-            Boolean isIdSearch,
-            Spinner spinner
+            Context context
     ) {
         this.context = context;
+    }
+
+    public int getCod_localidad() {
+        return cod_localidad;
+    }
+
+    public void setCod_localidad(int cod_localidad) {
+        this.cod_localidad = cod_localidad;
     }
 
     public GridView getGrid() {
@@ -70,15 +72,22 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
+            String query = "Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id";
+            if(cod_localidad != -1){
+                query += " where cod_localidad = " + cod_localidad;
+            }
+            query += ";";
+
             ResultSet rs = st.executeQuery(
-                    "Select * from Comercios;"
+                query
             );
 
             while (rs.next()) {
                 Comercio comercio1 = new Comercio();
-                comercio1.setId(rs.getInt("id"));
-                comercio1.setName(rs.getString("nombre"));
-                comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob("logo")));
+                comercio1.setId(rs.getInt(1));
+                comercio1.setName(rs.getString(2));
+                comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(5)));
+                comercio1.setAddress(rs.getString(12) + " - " + rs.getString(4));
                 comercios.add(comercio1);
             }
         } catch (Exception e) {

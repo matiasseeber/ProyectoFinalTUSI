@@ -59,7 +59,7 @@ public class DBLocalidades extends AsyncTask<Boolean, Void, Boolean> {
             while (rs.next()) {
                 Localidad localidad = new Localidad();
                 localidad.setId(rs.getInt("id"));
-                String descripcion = rs.getString("descripcion");
+                String descripcion = rs.getString("nombre");
                 localidad.setDescripcion(descripcion);
                 localidades.add(localidad);
             }

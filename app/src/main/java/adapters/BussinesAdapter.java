@@ -55,10 +55,12 @@ public class BussinesAdapter extends BaseAdapter {
 
         TextView txtIdComercio = (TextView) view.findViewById(R.id.txtIdComercio);
         TextView txtNombreComercio = (TextView) view.findViewById(R.id.txtNombreComercio_ComerciosCliente);
+        TextView txtDireccion = (TextView) view.findViewById(R.id.txtDireccion);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgLogoComercio);
 
         txtIdComercio.setText(String.valueOf(getItem(position).getId()));
         txtNombreComercio.setText(String.valueOf(getItem(position).getName()));
+        txtDireccion.setText(getItem(position).getAddress());
         imageView.setImageBitmap(getItem(position).getBitmap());
 
         return view;
