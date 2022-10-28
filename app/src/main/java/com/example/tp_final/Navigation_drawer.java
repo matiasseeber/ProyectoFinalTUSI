@@ -9,6 +9,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.ActionBar;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.MenuItem;
@@ -35,7 +39,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         navigationView = (NavigationView) findViewById(R.id.NavView);
         toolbar= (Toolbar) findViewById(R.id.toolbar);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComerciosFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComercioFragment()).commit();
         this.setTitle("Comercios");
 
         setSupportActionBar(toolbar);
@@ -57,13 +61,13 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         FragmentTransaction ft = fragmentManager.beginTransaction();
         switch (item.getItemId()){
             case R.id.ComerciosItem:
-                ft.replace(R.id.content,new ComerciosFragment()).commit();
+                ft.replace(R.id.content,new ComercioFragment()).commit();
             break;
             case R.id.pedidosItem:
                 ft.replace(R.id.content,new PedidosFragment()).commit();
                 break;
             case R.id.CuentaItem:
-                ft.replace(R.id.content,new ComercioFragment()).commit();
+                ft.replace(R.id.content,new CuentaFragment()).commit();
                 break;
         }
         this.setTitle(item.getTitle());

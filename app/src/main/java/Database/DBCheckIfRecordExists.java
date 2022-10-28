@@ -1,15 +1,26 @@
 package Database;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.tp_final.ComercioFragment;
+import com.example.tp_final.LoginUsuario;
+import com.example.tp_final.Navigation_drawer;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+
+import Database.DataDB;
 
 public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
