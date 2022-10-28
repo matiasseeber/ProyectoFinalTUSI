@@ -1,6 +1,7 @@
 package com.example.tp_final;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -13,7 +14,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,7 +28,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
     public NavigationView navigationView;
     public Toolbar toolbar;
     public ActionBarDrawerToggle toggle;
-
+    private TextView txtNombreUsuario;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +48,10 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        //FALTA CARGAR NOMBRE DE USUARIO
+        txtNombreUsuario = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtNombreUsuario);
+
+        SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        txtNombreUsuario.setText(sh.getString("username", ""));
 
         navigationView.setNavigationItemSelectedListener(this);
     }

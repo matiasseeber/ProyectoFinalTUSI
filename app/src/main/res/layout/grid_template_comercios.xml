@@ -32,6 +32,18 @@
     </TextView>
 
     <TextView
+        android:id="@+id/txtDistanciaDeCliente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="104dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </TextView>
+
+    <TextView
         android:id="@+id/txtIdComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

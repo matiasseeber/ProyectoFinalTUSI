@@ -75,10 +75,11 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
-            rs.first();
+            rs.beforeFirst();
             boolean exist = rs.next();
             if(exist){
                 comercio.setId(rs.getInt("id"));
+                comercio.setVatNumber(rs.getInt("cuil"));
             }
             return exist;
         }
@@ -91,17 +92,12 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
     public boolean UpdatePassword(){
         int Rows=0;
         try {
-            if(!existeComercio(this.query)) {
-                message = "No hay ningún Comercio registrado con el mail ingresado";
-            }
-            else{
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                PreparedStatement preparedStatement = con.prepareStatement("Update Comercios set contraseña= ? where id = ?;", Statement.RETURN_GENERATED_KEYS);
-                preparedStatement.setString(1, comercio.getPassword());
-                preparedStatement.setInt(2, comercio.getId());
-                Rows = preparedStatement.executeUpdate();
-            }
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
+            PreparedStatement preparedStatement = con.prepareStatement("Update Comercios set contraseña= ? where id = ?;", Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, String.valueOf(comercio.getPassword()));
+            preparedStatement.setInt(2, comercio.getId());
+            Rows = preparedStatement.executeUpdate();
         }
         catch(Exception e) {
             e.printStackTrace();
@@ -133,6 +129,8 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 if(response)  {
                     Intent intent = new Intent(context, Recupero_Passw.class);
+                    intent.putExtra("ComercioID", comercio.getId());
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
                 break;
@@ -147,6 +145,7 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
                 Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 if(response)  {
                     Intent intent = new Intent(context, LoginComercio.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
                 break;

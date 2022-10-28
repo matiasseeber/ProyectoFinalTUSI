@@ -1,11 +1,8 @@
 package com.example.tp_final;
 
-import android.content.Context;
 import android.os.Bundle;
 
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,13 +10,9 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Spinner;
 
-import java.util.ArrayList;
-
 import Database.DBComercio;
 import Database.DBLocalidades;
-import Entidades.Comercio;
 import Entidades.Localidad;
-import adapters.BussinesAdapter;
 
 public class ComercioFragment extends Fragment {
     private GridView gridView;
@@ -63,8 +56,10 @@ public class ComercioFragment extends Fragment {
 
             }
         });
+
         return view;
     }
+
 
     public void OnItemSelected(Localidad localidad){
         gridView.setVerticalSpacing(5);
