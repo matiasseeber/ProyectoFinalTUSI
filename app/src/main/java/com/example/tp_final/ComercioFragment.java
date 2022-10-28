@@ -1,23 +1,21 @@
 package com.example.tp_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.GridView;
-import android.widget.Spinner;
 
 import Database.DBComercio;
 import Database.DBLocalidades;
 import Entidades.Localidad;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class ComercioFragment extends Fragment {
-    private GridView gridView;
-    private Spinner filtroComercioLocalidadesSpinner;
 
+    private FloatingActionButton btnAdd;
 
     public ComercioFragment() {
         // Required empty public constructor
@@ -30,36 +28,21 @@ public class ComercioFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_comercio, container, false);
-        filtroComercioLocalidadesSpinner = (Spinner) view.findViewById(R.id.filtroComercioLocalidadesSpinner);
-        DBLocalidades dbLocalidades = new DBLocalidades();
-        dbLocalidades.setContext(getActivity().getApplicationContext());
-        dbLocalidades.setSpinner(filtroComercioLocalidadesSpinner);
-        dbLocalidades.execute();
-        gridView = (GridView) view.findViewById(R.id.dgvComercios);
-        gridView.setVerticalSpacing(5);
-        DBComercio dbComercio = new DBComercio();
-        dbComercio.setContext(view.getContext());
-        dbComercio.setGrid(gridView);
-        dbComercio.execute();
-        filtroComercioLocalidadesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position != 0)
-                    OnItemSelected((Localidad) filtroComercioLocalidadesSpinner.getSelectedItem());
-            }
+        View view = inflater.inflate(R.layout.fragment_comercio_, container, false);
+        btnAdd = (FloatingActionButton) view.findViewById(R.id.fab);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
 
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),Productos_ABM_Comercio.class));
             }
         });
 
         return view;
     }
-
 
     public void OnItemSelected(Localidad localidad){
         gridView.setVerticalSpacing(5);
