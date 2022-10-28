@@ -5,6 +5,8 @@ import Helpers.Helpers;
 import adapters.BussinesAdapter;
 
 import android.content.Context;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -20,6 +22,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
@@ -88,6 +92,19 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 comercio1.setName(rs.getString(2));
                 comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(5)));
                 comercio1.setAddress(rs.getString(12) + " - " + rs.getString(4));
+                Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+                try{
+                    List<Address> addresses = geocoder.getFromLocationName(rs.getString(4), 1);
+                    if(addresses.size() > 0){
+                        double latitud = addresses.get(0).getLatitude();
+                        double logitude = addresses.get(0).getLongitude();
+                        comercio1.setLatitude(latitud);
+                        comercio1.setLongitude(logitude);
+                    }
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 comercios.add(comercio1);
             }
         } catch (Exception e) {
