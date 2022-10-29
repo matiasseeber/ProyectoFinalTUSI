@@ -27,6 +27,7 @@ public class RegistroUsuario extends AppCompatActivity {
     private EditText txtSurname;
     private EditText txtDni;
     private EditText txtEmail;
+    private EditText txtDireccion;
     private EditText txtAge;
     private EditText txtPassword;
     private EditText txtConfirmPassword;
@@ -42,6 +43,7 @@ public class RegistroUsuario extends AppCompatActivity {
         txtName = (EditText) findViewById(R.id.txtNombre);
         txtSurname = (EditText) findViewById(R.id.txtApellido);
         txtDni = (EditText) findViewById(R.id.txtDni);
+        txtDireccion = (EditText) findViewById(R.id.txtDireccionClienteRegistro);
         txtEmail = (EditText) findViewById(R.id.txtEmail);
         txtPassword = (EditText) findViewById(R.id.txtContraseña);
         txtConfirmPassword = (EditText) findViewById(R.id.txtContraseñaConfirm);
@@ -100,6 +102,10 @@ public class RegistroUsuario extends AppCompatActivity {
             txtAge.setError(requiredError);
             isFormValid = false;
         }
+        if(txtDireccion.getText().toString().isEmpty()) {
+            txtDireccion.setError(requiredError);
+            isFormValid = false;
+        }
         if(spnGenero.getSelectedItemPosition() == 0) {
             ((TextView)spnGenero.getSelectedView()).setError(requiredError);
             isFormValid = false;
@@ -143,6 +149,7 @@ public class RegistroUsuario extends AppCompatActivity {
         clientes.setSexo(spnGenero.getSelectedItem().toString());
         clientes.setEdad(Integer.parseInt(txtAge.getText().toString()));
         Localidad localidad = (Localidad) spnLocalidades.getSelectedItem();
+        clientes.setDireccion(txtDireccion.getText().toString());
         clientes.setCod_localidad(localidad.getId());
         clientes.setEmail(txtEmail.getText().toString());
         clientes.setContraseña(txtPassword.getText().toString());

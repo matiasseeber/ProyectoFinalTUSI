@@ -7,8 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.Spinner;
+
+import java.util.ArrayList;
 
 import Database.DBComercio;
 import Database.DBLocalidades;
@@ -34,10 +37,15 @@ public class ComerciosFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comercio, container, false);
         filtroComercioLocalidadesSpinner = (Spinner) view.findViewById(R.id.filtroComercioLocalidadesSpinner);
-        DBLocalidades dbLocalidades = new DBLocalidades();
-        dbLocalidades.setContext(getActivity().getApplicationContext());
-        dbLocalidades.setSpinner(filtroComercioLocalidadesSpinner);
-        dbLocalidades.execute();
+        ArrayList<String> filtro = new ArrayList<>();
+        filtro.add("Elija una distancia...");
+        filtro.add("< 10 KM");
+        filtro.add("< 25 KM");
+        filtro.add("< 50 KM");
+        ArrayAdapter adapter =
+                new ArrayAdapter<String>(getContext(),  android.R.layout.simple_spinner_dropdown_item, filtro);
+        adapter.setDropDownViewResource( android.R.layout.simple_spinner_dropdown_item);
+        filtroComercioLocalidadesSpinner.setAdapter(adapter);
         gridView = (GridView) view.findViewById(R.id.dgvComercios);
         gridView.setVerticalSpacing(5);
         DBComercio dbComercio = new DBComercio();
@@ -48,7 +56,7 @@ public class ComerciosFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position != 0)
-                    OnItemSelected((Localidad) filtroComercioLocalidadesSpinner.getSelectedItem());
+                    OnItemSelected(position);
             }
 
             @Override
@@ -61,12 +69,22 @@ public class ComerciosFragment extends Fragment {
     }
 
 
-    public void OnItemSelected(Localidad localidad){
+    public void OnItemSelected(int index){
         gridView.setVerticalSpacing(5);
         DBComercio dbComercio = new DBComercio();
         dbComercio.setContext(getActivity().getApplicationContext());
         dbComercio.setGrid(gridView);
-        dbComercio.setCod_localidad(localidad.getId());
+        switch (index){
+            case 1:
+                dbComercio.setDistancia(10);
+                break;
+            case 2:
+                dbComercio.setDistancia(25);
+                break;
+            case 3:
+                dbComercio.setDistancia(50);
+                break;
+        }
         dbComercio.execute();
     }
 }

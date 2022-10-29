@@ -7,6 +7,7 @@ import adapters.BussinesAdapter;
 import android.content.Context;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -31,7 +32,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
     private GridView grid;
     private Context context;
     private ArrayList<Comercio> comercios;
-    private int cod_localidad = -1;
+    private int distancia = 0;
 
     public DBComercio() {
     }
@@ -42,12 +43,12 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
-    public int getCod_localidad() {
-        return cod_localidad;
+    public int getDistancia() {
+        return distancia;
     }
 
-    public void setCod_localidad(int cod_localidad) {
-        this.cod_localidad = cod_localidad;
+    public void setDistancia(int distancia) {
+        this.distancia = distancia;
     }
 
     public GridView getGrid() {
@@ -76,17 +77,13 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id";
-            if(cod_localidad != -1){
-                query += " where cod_localidad = " + cod_localidad;
-            }
-            query += ";";
-
+            String query = "Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id;";
             ResultSet rs = st.executeQuery(
                 query
             );
 
             while (rs.next()) {
+                float distance = 0;
                 Comercio comercio1 = new Comercio();
                 comercio1.setId(rs.getInt(1));
                 comercio1.setName(rs.getString(2));
@@ -96,16 +93,41 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 try{
                     List<Address> addresses = geocoder.getFromLocationName(rs.getString(4), 1);
                     if(addresses.size() > 0){
+
                         double latitud = addresses.get(0).getLatitude();
                         double logitude = addresses.get(0).getLongitude();
+
                         comercio1.setLatitude(latitud);
                         comercio1.setLongitude(logitude);
+
+                        String direccionCliente = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("address","");
+                        List<Address> direccionClienteList = geocoder.getFromLocationName(direccionCliente, 1);
+
+                        if(direccionClienteList.size() > 0){
+                            double latitudCliente = direccionClienteList.get(0).getLatitude();
+                            double logitudeCliente = direccionClienteList.get(0).getLongitude();
+
+                            Location locationA = new Location("Comercio");
+
+                            locationA.setLatitude(comercio1.getLatitude());
+                            locationA.setLongitude(comercio1.getLongitude());
+
+                            Location locationB = new Location("Usuario");
+
+                            locationB.setLatitude(latitudCliente);
+                            locationB.setLongitude(logitudeCliente);
+
+                            distance = locationA.distanceTo(locationB);
+                            distance /= 1000;
+                        }
                     }
                 } catch (Exception e){
                     e.printStackTrace();
                 }
 
-                comercios.add(comercio1);
+                if(distancia == 0 || distance <= distancia){
+                    comercios.add(comercio1);
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
