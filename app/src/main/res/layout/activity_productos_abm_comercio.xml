@@ -69,6 +69,16 @@
                 android:inputType="textPersonName" />
 
             <EditText
+                android:id="@+id/txtPrecioAltaProducto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Precio"
+                android:inputType="textPersonName" />
+
+            <EditText
                 android:id="@+id/txtStockAltaProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,38 +97,41 @@
                 android:background="#BDBDBD" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnSeleccionarImagenAbmProducto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
                 android:text="Seleccionar" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:orientation="horizontal">
-
-                <Button
-                    android:id="@+id/btnAltaProducto"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:text="Agregar" />
-
-                <Button
-                    android:id="@+id/btnCancelarProducto"
-                    android:layout_width="120dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:onClick="ClickBack"
-                    android:text="Cancelar" />
-
-            </LinearLayout>
-
         </LinearLayout>
     </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="74dp">
+
+        <Button
+            android:id="@+id/btnAltaProducto"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="ClickAdd"
+            android:text="Agregar" />
+
+        <Button
+            android:id="@+id/btnCancelarProducto"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:onClick="ClickBack"
+            android:text="Cancelar" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

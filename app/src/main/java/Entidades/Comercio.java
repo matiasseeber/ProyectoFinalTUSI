@@ -13,10 +13,17 @@ public class Comercio {
     private Localidad localidad;
     private String password;
     private boolean estado;
-    private double latitude;
-    private double longitude;
+    private float distancia;
 
     public Comercio() {
+    }
+
+    public float getDistancia() {
+        return distancia;
+    }
+
+    public void setDistancia(float distancia) {
+        this.distancia = distancia;
     }
 
     public Bitmap getBitmap() {
@@ -97,21 +104,5 @@ public class Comercio {
 
     public void setLocalidad(Localidad localidad) {
         this.localidad = localidad;
-    }
-
-    public double getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
-    public double getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
     }
 }

@@ -62,34 +62,7 @@ public class BussinesAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imgLogoComercio);
         TextView txtDistancia = (TextView) view.findViewById(R.id.txtDistanciaDeCliente);
 
-        double latitud = 0, longitud = 0;
-
-        Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-        try{
-            List<Address> addresses = geocoder.getFromLocationName("Barrio privado santabarbara", 1);
-            if(addresses.size() > 0){
-                latitud = addresses.get(0).getLatitude();
-                longitud = addresses.get(0).getLongitude();
-
-            }
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-
-        Location locationA = new Location("Comercio");
-
-        locationA.setLatitude(comercio.getLatitude());
-        locationA.setLongitude(comercio.getLongitude());
-
-        Location locationB = new Location("Usuario");
-
-        locationB.setLatitude(latitud);
-        locationB.setLongitude(longitud);
-
-        float distance = locationA.distanceTo(locationB);
-        distance /= 1000;
-
-        String distanceFormated = String.valueOf(distance).substring(0, 3);
+        String distanceFormated = String.valueOf(comercio.getDistancia()).substring(0, 3);
 
         txtDistancia.setText(distanceFormated + " KM");
 
