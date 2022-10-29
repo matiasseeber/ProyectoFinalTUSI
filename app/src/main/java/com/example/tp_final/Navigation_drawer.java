@@ -1,7 +1,6 @@
 package com.example.tp_final;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,15 +8,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.app.ActionBar;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -39,7 +33,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         navigationView = (NavigationView) findViewById(R.id.NavView);
         toolbar= (Toolbar) findViewById(R.id.toolbar);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComercioFragment()).commit();
+        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComerciosFragment()).commit();
         this.setTitle("Comercios");
 
         setSupportActionBar(toolbar);
@@ -61,13 +55,13 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         FragmentTransaction ft = fragmentManager.beginTransaction();
         switch (item.getItemId()){
             case R.id.ComerciosItem:
-                ft.replace(R.id.content,new ComercioFragment()).commit();
-            break;
+                ft.replace(R.id.content,new ComerciosFragment()).commit();
+                break;
             case R.id.pedidosItem:
                 ft.replace(R.id.content,new PedidosFragment()).commit();
                 break;
             case R.id.CuentaItem:
-                ft.replace(R.id.content,new CuentaFragment()).commit();
+                ft.replace(R.id.content,new ComercioFragment()).commit();
                 break;
         }
         this.setTitle(item.getTitle());
