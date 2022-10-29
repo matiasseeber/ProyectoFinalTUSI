@@ -29,4 +29,13 @@
         <!-- Customize your theme here. -->
     </style>
 
+    <style name="Theme.TP_FINAL.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.TP_FINAL.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.TP_FINAL.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
 </resources>
