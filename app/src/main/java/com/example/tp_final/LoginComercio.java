@@ -62,9 +62,7 @@ public class LoginComercio extends AppCompatActivity {
     }
 
     public void IniciarSesion(View view){
-        Intent intent = new Intent(this,Navigation_drawer.class);
-        startActivity(intent);
-        /*if(!Validar())
+        if(!Validar())
             return;
         DBCheckIfRecordExists dbCheckIfRecordExists = new DBCheckIfRecordExists();
         dbCheckIfRecordExists.setContext(getApplicationContext());
@@ -75,6 +73,6 @@ public class LoginComercio extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         dbCheckIfRecordExists.setRedirectionIntent(intent);
         dbCheckIfRecordExists.setUserName(txtIdentificador.getText().toString());
-        dbCheckIfRecordExists.execute();*/
+        dbCheckIfRecordExists.execute();
     }
 }
