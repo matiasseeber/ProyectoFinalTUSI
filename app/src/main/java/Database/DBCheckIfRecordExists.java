@@ -19,6 +19,7 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
     private Intent redirectionIntent = null;
     private String direccion = null;
     private String userName = null;
+    private int id;
 
     public DBCheckIfRecordExists() {
     }
@@ -80,6 +81,7 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
             boolean exist = rs.next();
             if (exist) {
                 direccion = rs.getString("direccion");
+                id = rs.getInt("id");
             }
             return exist;
         } catch (Exception e) {
@@ -103,15 +105,14 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
                         "MySharedPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPref.edit();
                 myEdit.putString("username", userName);
-                if (direccion != null) {
+                if (direccion != null)
                     myEdit.putString("address", direccion);
-                }
+                myEdit.putInt("id", id);
                 myEdit.commit();
             }
 
-            if (redirectionIntent != null) {
+            if (redirectionIntent != null)
                 context.startActivity(redirectionIntent);
-            }
         } else {
             Toast.makeText(context, messageNotExists, Toast.LENGTH_LONG).show();
         }
