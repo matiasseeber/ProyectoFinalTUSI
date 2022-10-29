@@ -73,7 +73,7 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
             }else{
                 Class.forName("com.mysql.jdbc.Driver");
                 Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                PreparedStatement preparedStatement = con.prepareStatement("insert into Clientes (dni, nombreUsuario, nombre, apellido, email, contraseña, sexo, edad, cod_localidad, estado) values (?,?,?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                PreparedStatement preparedStatement = con.prepareStatement("insert into Clientes (dni, nombreUsuario, nombre, apellido, email, contraseña, sexo, edad, cod_localidad, estado, direccion) values (?,?,?,?,?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setInt(1, usuario.getDni());
                 preparedStatement.setString(2, usuario.getNombreUsuario());
                 preparedStatement.setString(3, usuario.getNombre());
@@ -85,6 +85,7 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
                 preparedStatement.setInt(9, usuario.getCod_localidad());
                 boolean estado = true;
                 preparedStatement.setBoolean(10, estado);
+                preparedStatement.setString(11, usuario.getDireccion());
                 insertedRows = preparedStatement.executeUpdate();
             }
         }

@@ -11,6 +11,7 @@ public class Clientes {
     private String sexo;
     private int edad;
     private int cod_localidad;
+    private String direccion;
     private boolean estado;
 
     public Clientes() {
@@ -26,6 +27,14 @@ public class Clientes {
         this.edad = edad;
         this.cod_localidad = cod_localidad;
         this.estado = estado;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getNombreUsuario() {

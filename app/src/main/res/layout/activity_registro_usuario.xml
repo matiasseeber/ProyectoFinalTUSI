@@ -62,7 +62,7 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="361dp"
-        android:layout_height="456dp"
+        android:layout_height="430dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -143,6 +143,17 @@
                 android:layout_height="wrap_content" />
 
             <EditText
+                android:id="@+id/txtDireccionClienteRegistro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/roboto"
+                android:hint="Direccion"
+                android:inputType="textEmailAddress"
+                android:textAlignment="center"
+                android:textSize="20sp" />
+
+            <EditText
                 android:id="@+id/txtEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -183,7 +194,7 @@
         android:layout_width="153dp"
         android:layout_height="51dp"
         android:layout_marginStart="128dp"
-        android:layout_marginTop="-20dp"
+        android:layout_marginTop="20dp"
         android:onClick="OnClickSignUp"
         android:text="registrarse"
         app:layout_constraintStart_toStartOf="parent"

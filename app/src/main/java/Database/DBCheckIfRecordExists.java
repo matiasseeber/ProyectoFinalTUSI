@@ -17,6 +17,7 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
     private String messageExists = null;
     private String messageNotExists = null;
     private Intent redirectionIntent = null;
+    private String direccion = null;
     private String userName = null;
 
     public DBCheckIfRecordExists() {
@@ -70,16 +71,18 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
-    public boolean doesRecordExist(){
-        try{
+    public boolean doesRecordExist() {
+        try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);
             boolean exist = rs.next();
+            if (exist) {
+                direccion = rs.getString("direccion");
+            }
             return exist;
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
@@ -92,23 +95,24 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if(response){
+        if (response) {
             Toast.makeText(context, response ? messageExists : messageNotExists, Toast.LENGTH_LONG).show();
 
-            if(userName != null) {
+            if (userName != null) {
                 SharedPreferences sharedPref = context.getSharedPreferences(
                         "MySharedPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = sharedPref.edit();
                 myEdit.putString("username", userName);
+                if (direccion != null) {
+                    myEdit.putString("address", direccion);
+                }
                 myEdit.commit();
             }
 
-            if(redirectionIntent != null){
+            if (redirectionIntent != null) {
                 context.startActivity(redirectionIntent);
             }
-        }
-        else
-        {
+        } else {
             Toast.makeText(context, messageNotExists, Toast.LENGTH_LONG).show();
         }
     }
