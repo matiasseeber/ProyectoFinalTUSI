@@ -7,7 +7,11 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 
+import Database.DBDeleteProduct;
+
 public class PopUpEliminar_Producto_Comercio extends AppCompatActivity {
+
+    private int idProducto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +22,8 @@ public class PopUpEliminar_Producto_Comercio extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
+        idProducto = getIntent().getIntExtra("idProducto", -1);
+
         getWindow().setLayout((int) (metrics.widthPixels * 0.88),(int) (metrics.heightPixels * 0.32));
     }
 
@@ -25,7 +31,11 @@ public class PopUpEliminar_Producto_Comercio extends AppCompatActivity {
         this.finish();
     }
 
-    public void ClickDeleteProduct(View view){
-        startActivity(new Intent(getApplicationContext(),PopUpEliminar_Producto_Comercio.class));
+    public void ClickAccept(View view) {
+        DBDeleteProduct dbDeleteProduct = new DBDeleteProduct();
+        dbDeleteProduct.setActivity(this);
+        dbDeleteProduct.setContext(view.getContext());
+        dbDeleteProduct.setId(idProducto);
+        dbDeleteProduct.execute();
     }
 }

@@ -29,12 +29,12 @@ public class Navigation_Drawer_Comercio extends AppCompatActivity implements Nav
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_navigation_drawer_comercio);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.NavDrawer);
-        navigationView = (NavigationView) findViewById(R.id.NavView);
+        drawerLayout = (DrawerLayout) findViewById(R.id.NavDrawerComercio);
+        navigationView = (NavigationView) findViewById(R.id.NavViewComercio);
         toolbar= (Toolbar) findViewById(R.id.toolbar);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComerciosFragment()).commit();
-        this.setTitle("Comercios");
+        getSupportFragmentManager().beginTransaction().add(R.id.contentComercio, new ComercioFragment()).commit();
+        this.setTitle("Comercio");
 
         setSupportActionBar(toolbar);
 
@@ -54,14 +54,11 @@ public class Navigation_Drawer_Comercio extends AppCompatActivity implements Nav
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         switch (item.getItemId()){
-            case R.id.ComerciosItem:
-                ft.replace(R.id.content,new ComerciosFragment()).commit();
+            case R.id.pedidosItemComercio:
+                ft.replace(R.id.contentComercio,new PedidosFragment_Comercio()).commit();
                 break;
-            case R.id.pedidosItem:
-                ft.replace(R.id.content,new PedidosFragment()).commit();
-                break;
-            case R.id.CuentaItem:
-                ft.replace(R.id.content,new ComercioFragment()).commit();
+            case R.id.CuentaitemComercio:
+                ft.replace(R.id.contentComercio,new ComercioFragment()).commit();
                 break;
         }
         this.setTitle(item.getTitle());
@@ -81,5 +78,4 @@ public class Navigation_Drawer_Comercio extends AppCompatActivity implements Nav
         }
         return super.onOptionsItemSelected(item);
     }
-
 }
