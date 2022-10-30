@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
 
-public class Navigation_drawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class Navigation_Drawer_Comercio extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     public DrawerLayout drawerLayout;
     public NavigationView navigationView;
@@ -27,14 +27,14 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_navigation_drawer);
+        setContentView(R.layout.activity_navigation_drawer_comercio);
 
-        drawerLayout = (DrawerLayout) findViewById(R.id.NavDrawerComercio);
-        navigationView = (NavigationView) findViewById(R.id.NavViewComercio);
+        drawerLayout = (DrawerLayout) findViewById(R.id.NavDrawer);
+        navigationView = (NavigationView) findViewById(R.id.NavView);
         toolbar= (Toolbar) findViewById(R.id.toolbar);
 
-        getSupportFragmentManager().beginTransaction().add(R.id.contentComercio, new ComerciosFragment()).commit();
-        this.setTitle("Comercio");
+        getSupportFragmentManager().beginTransaction().add(R.id.content, new ComerciosFragment()).commit();
+        this.setTitle("Comercios");
 
         setSupportActionBar(toolbar);
 
@@ -54,10 +54,13 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction ft = fragmentManager.beginTransaction();
         switch (item.getItemId()){
-            case R.id.pedidosItemComercio:
-                ft.replace(R.id.contentComercio,new PedidosFragment_Comercio()).commit();
+            case R.id.ComerciosItem:
+                ft.replace(R.id.content,new ComerciosFragment()).commit();
                 break;
-            case R.id.CuentaitemComercio:
+            case R.id.pedidosItem:
+                ft.replace(R.id.content,new PedidosFragment()).commit();
+                break;
+            case R.id.CuentaItem:
                 ft.replace(R.id.content,new ComercioFragment()).commit();
                 break;
         }
@@ -78,4 +81,5 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
