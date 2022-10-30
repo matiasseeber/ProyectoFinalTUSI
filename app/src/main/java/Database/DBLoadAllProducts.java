@@ -68,7 +68,7 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from Productos where id_comercio = "+ id_comercio +";";
+            String query = "Select * from Productos where id_comercio = "+ id_comercio +" and estado = 1;";
             ResultSet rs = st.executeQuery(
                     query
             );

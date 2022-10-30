@@ -25,6 +25,7 @@ public class ComercioFragment extends Fragment {
     private TextView nombreComercio;
     private ImageView logo;
     private GridView gridView;
+    private int idComercio;
 
     public ComercioFragment() {
         // Required empty public constructor
@@ -38,18 +39,14 @@ public class ComercioFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        int idComercio = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getInt("id",-1);
+        idComercio = getContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getInt("id",-1);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_comercio_, container, false);
         btnAdd = (FloatingActionButton) view.findViewById(R.id.fab);
         logo = (ImageView) view.findViewById(R.id.txtImgComercioSeleccion);
         nombreComercio = (TextView) view.findViewById(R.id.txtComercioSeleccion);
         gridView = (GridView) view.findViewById(R.id.dgv_ProductosComercio);
-        DBLoadAllProducts dbLoadAllProducts = new DBLoadAllProducts();
-        dbLoadAllProducts.setId_comercio(idComercio);
-        dbLoadAllProducts.setContext(getContext());
-        dbLoadAllProducts.setGrid(gridView);
-        dbLoadAllProducts.execute();
+        LoadAllProducts();
         DBSetBussinessProfileInformation DB = new DBSetBussinessProfileInformation();
         DB.setContext(getContext());
         Comercio comercio = new Comercio();
@@ -66,9 +63,20 @@ public class ComercioFragment extends Fragment {
             }
         });
 
-
-
         return view;
     }
 
+    public void LoadAllProducts(){
+        DBLoadAllProducts dbLoadAllProducts = new DBLoadAllProducts();
+        dbLoadAllProducts.setId_comercio(idComercio);
+        dbLoadAllProducts.setContext(getContext());
+        dbLoadAllProducts.setGrid(gridView);
+        dbLoadAllProducts.execute();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadAllProducts();
+    }
 }

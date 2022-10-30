@@ -1,6 +1,7 @@
 package adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tp_final.PopUpEliminar_Producto_Comercio;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
@@ -57,9 +59,19 @@ public class ProductsAdapter extends BaseAdapter {
         TextView txtPrecioProducto = (TextView) view.findViewById(R.id.txtPrecioProducto);
         TextView txtIdProducto = (TextView) view.findViewById(R.id.txtIdProducto);
         ImageView ImgComercioSeleccion = (ImageView) view.findViewById(R.id.ImgComercioSeleccion);
+        ImageView deleteProductBussiness = (ImageView) view.findViewById(R.id.deleteProductBussiness);
+
+        deleteProductBussiness.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), PopUpEliminar_Producto_Comercio.class);
+                intent.putExtra("idProducto", producto.getId());
+                context.startActivity(intent);
+            }
+        });
 
         txtNombreProducto.setText(producto.getNombre());
-        txtPrecioProducto.setText(String.valueOf(producto.getPrecio()));
+        txtPrecioProducto.setText("Precio: " + String.valueOf(producto.getPrecio()));
         txtIdProducto.setText(String.valueOf(producto.getId()));
         ImgComercioSeleccion.setImageBitmap(producto.getBitmapImage());
 

@@ -1,6 +1,7 @@
 package adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import com.example.tp_final.PopUpEliminar_Producto_Comercio;
 import com.example.tp_final.R;
 import Entidades.Comercio;
 
