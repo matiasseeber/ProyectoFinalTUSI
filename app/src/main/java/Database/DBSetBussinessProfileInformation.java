@@ -1,6 +1,7 @@
 package Database;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.widget.EditText;
@@ -26,6 +27,7 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
     private TextView email = null;
     private EditText direccion = null;
     private ImageView imgLogo = null;
+    private EditText constraseña = null;
     private TextView cuil = null;
     private Bitmap bitmap;
 
@@ -50,6 +52,14 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
 
     public TextView getEmail() {
         return email;
+    }
+
+    public EditText getConstraseña() {
+        return constraseña;
+    }
+
+    public void setConstraseña(EditText constraseña) {
+        this.constraseña = constraseña;
     }
 
     public void setEmail(TextView email) {
@@ -80,14 +90,6 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
         this.cuil = cuil;
     }
 
-    public Bitmap getBitmap() {
-        return bitmap;
-    }
-
-    public void setBitmap(Bitmap bitmap) {
-        this.bitmap = bitmap;
-    }
-
     public Comercio getComercio() {
         return comercio;
     }
@@ -116,6 +118,7 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
                 comercio.setEmail(rs.getString("email"));
                 comercio.setAddress(rs.getString("direccion"));
                 comercio.setVatNumber(rs.getInt("cuil"));
+                comercio.setPassword(rs.getString("contraseña"));
                 return true;
             }
         } catch (Exception e) {
@@ -133,9 +136,18 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
     protected void onPostExecute(Boolean response) {
         if (txtNombre != null) txtNombre.setText(comercio.getName());
         if (textViewNombre != null) textViewNombre.setText(comercio.getName());
+        if (constraseña != null) {
+            constraseña.setText(comercio.getPassword());
+        } else {
+            SharedPreferences sharedPref = context.getSharedPreferences(
+                    "MySharedPref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor myEdit = sharedPref.edit();
+            myEdit.putString("password", comercio.getPassword());
+            myEdit.commit();
+        }
         if (email != null) email.setText(comercio.getEmail());
         if (direccion != null) direccion.setText(comercio.getAddress());
         if (imgLogo != null) imgLogo.setImageBitmap(bitmap);
-        if (cuil != null) cuil.setText(comercio.getVatNumber());
+        if (cuil != null) cuil.setText(String.valueOf(comercio.getVatNumber()));
     }
 }

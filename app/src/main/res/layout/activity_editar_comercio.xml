@@ -49,7 +49,7 @@
         app:srcCompat="@drawable/circle3" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnModificarInformacionLocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -61,7 +61,7 @@
     <ScrollView
         android:id="@+id/scrollView5"
         android:layout_width="411dp"
-        android:layout_height="446dp"
+        android:layout_height="480dp"
         android:layout_marginTop="164dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -83,7 +83,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/textViewCUIL"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -92,7 +92,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/textViewEmail"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -101,13 +101,33 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName6"
+                android:id="@+id/editTextDireccion"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Direccion"
                 android:inputType="textPersonName"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPassword"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Contraseña"
+                android:inputType="textPersonName|textPassword"
+                android:textSize="20dp" />
+
+            <EditText
+                android:id="@+id/editTextConfirmPassword"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Confirmar contraseña"
+                android:inputType="textPersonName|textPassword"
                 android:textSize="20dp" />
 
             <ImageView

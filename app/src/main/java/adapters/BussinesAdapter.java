@@ -64,9 +64,9 @@ public class BussinesAdapter extends BaseAdapter {
         ImageView imageView = (ImageView) view.findViewById(R.id.imgLogoComercio);
         TextView txtDistancia = (TextView) view.findViewById(R.id.txtDistanciaDeCliente);
 
-        String distanceFormated = String.valueOf(comercio.getDistancia()).substring(0, 3);
-
-        txtDistancia.setText(distanceFormated + " KM");
+        Float distancia = comercio.getDistancia() - comercio.getDistancia() % 1;
+        String formatedDistance = String.valueOf(distancia).replace(".0", "");
+        txtDistancia.setText(formatedDistance + " KM");
 
         txtIdComercio.setText(String.valueOf(comercio.getId()));
         txtNombreComercio.setText(String.valueOf(comercio.getName()));
