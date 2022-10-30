@@ -5,8 +5,12 @@ import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
 import android.graphics.Rect;
 import android.graphics.YuvImage;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Build;
 import android.util.Base64;
 import android.widget.EditText;
+
+import androidx.annotation.RequiresApi;
 
 import com.mysql.jdbc.Blob;
 
@@ -46,6 +50,16 @@ public class Helpers {
             e.printStackTrace();
         }
         return null;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public static String returnImageValueFromBitmap(BitmapDrawable bitmapDrawable){
+        Bitmap bitmap = bitmapDrawable.getBitmap();
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bos);
+        byte[] bArray = bos.toByteArray();
+        String imageValue = java.util.Base64.getEncoder().encodeToString(bArray);
+        return imageValue;
     }
 
 }

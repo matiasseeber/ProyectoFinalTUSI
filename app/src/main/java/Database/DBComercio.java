@@ -97,9 +97,6 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                         double latitud = addresses.get(0).getLatitude();
                         double logitude = addresses.get(0).getLongitude();
 
-                        comercio1.setLatitude(latitud);
-                        comercio1.setLongitude(logitude);
-
                         String direccionCliente = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("address","");
                         List<Address> direccionClienteList = geocoder.getFromLocationName(direccionCliente, 1);
 
@@ -109,8 +106,8 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
                             Location locationA = new Location("Comercio");
 
-                            locationA.setLatitude(comercio1.getLatitude());
-                            locationA.setLongitude(comercio1.getLongitude());
+                            locationA.setLatitude(latitud);
+                            locationA.setLongitude(logitude);
 
                             Location locationB = new Location("Usuario");
 
@@ -126,6 +123,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 }
 
                 if(distancia == 0 || distance <= distancia){
+                    comercio1.setDistancia(distance);
                     comercios.add(comercio1);
                 }
             }
