@@ -1,5 +1,6 @@
 package Helpers;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageFormat;
@@ -62,4 +63,11 @@ public class Helpers {
         return imageValue;
     }
 
+    public static int getUserId(Context context){
+        return context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getInt("id",-1);
+    }
+
+    public static String getBussinesPassword(Context context){
+        return context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("password","");
+    }
 }
