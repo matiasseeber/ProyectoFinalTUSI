@@ -44,7 +44,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView35"
+            android:id="@+id/editBussinessInformation"
             android:layout_width="40dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"
