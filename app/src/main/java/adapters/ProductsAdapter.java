@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tp_final.PopUpEliminar_Producto_Comercio;
+import com.example.tp_final.Productos_ABM_Comercio;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
@@ -54,6 +55,15 @@ public class ProductsAdapter extends BaseAdapter {
         }
 
         Producto producto = getItem(position);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, Productos_ABM_Comercio.class);
+                intent.putExtra("idProducto", producto.getId());
+                context.startActivity(intent);
+            }
+        });
 
         TextView txtNombreProducto = (TextView) view.findViewById(R.id.txtNombreProducto);
         TextView txtPrecioProducto = (TextView) view.findViewById(R.id.txtPrecioProducto);

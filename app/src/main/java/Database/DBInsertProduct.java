@@ -1,5 +1,6 @@
 package Database;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -18,6 +19,7 @@ public class DBInsertProduct extends AsyncTask<Boolean, Void, Boolean> {
 
     private Context context;
     private Producto producto;
+    private Activity activity;
 
     public DBInsertProduct() {
     }
@@ -36,6 +38,14 @@ public class DBInsertProduct extends AsyncTask<Boolean, Void, Boolean> {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public boolean insertBussiness() {
@@ -66,9 +76,7 @@ public class DBInsertProduct extends AsyncTask<Boolean, Void, Boolean> {
     protected void onPostExecute(Boolean response) {
         if (response) {
             Toast.makeText(context, "Producto añadido exitosamente.", Toast.LENGTH_LONG).show();
-            //Intent intent = new Intent(context, LoginComercio.class);
-            //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            //context.startActivity(intent);
+            activity.finish();
         } else {
             Toast.makeText(context, "No se pudo añadir el producto.", Toast.LENGTH_LONG).show();
         }
