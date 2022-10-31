@@ -26,6 +26,7 @@ public class ComercioFragment extends Fragment {
     private ImageView logo;
     private GridView gridView;
     private int idComercio;
+    private ImageView editBtn;
 
     public ComercioFragment() {
         // Required empty public constructor
@@ -46,20 +47,21 @@ public class ComercioFragment extends Fragment {
         logo = (ImageView) view.findViewById(R.id.txtImgComercioSeleccion);
         nombreComercio = (TextView) view.findViewById(R.id.txtComercioSeleccion);
         gridView = (GridView) view.findViewById(R.id.dgv_ProductosComercio);
+        editBtn = (ImageView) view.findViewById(R.id.editBussinessInformation);
         LoadAllProducts();
-        DBSetBussinessProfileInformation DB = new DBSetBussinessProfileInformation();
-        DB.setContext(getContext());
-        Comercio comercio = new Comercio();
-        comercio.setId(idComercio);
-        DB.setComercio(comercio);
-        DB.setTextViewNombre(nombreComercio);
-        DB.setImgLogo(logo);
-        DB.execute();
+        LoadBussinessInfo();
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getContext(),Productos_ABM_Comercio.class));
+            }
+        });
+
+        editBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),Editar_Comercio.class));
             }
         });
 
@@ -74,9 +76,21 @@ public class ComercioFragment extends Fragment {
         dbLoadAllProducts.execute();
     }
 
+    public void LoadBussinessInfo(){
+        DBSetBussinessProfileInformation DB = new DBSetBussinessProfileInformation();
+        DB.setContext(getContext());
+        Comercio comercio = new Comercio();
+        comercio.setId(idComercio);
+        DB.setComercio(comercio);
+        DB.setTextViewNombre(nombreComercio);
+        DB.setImgLogo(logo);
+        DB.execute();
+    }
+
     @Override
     public void onResume() {
         super.onResume();
         LoadAllProducts();
+        LoadBussinessInfo();
     }
 }

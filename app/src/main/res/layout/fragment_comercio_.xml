@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="144dp"
             android:layout_marginTop="8dp"
-            android:text="MC Donald´s"
+            android:text=""
             android:textSize="30dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,12 +39,11 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:layout_weight="1"
-            android:src="@drawable/user"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView35"
+            android:id="@+id/editBussinessInformation"
             android:layout_width="40dp"
             android:layout_height="38dp"
             android:layout_marginTop="10dp"

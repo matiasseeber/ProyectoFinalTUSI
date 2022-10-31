@@ -44,6 +44,7 @@
         android:layout_width="93dp"
         android:layout_height="70dp"
         android:layout_marginTop="4dp"
+        android:onClick="ClickBack"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/arrowback" />

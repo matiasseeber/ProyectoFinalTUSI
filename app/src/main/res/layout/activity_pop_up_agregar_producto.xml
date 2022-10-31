@@ -25,12 +25,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="332dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:background="#0000"
         android:foregroundGravity="right"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_delete" />
+        app:srcCompat="@android:drawable/btn_dialog" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -70,11 +70,11 @@
         android:layout_width="152dp"
         android:layout_height="148dp"
         android:layout_marginTop="72dp"
+        android:src="@drawable/comercio"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/comercio" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtNombreProductoSeleccionado"
