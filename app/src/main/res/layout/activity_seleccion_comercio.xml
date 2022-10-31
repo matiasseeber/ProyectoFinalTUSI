@@ -15,6 +15,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/btnAtrasRegistro3"
+        android:layout_width="98dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="4dp"
+        android:onClick="ClickBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrowback" />
+
     <TextView
         android:id="@+id/txtComercioSeleccion"
         android:layout_width="wrap_content"
@@ -33,7 +44,7 @@
         android:layout_width="121dp"
         android:layout_height="120dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_weight="1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -43,18 +54,24 @@
         android:id="@+id/txtCantidadEstrellasComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
         android:text="TextView"
         android:textSize="16sp"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="181dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.442"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
     <ImageView
         android:id="@+id/imageView25"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        app:srcCompat="@drawable/star"
-        tools:layout_editor_absoluteX="225dp"
-        tools:layout_editor_absoluteY="175dp" />
+        android:layout_marginTop="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.048"
+        app:layout_constraintStart_toEndOf="@+id/txtCantidadEstrellasComercio"
+        app:layout_constraintTop_toBottomOf="@+id/txtComercioSeleccion"
+        app:srcCompat="@drawable/star" />
 
     <GridView
         android:id="@+id/dgv_ProductosComercio"

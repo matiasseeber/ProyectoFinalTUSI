@@ -38,7 +38,7 @@
             android:onClick="clickClose"
             app:layout_constraintStart_toEndOf="@+id/tituloPopUp"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/ic_delete" />
+            app:srcCompat="@android:drawable/btn_dialog" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
@@ -47,7 +47,6 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@drawable/radius"
         />
 
     <TextView

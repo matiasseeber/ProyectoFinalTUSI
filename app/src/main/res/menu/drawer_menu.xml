@@ -8,22 +8,22 @@
             android:icon="@drawable/storeitem"
             android:checked="true"
             />
-
         <item
-            android:id="@+id/CuentaItem"
-            android:title="Mi Cuenta - Comercio"
-            android:icon="@drawable/useritem" />
+            android:id="@+id/pedidosItem"
+            android:title="Mis pedidos"
+            android:icon="@drawable/order" />
+
     </group>
-    <item android:title="Pedidos">
+    <item android:title="Cuenta">
 
         <menu>
 
             <group android:checkableBehavior="single">
 
                 <item
-                    android:id="@+id/pedidosItem"
-                    android:title="Mis pedidos"
-                    android:icon="@drawable/order" />
+                    android:id="@+id/CuentaItem"
+                    android:title="Mi Cuenta"
+                    android:icon="@drawable/useritem" />
 
             </group>
 
