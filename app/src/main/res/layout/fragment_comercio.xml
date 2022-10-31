@@ -7,20 +7,25 @@
     tools:context=".ComerciosFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <Spinner
             android:id="@+id/filtroComercioLocalidadesSpinner"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             app:layout_constraintBottom_toTopOf="@+id/dgvComercios"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.516" />
 
         <GridView
             android:id="@+id/dgvComercios"
-            android:layout_width="404dp"
-            android:layout_height="681dp"
+            android:layout_width="match_parent"
+            android:layout_height="670dp"
             android:layout_marginTop="60dp"
             android:background="#E6E6E6"
             android:horizontalSpacing="5dp"

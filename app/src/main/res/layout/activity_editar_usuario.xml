@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Editar_Comercio">
+    tools:context=".Editar_Usuario">
 
     <ImageView
         android:id="@+id/imageView38"
@@ -50,20 +50,31 @@
         app:srcCompat="@drawable/circle3" />
 
     <Button
-        android:id="@+id/btnModificarInformacionLocal"
+        android:id="@+id/button9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="144dp"
+        android:layout_marginTop="16dp"
+
         android:text="Modificar"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="120dp"
+        android:text="Eliminar cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
     <ScrollView
         android:id="@+id/scrollView5"
-        android:layout_width="411dp"
-        android:layout_height="480dp"
-        android:layout_marginTop="164dp"
+        android:layout_width="409dp"
+        android:layout_height="402dp"
+        android:layout_marginTop="192dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -73,27 +84,36 @@
             android:gravity="center"
             android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Nombre"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/textV"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="Apellido"
+                android:textAlignment="center"
+                android:textSize="20dp" />
+
             <EditText
                 android:id="@+id/editTextTextPersonName5"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Nombre Comercio"
+                android:hint="Nombre de Usuario"
                 android:inputType="textPersonName"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textViewCUIL"
-                android:layout_width="270dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:hint="CUIL"
-                android:textAlignment="center"
-                android:textSize="20dp" />
-
-            <TextView
-                android:id="@+id/textViewEmail"
+                android:id="@+id/textView8"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -101,49 +121,42 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/editTextDireccion"
+            <TextView
+                android:id="@+id/editTextTextPersonName6"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
                 android:hint="Direccion"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextTextPassword"
+                android:id="@+id/editTextc"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="Contraseña"
-                android:inputType="textPersonName|textPassword"
+                android:inputType="textPersonName"
                 android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/editTextConfirmPassword"
+            <TextView
+                android:id="@+id/textVi"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:ems="10"
-                android:hint="Confirmar contraseña"
-                android:inputType="textPersonName|textPassword"
+                android:hint="Sexo"
+                android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <ImageView
-                android:id="@+id/imgViewComercioEdit"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginTop="20dp"
-                android:background="@color/Secondary" />
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
 
-            <Button
-                android:id="@+id/btnSeleccionarImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Seleccionar" />
+
         </LinearLayout>
     </ScrollView>
 
@@ -156,6 +169,6 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/comercio" />
+        app:srcCompat="@drawable/user" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -123,4 +123,8 @@ public class Editar_Comercio extends AppCompatActivity {
         dbUpdateBussinesInfo.setActivity(this);
         dbUpdateBussinesInfo.execute();
     }
+
+    public void ClickBack(View view){
+        this.finish();
+    }
 }
