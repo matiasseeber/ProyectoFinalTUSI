@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Pedido_Usuario">
+
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="93dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="4dp"
+        android:onClick="ClickBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:src="@drawable/arrowback" />
+
+    <ImageView
+        android:id="@+id/imageView40"
+        android:layout_width="367dp"
+        android:layout_height="381dp"
+        android:layout_marginStart="-150dp"
+        android:layout_marginTop="-100dp"
+        android:alpha="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/circle2" />
+
+    <ImageView
+        android:id="@+id/imageView41"
+        android:layout_width="177dp"
+        android:layout_height="188dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="-85dp"
+        android:alpha="0.7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/radius" />
+
+    <ImageView
+        android:id="@+id/imageView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="-200dp"
+        android:layout_marginBottom="-130dp"
+        android:alpha="0.85"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/circle3" />
+
+    <ImageView
+        android:id="@+id/imageView44"
+        android:layout_width="121dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/agregarcarrito" />
+
+    <GridView
+        android:id="@+id/dgv_pedidosUsuario"
+        android:layout_width="match_parent"
+        android:layout_height="370dp"
+        android:layout_marginTop="152dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Elegir un método de pago"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dgv_pedidosUsuario" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="322dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:background="#9ED2FABB"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Efectivo"
+            android:textAlignment="center" />
+
+        <RadioButton
+            android:id="@+id/rbtnTarjeta"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Tarjeta"
+            android:textAlignment="center" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="Finish"
+        android:text="Finalizar compra Prro"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

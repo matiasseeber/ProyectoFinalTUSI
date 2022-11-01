@@ -16,7 +16,6 @@ import com.example.tp_final.R;
 
 import java.util.ArrayList;
 
-import Entidades.Comercio;
 import Entidades.Producto;
 
 public class ProductsAdapter extends BaseAdapter {
