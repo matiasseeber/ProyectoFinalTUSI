@@ -31,7 +31,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="MC Donald´s"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,11 +74,51 @@
 
     <GridView
         android:id="@+id/dgv_ProductosComercio"
-        android:layout_width="406dp"
+        android:layout_width="match_parent"
         android:layout_height="430dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtImgComercioSeleccion" />
+
+    <TextView
+        android:id="@+id/btnCarrito"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-1dp"
+        android:layout_marginBottom="-2dp"
+        android:padding="10dp"
+        android:text="Productos: "
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        android:background="@color/Secondary"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dgv_ProductosComercio"
+        app:layout_constraintVertical_bias="0.95" />
+
+    <TextView
+        android:id="@+id/txtCantCarrito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="0"
+        android:textColor="@color/black"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.611"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCarrito" />
+
+    <ImageView
+        android:id="@+id/imageView35"
+        android:layout_width="34dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="124dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnCarrito"
+        app:srcCompat="@drawable/agregarcarrito" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

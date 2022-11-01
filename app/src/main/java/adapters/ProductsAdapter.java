@@ -15,7 +15,6 @@ import com.example.tp_final.R;
 
 import java.util.ArrayList;
 
-import Entidades.Comercio;
 import Entidades.Producto;
 
 public class ProductsAdapter extends BaseAdapter {
@@ -55,7 +54,7 @@ public class ProductsAdapter extends BaseAdapter {
 
         Producto producto = getItem(position);
 
-        TextView txtNombreProducto = (TextView) view.findViewById(R.id.txtNombreProducto);
+        TextView txtNombreProducto = (TextView) view.findViewById(R.id.txt);
         TextView txtPrecioProducto = (TextView) view.findViewById(R.id.txtPrecioProducto);
         TextView txtIdProducto = (TextView) view.findViewById(R.id.txtIdProducto);
         ImageView ImgComercioSeleccion = (ImageView) view.findViewById(R.id.ImgComercioSeleccion);

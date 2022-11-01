@@ -67,10 +67,9 @@
 
     <ImageView
         android:id="@+id/imgProductoSeleccionado"
-        android:layout_width="152dp"
-        android:layout_height="148dp"
+        android:layout_width="145dp"
+        android:layout_height="145dp"
         android:layout_marginTop="72dp"
-        android:src="@drawable/comercio"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
