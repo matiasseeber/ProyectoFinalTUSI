@@ -29,9 +29,18 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
     private ImageView imgLogo = null;
     private EditText constraseña = null;
     private TextView cuil = null;
+    private TextView calificaciones = null;
     private Bitmap bitmap;
 
     public DBSetBussinessProfileInformation() {
+    }
+
+    public TextView getcalificaciones() {
+        return calificaciones;
+    }
+
+    public void setcalificaciones(TextView calificacion) {
+        this.calificaciones = calificacion;
     }
 
     public EditText getTxtNombre() {
@@ -111,7 +120,11 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from Comercios where id = " + comercio.getId());
+            ResultSet rs = st.executeQuery("select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = " + comercio.getId() + ";");
+            comercio.setPromedioCalificaciones(0);
+            rs.beforeFirst();
+            boolean wasComercioSet = false;
+            comercio.setPromedioCalificaciones(-1);
             if (rs.next()) {
                 bitmap = Helpers.getBitmapFromBytes((Blob) rs.getBlob("image"));
                 comercio.setName(rs.getString("nombre"));
@@ -119,8 +132,10 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
                 comercio.setAddress(rs.getString("direccion"));
                 comercio.setVatNumber(rs.getInt("cuil"));
                 comercio.setPassword(rs.getString("contraseña"));
-                return true;
+                wasComercioSet = true;
             }
+            comercio.setPromedioCalificaciones(Helpers.returnBussinessRatingAverage(rs));
+            return wasComercioSet;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -134,17 +149,10 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if (txtNombre != null) txtNombre.setText(comercio.getName());
+        if (calificaciones != null)
+            calificaciones.setText(String.valueOf(comercio.getPromedioCalificaciones()));
+            if (txtNombre != null) txtNombre.setText(comercio.getName());
         if (textViewNombre != null) textViewNombre.setText(comercio.getName());
-        if (constraseña != null) {
-            constraseña.setText(comercio.getPassword());
-        } else {
-            SharedPreferences sharedPref = context.getSharedPreferences(
-                    "MySharedPref", Context.MODE_PRIVATE);
-            SharedPreferences.Editor myEdit = sharedPref.edit();
-            myEdit.putString("password", comercio.getPassword());
-            myEdit.commit();
-        }
         if (email != null) email.setText(comercio.getEmail());
         if (direccion != null) direccion.setText(comercio.getAddress());
         if (imgLogo != null) imgLogo.setImageBitmap(bitmap);

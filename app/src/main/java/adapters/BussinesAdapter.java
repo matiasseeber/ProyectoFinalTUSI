@@ -1,5 +1,7 @@
 package adapters;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
@@ -19,6 +21,8 @@ import java.util.Locale;
 
 import com.example.tp_final.PopUpEliminar_Producto_Comercio;
 import com.example.tp_final.R;
+import com.example.tp_final.Seleccion_Comercio;
+
 import Entidades.Comercio;
 
 public class BussinesAdapter extends BaseAdapter {
@@ -56,18 +60,31 @@ public class BussinesAdapter extends BaseAdapter {
             view = inflater.inflate(R.layout.grid_template_comercios,null);
         }
 
+
         Comercio comercio = getItem(position);
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context ,Seleccion_Comercio.class);
+                intent.putExtra("idComercio", comercio.getId());
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            }
+        });
 
         TextView txtIdComercio = (TextView) view.findViewById(R.id.txtIdComercio);
         TextView txtNombreComercio = (TextView) view.findViewById(R.id.txtNombreComercio_ComerciosCliente);
         TextView txtDireccion = (TextView) view.findViewById(R.id.txtDireccion);
         ImageView imageView = (ImageView) view.findViewById(R.id.imgLogoComercio);
         TextView txtDistancia = (TextView) view.findViewById(R.id.txtDistanciaDeCliente);
+        TextView txtEstrellas = (TextView) view.findViewById(R.id.txtEstrellas);
 
         Float distancia = comercio.getDistancia() - comercio.getDistancia() % 1;
         String formatedDistance = String.valueOf(distancia).replace(".0", "");
         txtDistancia.setText(formatedDistance + " KM");
 
+        txtEstrellas.setText(String.valueOf(comercio.getPromedioCalificaciones()));
         txtIdComercio.setText(String.valueOf(comercio.getId()));
         txtNombreComercio.setText(String.valueOf(comercio.getName()));
         txtDireccion.setText(comercio.getAddress());
