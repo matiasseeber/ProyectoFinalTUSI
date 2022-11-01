@@ -67,6 +67,26 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
+    public float setAverageReviews(Comercio com){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(
+                    DataDB.urlMySQL,
+                    DataDB.user,
+                    DataDB.pass
+            );
+            Statement st = con.createStatement();
+            String query = "select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = " + com.getId() + ";";
+            ResultSet rs = st.executeQuery(
+                    query
+            );
+            com.setPromedioCalificaciones(Helpers.returnBussinessRatingAverage(rs));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return com.getPromedioCalificaciones();
+    }
+
     public void CargarComercios() {
         comercios = new ArrayList<Comercio>();
         try {
@@ -121,6 +141,8 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 } catch (Exception e){
                     e.printStackTrace();
                 }
+
+                //comercio1.setPromedioCalificaciones(setAverageReviews(comercio1));
 
                 if(distancia == 0 || distance <= distancia){
                     comercio1.setDistancia(distance);

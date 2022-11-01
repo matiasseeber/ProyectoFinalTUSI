@@ -14,8 +14,25 @@ public class Comercio {
     private String password;
     private boolean estado;
     private float distancia;
+    private float promedioCalificaciones;
 
     public Comercio() {
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
+
+    public float getPromedioCalificaciones() {
+        return promedioCalificaciones;
+    }
+
+    public void setPromedioCalificaciones(float promedioCalificaciones) {
+        this.promedioCalificaciones = promedioCalificaciones;
     }
 
     public float getDistancia() {
