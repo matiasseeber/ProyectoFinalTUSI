@@ -18,6 +18,8 @@ import com.mysql.jdbc.Blob;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,5 +71,17 @@ public class Helpers {
 
     public static String getBussinesPassword(Context context){
         return context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("password","");
+    }
+
+    public static float returnBussinessRatingAverage(ResultSet rs) throws SQLException {
+        float average = 0;
+        int cont = 0;
+        rs.beforeFirst();
+        while (rs.next()){
+            if(rs.getFloat("puntuacion") != 0.0f)
+                average += rs.getFloat("puntuacion");
+            cont++;
+        }
+        return average /= cont;
     }
 }
