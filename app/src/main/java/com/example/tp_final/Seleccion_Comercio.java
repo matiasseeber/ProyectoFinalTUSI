@@ -18,6 +18,7 @@ public class Seleccion_Comercio extends AppCompatActivity {
     private TextView nombreComercio;
     private TextView calificacion;
     private GridView gridViewProductos;
+    private TextView txtCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
