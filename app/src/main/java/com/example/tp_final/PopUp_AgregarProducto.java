@@ -21,6 +21,7 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
     private EditText txtCant;
     private TextView txtNombreProd;
     private Integer Cantidad;
+    private TextView txtCantidadCarrito;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_TP_FINAL_TemaPopUp);
@@ -31,6 +32,7 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
         txtCuil= (EditText) findViewById(R.id.txtCuil_Comercio_Recupero);
         txtCant= (EditText) findViewById(R.id.txtCantProdSeleccionado);
         txtNombreProd= (TextView) findViewById(R.id.txtNombreProductoSeleccionado);
+        txtCantidadCarrito= (TextView) findViewById(R.id.txtCantCarrito);
 
         txtCant.setText("1");
 
@@ -57,6 +59,7 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
 
     public void ClickAddProduct(View view){
         Toast.makeText(getApplicationContext(), "Usted ha añadido al carrito " + Cantidad + " unidades de " + txtNombreProd.getText().toString(), Toast.LENGTH_SHORT).show();
+        txtCantidadCarrito.setText(String.valueOf(Integer.parseInt(txtCantidadCarrito.getText().toString()) + Cantidad));
         this.finish();
     }
 }

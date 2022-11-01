@@ -2,6 +2,7 @@ package com.example.tp_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.GridView;
@@ -17,6 +18,7 @@ public class Seleccion_Comercio extends AppCompatActivity {
     private TextView nombreComercio;
     private TextView calificacion;
     private GridView gridViewProductos;
+    private TextView txtCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,14 @@ public class Seleccion_Comercio extends AppCompatActivity {
         dbSetBussinessProfileInformation.setTextViewNombre(nombreComercio);
         dbSetBussinessProfileInformation.setcalificaciones(calificacion);
         dbSetBussinessProfileInformation.execute();
+        txtCarrito = (TextView) findViewById(R.id.btnCarrito);
+
+        txtCarrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),Pedido_Usuario.class));
+            }
+        });
     }
 
     public void ClickBack(View view){

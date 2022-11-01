@@ -15,6 +15,7 @@ public class PedidosFragment extends Fragment {
 
     private Button btnCalificar;
 
+
     public PedidosFragment() {
         // Required empty public constructor
     }
@@ -41,6 +42,7 @@ public class PedidosFragment extends Fragment {
                 startActivity(new Intent(v.getContext(),PopUpFinalpedido.class));
             }
         });
+
 
 
         return view;
