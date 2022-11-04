@@ -11,7 +11,7 @@ public class DataDB {
     */
 
     //Información de la BD
-    public static String host="sql10.freesqldatabase.com";
+    public static String host="sql10.freemysqlhosting.net";
     public static String port="3306";
     public static String nameBD="sql10536614";
     public static String user="sql10536614";

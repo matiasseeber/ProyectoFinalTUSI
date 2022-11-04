@@ -79,7 +79,9 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtImgComercioSeleccion" />
+        app:layout_constraintTop_toBottomOf="@+id/txtImgComercioSeleccion" >
+
+    </GridView>
 
     <TextView
         android:id="@+id/btnCarrito"
@@ -87,12 +89,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-1dp"
         android:layout_marginBottom="-2dp"
+        android:background="@color/Secondary"
         android:padding="10dp"
         android:text="Productos: "
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="16dp"
-        android:background="@color/Secondary"
-        android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dgv_ProductosComercio"
@@ -120,5 +122,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnCarrito"
         app:srcCompat="@drawable/agregarcarrito" />
+
+    <include
+        android:id="@+id/ViewLayout"
+        layout="@layout/activity_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="285dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
