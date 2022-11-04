@@ -61,7 +61,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
                 ft.replace(R.id.content, new PedidosFragment()).commit();
                 break;
             case R.id.CuentaItem:
-                ft.replace(R.id.content, new ComercioFragment()).commit();
+                ft.replace(R.id.content, new CuentaFragment()).commit();
                 break;
         }
         this.setTitle(item.getTitle());
