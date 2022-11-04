@@ -67,6 +67,7 @@
         android:layout_marginTop="72dp"
         android:layout_marginEnd="120dp"
         android:text="Eliminar cuenta"
+        android:backgroundTint="#CD1D1D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 

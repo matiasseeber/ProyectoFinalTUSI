@@ -53,16 +53,27 @@
         android:id="@+id/btnModificarInformacionLocal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="Modificar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
+    <Button
+        android:id="@+id/button11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="120dp"
+        android:backgroundTint="#CD1D1D"
+        android:text="Eliminar cuenta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
+
     <ScrollView
         android:id="@+id/scrollView5"
-        android:layout_width="411dp"
-        android:layout_height="480dp"
+        android:layout_width="match_parent"
+        android:layout_height="441dp"
         android:layout_marginTop="164dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
