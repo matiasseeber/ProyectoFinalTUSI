@@ -5,6 +5,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.GridView;
 
 import com.mysql.jdbc.Blob;
@@ -30,10 +31,19 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private int id_comercio;
     private boolean isClientSide = false;
+    private View pibitoDeHombros = null;
 
     private ArrayList<Producto> productos;
 
     public DBLoadAllProducts() {
+    }
+
+    public View getPibitoDeHombros() {
+        return pibitoDeHombros;
+    }
+
+    public void setPibitoDeHombros(View pibitoDeHombros) {
+        this.pibitoDeHombros = pibitoDeHombros;
     }
 
     public int getId_comercio() {
@@ -105,6 +115,7 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
+        if(productos.size() == 0 && pibitoDeHombros != null) pibitoDeHombros.setVisibility(View.VISIBLE);
         if(!isClientSide)
             grid.setAdapter(new ProductsAdapter(context, productos));
         else

@@ -68,7 +68,7 @@ public class ProductsAdapter extends BaseAdapter {
         TextView txtPrecioProducto = (TextView) view.findViewById(R.id.txtCantGrvPedidoUsuario);
         TextView txtIdProducto = (TextView) view.findViewById(R.id.txtGrvPedidoUsuarioIdProducto);
         ImageView ImgComercioSeleccion = (ImageView) view.findViewById(R.id.ImgComercioSeleccion);
-        ImageView deleteProductBussiness = (ImageView) view.findViewById(R.id.btnAbrirDetallePedido);
+        ImageView deleteProductBussiness = (ImageView) view.findViewById(R.id.deleteProductBussiness);
 
         deleteProductBussiness.setOnClickListener(new View.OnClickListener() {
             @Override

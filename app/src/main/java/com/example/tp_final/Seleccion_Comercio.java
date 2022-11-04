@@ -1,12 +1,14 @@
 package com.example.tp_final;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.text.Layout;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -31,6 +33,7 @@ public class Seleccion_Comercio extends AppCompatActivity {
     private GridView gridViewProductos;
     private TextView txtCarrito;
     private TextView txtCantidad;
+    private ConstraintLayout warningNoProductsClientSide;
     SQLite_OpenHelper sqLite_openHelper = new SQLite_OpenHelper(this, "TPFINAL", null, 1);
 
     @Override
@@ -44,6 +47,8 @@ public class Seleccion_Comercio extends AppCompatActivity {
         calificacion = (TextView) findViewById(R.id.txtCantidadEstrellasComercio);
         gridViewProductos = (GridView) findViewById(R.id.dgv_ProductosComercio);
         txtCantidad = (TextView) findViewById(R.id.txtCantCarrito);
+        warningNoProductsClientSide = (ConstraintLayout) findViewById(R.id.warningNoProductsClientSide);
+        warningNoProductsClientSide.setVisibility(View.GONE);
 
         DBSetBussinessProfileInformation dbSetBussinessProfileInformation = new DBSetBussinessProfileInformation();
         dbSetBussinessProfileInformation.setImgLogo(imageView);
@@ -63,6 +68,7 @@ public class Seleccion_Comercio extends AppCompatActivity {
         dbSetBussinessProfileInformation.execute();
         txtCarrito = (TextView) findViewById(R.id.btnCarrito);
         DBLoadAllProducts dbLoadAllProducts = new DBLoadAllProducts();
+        dbLoadAllProducts.setPibitoDeHombros(warningNoProductsClientSide);
         dbLoadAllProducts.setGrid(gridViewProductos);
         dbLoadAllProducts.setId_comercio(idComercio);
         dbLoadAllProducts.setContext(getApplicationContext());

@@ -124,7 +124,7 @@
         app:srcCompat="@drawable/agregarcarrito" />
 
     <include
-        android:id="@+id/ViewLayout"
+        android:id="@+id/warningNoProductsClientSide"
         layout="@layout/activity_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
