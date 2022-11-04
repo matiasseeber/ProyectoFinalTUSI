@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/btnAbrirDetallePedido"
+        android:id="@+id/deleteProductBussiness"
         android:layout_width="38dp"
         android:layout_height="35dp"
         android:layout_marginStart="48dp"
