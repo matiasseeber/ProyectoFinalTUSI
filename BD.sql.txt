@@ -1,0 +1,97 @@
+drop table Provincias;
+
+drop table Clientes;
+
+drop table Comercios;
+
+Create table Provincias(
+	id int auto_increment key,
+    nombre varchar(50)
+);
+
+Create table Localidades(
+	id int auto_increment key,
+    cod_provincia int,
+    nombre varchar(50),
+    constraint FK_Localidades_provincias foreign key (cod_provincia) references Provincias(id)
+);
+
+Create table Comercios(
+	id int auto_increment key,
+    nombre varchar(50),
+    email varchar(50),
+    direccion varchar(50),
+    image mediumblob,
+    cuil int unique,
+    cod_localidad int,
+    contraseña varchar(50),
+    estado bit,
+    constraint FK_Comercios_Localidades foreign key (id) references Localidades(id)
+);
+
+Create table Clientes(
+	id int auto_increment key,
+    dni int unique,
+    nombreUsuario varchar(50),
+    nombre varchar(50),
+    apellido varchar(50),
+    email varchar(50),
+    contraseña varchar(50),
+    sexo varchar(50),
+    direccion varchar(50),
+    edad int,
+    cod_localidad int,
+    estado bit,
+    constraint FK_Clientes_Localidades foreign key (cod_localidad) references Localidades(id)
+);
+
+Create table Productos(
+	id int auto_increment key,
+    id_comercio int,
+    nombre varchar(50),
+    descripcion varchar(100),
+    img mediumblob,
+    stock int,
+    precio float,
+    estado bit,
+    constraint FK_Productos_Comercios foreign key (id_comercio) references Comercios(id)
+);
+
+Create table Calificaciones(
+	id int auto_increment,
+    id_Cliente int,
+    id_Comercio int,
+    puntuacion float,
+    constraint PK_Calificaciones primary key (id, id_Cliente, id_Comercio),
+    constraint FK_Calificaciones_Clientes foreign key (id_Cliente) references Clientes(id),
+    constraint FK_Calificaciones_Comercios foreign key (id_Cliente) references Comercios(id)
+);
+
+insert into Provincias (nombre) values ("Buenos Aires");
+
+insert into Localidades (cod_provincia, nombre) values (1, "Tigre");
+insert into Localidades (cod_provincia, nombre) values (1, "San isidro");
+insert into Localidades (cod_provincia, nombre) values (1, "Pilar");
+
+select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = 2;
+
+Select * from Productos;
+
+Select * from Clientes;
+
+Update Comercios set nombre = 'Test' ,direccion = 'pipi' ,contraseña = '123' ,image = null where id = 2;
+
+Update Productos set nombre = ?, descripcion = ?, img = ?, stock = ?, precio = ? where id = ?;
+
+insert into Calificaciones (id_Cliente, id_Comercio, puntuacion) values (2, 2, 3);
+
+
+Select * from Comercios;
+
+select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = 3;
+
+select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = 2;
+
+Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id left join Calificaciones on Calificaciones.id_Comercio = Comercios.id;
+
+select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = 1;

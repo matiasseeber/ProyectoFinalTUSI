@@ -101,9 +101,11 @@ public class Editar_Comercio extends AppCompatActivity {
             direccion.setError(requiredError);
             isFormValid = false;
         }
-        if(!contraseña.getText().toString().equals(confirmarContraseña.getText().toString())){
-            confirmarContraseña.setError("Ambas contraseñas deben ser iguales");
-            isFormValid = false;
+        if(confirmarContraseña.getText().toString().isEmpty() && contraseña.getText().toString().isEmpty()){
+            if(!contraseña.getText().toString().equals(confirmarContraseña.getText().toString())){
+                confirmarContraseña.setError("Ambas contraseñas deben ser iguales");
+                isFormValid = false;
+            }
         }
         return isFormValid;
     }

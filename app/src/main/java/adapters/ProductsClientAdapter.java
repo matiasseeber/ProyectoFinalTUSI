@@ -1,29 +1,28 @@
 package adapters;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tp_final.PopUpEliminar_Producto_Comercio;
-import com.example.tp_final.Productos_ABM_Comercio;
+import com.example.tp_final.PopUp_AgregarProducto;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
 
 import Entidades.Producto;
 
-public class ProductsAdapter extends BaseAdapter {
+public class ProductsClientAdapter extends BaseAdapter {
     private ArrayList<Producto> elementos;
     private Context context;
-    private EditText txtEstrellas;
 
-    public ProductsAdapter(Context context, ArrayList<Producto> elementos) {
+    public ProductsClientAdapter(Context context, ArrayList<Producto> elementos) {
         this.context = context;
         this.elementos = elementos;
     }
@@ -50,7 +49,7 @@ public class ProductsAdapter extends BaseAdapter {
         View view = convertView;
 
         if (convertView == null){
-            view = inflater.inflate(R.layout.grid_template_productos,null);
+            view = inflater.inflate(R.layout.grid_template_productos_usuario,null);
         }
 
         Producto producto = getItem(position);
@@ -58,7 +57,8 @@ public class ProductsAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, Productos_ABM_Comercio.class);
+                Intent intent = new Intent(context, PopUp_AgregarProducto.class);
+                intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("idProducto", producto.getId());
                 context.startActivity(intent);
             }
@@ -66,22 +66,10 @@ public class ProductsAdapter extends BaseAdapter {
 
         TextView txtNombreProducto = (TextView) view.findViewById(R.id.txtNombreProducto);
         TextView txtPrecioProducto = (TextView) view.findViewById(R.id.txtCantGrvPedidoUsuario);
-        TextView txtIdProducto = (TextView) view.findViewById(R.id.txtGrvPedidoUsuarioIdProducto);
         ImageView ImgComercioSeleccion = (ImageView) view.findViewById(R.id.ImgComercioSeleccion);
-        ImageView deleteProductBussiness = (ImageView) view.findViewById(R.id.deleteProductBussiness);
-
-        deleteProductBussiness.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), PopUpEliminar_Producto_Comercio.class);
-                intent.putExtra("idProducto", producto.getId());
-                context.startActivity(intent);
-            }
-        });
 
         txtNombreProducto.setText(producto.getNombre());
         txtPrecioProducto.setText("Precio: " + String.valueOf(producto.getPrecio()));
-        txtIdProducto.setText(String.valueOf(producto.getId()));
         ImgComercioSeleccion.setImageBitmap(producto.getBitmapImage());
 
         return view;
