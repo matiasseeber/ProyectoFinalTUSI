@@ -19,11 +19,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPrecioProducto"
+        android:id="@+id/txtCantGrvPedidoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
-        android:text="3"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.415"
@@ -31,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtIdProducto"
+        android:id="@+id/txtGrvPedidoUsuarioIdProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="205dp"
@@ -51,14 +50,13 @@
         app:srcCompat="@drawable/bin" />
 
     <TextView
-        android:id="@+id/textView11"
+        android:id="@+id/txtPrecioGrvPedidoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="80dp"
         android:layout_marginTop="44dp"
-        android:text="$580"
         android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
+        app:layout_constraintStart_toEndOf="@+id/txtCantGrvPedidoUsuario"
         app:layout_constraintTop_toTopOf="parent" />
 
 

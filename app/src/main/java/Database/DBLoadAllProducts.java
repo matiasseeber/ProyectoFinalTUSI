@@ -22,12 +22,14 @@ import Entidades.Producto;
 import Helpers.Helpers;
 import adapters.BussinesAdapter;
 import adapters.ProductsAdapter;
+import adapters.ProductsClientAdapter;
 
 public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
 
     private GridView grid;
     private Context context;
     private int id_comercio;
+    private boolean isClientSide = false;
 
     private ArrayList<Producto> productos;
 
@@ -58,6 +60,14 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
+    public boolean isClientSide() {
+        return isClientSide;
+    }
+
+    public void setClientSide(boolean clientSide) {
+        isClientSide = clientSide;
+    }
+
     public void CargarComercios() {
         productos = new ArrayList<Producto>();
         try {
@@ -68,7 +78,7 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from Productos where id_comercio = "+ id_comercio +" and estado = 1;";
+            String query = "Select * from Productos where id_comercio = "+ id_comercio +" and estado = 1 and stock > 0;";
             ResultSet rs = st.executeQuery(
                     query
             );
@@ -79,6 +89,7 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
                 producto.setId(rs.getInt("id"));
                 producto.setBitmapImage(Helpers.getBitmapFromBytes((Blob) rs.getBlob("img")));
                 producto.setPrecio(rs.getFloat("precio"));
+                producto.setStock(rs.getInt("stock"));
                 productos.add(producto);
             }
         } catch (Exception e) {
@@ -94,6 +105,9 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
-       grid.setAdapter(new ProductsAdapter(context, productos));
+        if(!isClientSide)
+            grid.setAdapter(new ProductsAdapter(context, productos));
+        else
+            grid.setAdapter(new ProductsClientAdapter(context, productos));
     }
 }

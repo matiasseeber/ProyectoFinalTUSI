@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPrecioProducto"
+        android:id="@+id/txtCantGrvPedidoUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -41,13 +41,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtIdProducto"
+        android:id="@+id/txtGrvPedidoUsuarioIdProducto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
         android:layout_marginTop="76dp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
+        app:layout_constraintStart_toEndOf="@+id/txtCantGrvPedidoUsuario"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

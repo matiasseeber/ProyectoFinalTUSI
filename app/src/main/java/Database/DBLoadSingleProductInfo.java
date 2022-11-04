@@ -103,9 +103,9 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from Productos where id = "+ id +";");
+            ResultSet rs = st.executeQuery("Select * from Productos where id = " + id + ";");
             rs.beforeFirst();
-            if(rs.next()){
+            if (rs.next()) {
                 producto.setPrecio(rs.getFloat("precio"));
                 producto.setNombre(rs.getString("nombre"));
                 producto.setDescripcion(rs.getString("descripcion"));
@@ -126,11 +126,16 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean response) {
         if (response) {
-            nombre.setText(producto.getNombre());
-            descripcion.setText(producto.getDescripcion());
-            stock.setText(String.valueOf(producto.getStock()));
-            precio.setText(String.valueOf(producto.getPrecio()));
-            imageView.setImageBitmap(bitmap);
+            if (nombre != null)
+                nombre.setText(producto.getNombre());
+            if (descripcion != null)
+                descripcion.setText(producto.getDescripcion());
+            if (stock != null)
+                stock.setText(String.valueOf("Stock: " + producto.getStock()));
+            if (precio != null)
+                precio.setText(String.valueOf(producto.getPrecio()));
+            if (imageView != null)
+                imageView.setImageBitmap(bitmap);
         } else {
             Toast.makeText(context, "No se pudo cargar la informacion del producto seleccionado.", Toast.LENGTH_LONG).show();
         }
