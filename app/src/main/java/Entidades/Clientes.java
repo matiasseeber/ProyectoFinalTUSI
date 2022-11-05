@@ -53,14 +53,6 @@ public class Clientes {
         this.dni = dni;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getNombre() {
         return nombre;
     }
@@ -124,4 +116,8 @@ public class Clientes {
     public void setEstado(boolean estado) {
         this.estado = estado;
     }
+
+    public int getId() {return id;}
+
+    public void setId(int id) {this.id = id;}
 }
