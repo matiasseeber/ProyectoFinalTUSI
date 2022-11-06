@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,7 @@ public class ComercioFragment extends Fragment {
     private GridView gridView;
     private int idComercio;
     private ImageView editBtn;
+    private View msgAclaratorioComecio;
 
     public ComercioFragment() {
         // Required empty public constructor
@@ -48,6 +50,9 @@ public class ComercioFragment extends Fragment {
         nombreComercio = (TextView) view.findViewById(R.id.txtComercioSeleccion);
         gridView = (GridView) view.findViewById(R.id.dgv_ProductosComercio);
         editBtn = (ImageView) view.findViewById(R.id.editBussinessInformation);
+        msgAclaratorioComecio = view.findViewById(R.id.msgAclaratorioComecio);
+        msgAclaratorioComecio.setVisibility(View.GONE);
+
         LoadAllProducts();
         LoadBussinessInfo();
 
@@ -72,6 +77,7 @@ public class ComercioFragment extends Fragment {
         DBLoadAllProducts dbLoadAllProducts = new DBLoadAllProducts();
         dbLoadAllProducts.setId_comercio(idComercio);
         dbLoadAllProducts.setContext(getContext());
+        dbLoadAllProducts.setPibitoDeHombros(msgAclaratorioComecio);
         dbLoadAllProducts.setGrid(gridView);
         dbLoadAllProducts.execute();
     }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/txt"
+        android:id="@+id/txtNombreClientePedidosComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtPrecioProducto2"
+        android:id="@+id/txtTotalPedidoComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
@@ -27,7 +27,7 @@
         android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
-        app:layout_constraintTop_toBottomOf="@+id/txt" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
         android:id="@+id/txtPrecioProducto"
@@ -38,16 +38,16 @@
         android:text="$"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
-        android:id="@+id/txtIdProducto"
+        android:id="@+id/txtIdPedidoComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="37dp"
         android:visibility="invisible"
-        app:layout_constraintStart_toEndOf="@+id/txt"
+        app:layout_constraintStart_toEndOf="@+id/txtNombreClientePedidosComercio"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView

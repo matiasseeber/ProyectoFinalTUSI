@@ -7,8 +7,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+
+import Database.DBLoadAllPendingOrders;
+import Helpers.Helpers;
 
 public class FragmentPedidoPendiente extends Fragment {
+
+    private View viewNoTienesPedidosPendientesComercio;
+    private GridView grvPedidosPendientesComercio;
 
     public FragmentPedidoPendiente() {
         // Required empty public constructor
@@ -22,7 +29,16 @@ public class FragmentPedidoPendiente extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pedido_pendiente, container, false);
+        View view = inflater.inflate(R.layout.fragment_pedido_pendiente, container, false);
+        viewNoTienesPedidosPendientesComercio = (View) view.findViewById(R.id.viewNoTienesPedidosPendientesComercio);
+        viewNoTienesPedidosPendientesComercio.setVisibility(View.GONE);
+        grvPedidosPendientesComercio = (GridView) view.findViewById(R.id.grvPedidosPendientesComercio);
+        DBLoadAllPendingOrders dbLoadAllPendingOrders = new DBLoadAllPendingOrders();
+        dbLoadAllPendingOrders.setId_comercio(Helpers.getUserId(getContext()));
+        dbLoadAllPendingOrders.setGrid(grvPedidosPendientesComercio);
+        dbLoadAllPendingOrders.setContext(getContext());
+        dbLoadAllPendingOrders.setMsg(viewNoTienesPedidosPendientesComercio);
+        dbLoadAllPendingOrders.execute();
+        return view;
     }
 }
