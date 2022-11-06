@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import Database.DBDeleteUsuario;
 import Database.DBSetUsuarioProfileInformation;
 import Database.DBUpdateUsarioInfo;
 import Entidades.Clientes;
@@ -52,6 +53,11 @@ public class Editar_Usuario extends AppCompatActivity {
             }
         });
 
+        btnEliminar.setOnClickListener(new View.OnClickListener(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
+            @Override
+            public void onClick(View view){eliminarCuenta(view);}
+        });
 
 
         DBSetUsuarioProfileInformation dbSetUsuarioProfileInformation = new DBSetUsuarioProfileInformation();
@@ -62,6 +68,7 @@ public class Editar_Usuario extends AppCompatActivity {
         dbSetUsuarioProfileInformation.setApellido(apellido);
         dbSetUsuarioProfileInformation.setNombreDeUsuario(nombreDeUsuario);
         dbSetUsuarioProfileInformation.setEmail(email);
+        dbSetUsuarioProfileInformation.setDireccion(direccion);
         dbSetUsuarioProfileInformation.setContraseña(contraseña);
         dbSetUsuarioProfileInformation.setValidarcontraseña(validarContraseña);
         dbSetUsuarioProfileInformation.setSexo(sexo);
@@ -85,12 +92,20 @@ public class Editar_Usuario extends AppCompatActivity {
             apellido.setError(requiredError);
             isFormValid = false;
         }
+
+        //validar que el nombre de usuario ya existe
         if(nombreDeUsuario.getText().toString().isEmpty()){
             nombreDeUsuario.setError(requiredError);
             isFormValid = false;
         }
+
+        //validar que el email no exista
         if(email.getText().toString().isEmpty()){
             email.setError(requiredError);
+            isFormValid = false;
+        }
+        if(direccion.getText().toString().isEmpty()){
+            direccion.setError(requiredError);
             isFormValid = false;
         }
         if((!contraseña.getText().toString().equals(validarContraseña.getText().toString()))){
@@ -113,6 +128,7 @@ public class Editar_Usuario extends AppCompatActivity {
         clientes.setApellido(apellido.getText().toString());
         clientes.setNombreUsuario(nombreDeUsuario.getText().toString());
         clientes.setEmail(email.getText().toString());
+        clientes.setDireccion(direccion.getText().toString());
         clientes.setContraseña(contraseña.getText().toString());
         clientes.setSexo(sexo.getText().toString());
         DBUpdateUsarioInfo DBUpdateUsarioInfo = new DBUpdateUsarioInfo();
@@ -121,6 +137,18 @@ public class Editar_Usuario extends AppCompatActivity {
         DBUpdateUsarioInfo.setActivity(this);
         DBUpdateUsarioInfo.execute();
 
+    }
+
+    public void eliminarCuenta(View view){
+        //llamar dbdelet
+        Clientes clientes = new Clientes();
+        clientes.setId(Helpers.getUserId(getApplicationContext()));
+
+        DBDeleteUsuario delet = new DBDeleteUsuario();
+        delet.setContext(view.getContext());
+        delet.setId(clientes.getId());
+        delet.setActivity(this);
+        delet.execute();
     }
 
     public void clickBack (View view) {this.finish();}

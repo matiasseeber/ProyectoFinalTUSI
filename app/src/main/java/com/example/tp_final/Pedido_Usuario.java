@@ -29,7 +29,7 @@ public class Pedido_Usuario extends AppCompatActivity {
             startActivity(new Intent(this,Metodos_Pago.class));
             this.finish();
         }else{
-            Toast.makeText(this,"Selecciona metodo tarjeta, bebe.",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Selecciona metodo tarjeta.",Toast.LENGTH_SHORT).show();
         }
 
     }

@@ -70,6 +70,11 @@
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/menu/drawer_menu_comercios.xml" value="0.3625" />
         <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_editar_comercio.xml" value="0.264" />
         <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_editar_usuario.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_login_usuario.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_main.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_metodos_pago.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/activity_pedido_usuario.xml" value="0.24682971014492755" />
+        <entry key="..\:/Users/monza/AndroidStudioProjects/ProyectoFinalTUSI/app/src/main/res/layout/fragment_cuenta.xml" value="0.2" />
       </map>
     </option>
   </component>

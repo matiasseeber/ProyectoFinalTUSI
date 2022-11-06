@@ -39,7 +39,7 @@ public class DBUpdateUsarioInfo extends AsyncTask<Boolean, Void, Boolean> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            PreparedStatement preparedStatement = con.prepareStatement("Update Clientes set nombre = ? ,apellido = ? ,nombreUsuario = ? ,email = ?,direccion = ? ,contraseña = ?, sexo = ?, where id = ?;", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = con.prepareStatement("Update Clientes set nombre = ? ,apellido = ? ,nombreUsuario = ? ,email = ?,direccion = ?,contraseña = ?, sexo = ?, where id = ?;", Statement.RETURN_GENERATED_KEYS);
             //preparedStatement.setString(1, comercio.getName());
             preparedStatement.setString(1,clientes.getNombre());
             preparedStatement.setString(2,clientes.getApellido());
