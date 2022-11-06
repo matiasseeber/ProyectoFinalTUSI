@@ -53,6 +53,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView16" />
 
         <include
+            android:id="@+id/msgAclaratorioComecio"
             layout="@layout/activity_layout_comercio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
