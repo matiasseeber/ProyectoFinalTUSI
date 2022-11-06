@@ -46,6 +46,8 @@ public class Seleccion_Comercio extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(),Pedido_Usuario.class));
             }
         });
+
+
     }
 
     public void ClickBack(View view){
