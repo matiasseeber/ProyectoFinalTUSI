@@ -10,16 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
-            android:id="@+id/btnPuntuar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="148dp"
-            android:layout_marginTop="104dp"
-            android:onClick="OnClickRate"
-            android:text="Calificar"
+        <ImageView
+            android:id="@+id/imageView47"
+            android:layout_width="171dp"
+            android:layout_height="125dp"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/cart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/TabPedidosCliente"
+            android:layout_width="409dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:tabMode="scrollable"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView47"
+            />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/ViewPagerCliente"
+            android:layout_width="match_parent"
+            android:layout_height="525dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/TabPedidosCliente" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

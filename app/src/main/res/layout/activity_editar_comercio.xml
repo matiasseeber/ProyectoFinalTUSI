@@ -54,7 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Modificar"
+        android:text="@string/Modificar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
@@ -66,7 +66,7 @@
         android:layout_marginTop="65dp"
         android:layout_marginEnd="120dp"
         android:backgroundTint="#CD1D1D"
-        android:text="Eliminar cuenta"
+        android:text="@string/EliminarCuenta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Nombre Comercio"
+                android:hint="@string/NombreComercio"
                 android:inputType="textPersonName"
                 android:textSize="20dp" />
 
@@ -99,7 +99,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="CUIL"
+                android:hint="@string/CuilComercio"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -108,7 +108,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="E-Mail"
+                android:hint="@string/MailComercio"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Direccion"
+                android:hint="@string/DireccionComercio"
                 android:inputType="textPersonName"
                 android:textSize="20dp" />
 
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Contraseña"
+                android:hint="@string/ContraseñaComercio"
                 android:inputType="textPersonName|textPassword"
                 android:textSize="20dp" />
 
@@ -138,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Confirmar contraseña"
+                android:hint="@string/ContraseñaConfirmComercio"
                 android:inputType="textPersonName|textPassword"
                 android:textSize="20dp" />
 
@@ -154,7 +154,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Seleccionar" />
+                android:text="@string/SeleccionarFoto" />
         </LinearLayout>
     </ScrollView>
 

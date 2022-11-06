@@ -56,7 +56,7 @@
         android:layout_marginStart="144dp"
         android:layout_marginTop="16dp"
 
-        android:text="Modificar"
+        android:text="@string/Modificar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
@@ -90,7 +90,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="Nombre"
+                android:hint="@string/NombreUsu"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -99,7 +99,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="Apellido"
+                android:hint="@string/ApellidoUsuario"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Nombre de Usuario"
+                android:hint="@string/NombreUsuario"
                 android:inputType="textPersonName"
                 android:textSize="20dp" />
 
@@ -118,7 +118,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="E-Mail"
+                android:hint="@string/MailComercio"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
@@ -128,7 +128,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:ems="10"
-                android:hint="Direccion"
+                android:hint="@string/DireccionComercio"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
                 android:textSize="20dp" />
@@ -139,7 +139,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
-                android:hint="Contraseña"
+                android:hint="@string/ContraseñaComercio"
                 android:inputType="textPersonName"
                 android:textSize="20dp" />
 
@@ -148,7 +148,7 @@
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:hint="Sexo"
+                android:hint="@string/SexoUsuario"
                 android:textAlignment="center"
                 android:textSize="20dp" />
 

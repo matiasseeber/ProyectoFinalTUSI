@@ -17,4 +17,57 @@
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- COMERCIOS -->
+
+    <string name="NombreComercio">Nombre Comercio</string>
+    <string name="Descripcion">Descripcion</string>
+    <string name="Stock">Stock</string>
+    <string name="Precio">Precio</string>
+    <string name="CuilComercio">CUIL</string>
+    <string name="MailComercio">E-Mail</string>
+    <string name="DireccionComercio">Direccion</string>
+    <string name="ContraseñaComercio">Contraseña</string>
+    <string name="ContraseñaConfirmComercio">Confirmar contraseña</string>
+
+    <!-- USUARIOS-->
+
+    <string name="NombreUsu">Nombre</string>
+    <string name="ApellidoUsuario">Apellido</string>
+    <string name="SexoUsuario">Sexo</string>
+    <string name="NroTarjeta">Nro. Tarjeta</string>
+    <string name="NombreTarjeta">Nombre en tarjeta</string>
+    <string name="CodigoTarjeta">Codigo de seguridad</string>
+    <string name="TipoTarjeta">Elegir tipo de tarjeta</string>
+    <string name="Credito">Crédito</string>
+    <string name="Debito">Débito</string>
+    <string name="FinalizarCompra">Finalizar compra</string>
+    <string name="ElegirMetodoPago">Elegir un método de pago</string>
+    <string name="Efectivo">Efectivo</string>
+    <string name="Tarjeta">Tarjeta</string>
+    <string name="Peso">$</string>
+
+    <!-- GENERAL -->
+
+    <string name="SeleccionarFoto">Seleccionar</string>
+    <string name="Modificar">Modificar</string>
+    <string name="Cancelar">Cancelar</string>
+    <string name="Cerrar">Cerrar</string>
+    <string name="Aceptar">Aceptar</string>
+    <string name="Agregar">Agregar</string>
+    <string name="Validar">Validar</string>
+    <string name="Rechazar">Rechazar</string>
+    <string name="EliminarCuenta">Eliminar Cuenta</string>
+    <string name="Layout_1">Ups... No hay productos por aquí aún</string>
+    <string name="Layout_2">Ups... No tienes productos cargados por aquí aún</string>
+    <string name="Layout_3">Ups... No tienes pedidos por aquí</string>
+    <string name="Ingreso">Ingresar</string>
+    <string name="Registro">Registrar</string>
+    <string name="OlvidarContraseña">¿Olvidó su contraseña?</string>
+    <string name="ConfirmacionEliminarProducto">¿Esta seguro de eliminar este producto?</string>
+    <string name="Confirmar">Confirmar</string>
+    <string name="IngresarIdentificacion">Ingrese su mail para validar su identidad</string>
+
+
 </resources>
