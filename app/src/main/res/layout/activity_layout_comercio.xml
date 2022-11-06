@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,7 +9,7 @@
         android:id="@+id/imageView45"
         android:layout_width="214dp"
         android:layout_height="246dp"
-        android:src="@drawable/nopedido"
+        android:src="@drawable/panic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,7 +22,7 @@
         android:layout_width="280dp"
         android:layout_height="60dp"
         android:fontFamily="@font/roboto_medium"
-        android:text="@string/Layout_3"
+        android:text="@string/Layout_2"
         android:textAlignment="center"
         android:textColor="@android:color/darker_gray"
         android:textSize="20sp"
@@ -32,5 +32,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView45"
         app:layout_constraintVertical_bias="0.048" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

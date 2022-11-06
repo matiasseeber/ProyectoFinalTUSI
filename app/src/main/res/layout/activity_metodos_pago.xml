@@ -55,7 +55,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="252dp"
         android:ems="10"
-        android:hint="Nro. Tarjeta"
+        android:hint="@string/NroTarjeta"
         android:inputType="number"
         android:maxLength="16"
         android:textSize="20sp"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Nombre en tarjeta"
+        android:hint="@string/NombreTarjeta"
         android:inputType="textPersonName"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:hint="Codigo de seguridad"
+        android:hint="@string/CodigoTarjeta"
         android:inputType="number"
         android:maxLength="3"
         android:textSize="20sp"
@@ -98,7 +98,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Elegir tipo de tarjeta"
+        android:text="@string/TipoTarjeta"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,20 +149,20 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5">
 
         <RadioButton
-            android:shadowColor="@color/Secondary"
             android:id="@+id/radioButton2"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="20dp"
-            android:text="Crédito"
+            android:shadowColor="@color/Secondary"
+            android:text="@string/Credito"
             android:textSize="18dp" />
 
         <RadioButton
-            android:shadowColor="@color/Secondary"
             android:id="@+id/radioButton"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Débito"
+            android:shadowColor="@color/Secondary"
+            android:text="@string/Debito"
             android:textSize="18dp" />
     </RadioGroup>
 
