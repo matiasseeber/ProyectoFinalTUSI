@@ -58,17 +58,6 @@ public class PedidosFragment_Comercio extends Fragment {
     Tab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
         @Override
         public void onTabSelected(TabLayout.Tab tab) {
-            switch(tab.getPosition()){
-                case 0:
-                    Toast.makeText(getContext(), "Pedidos Entregados", Toast.LENGTH_SHORT).show();
-                    break;
-                case 1:
-                    Toast.makeText(getContext(), "Pedidos Sin entregar", Toast.LENGTH_SHORT).show();
-                    break;
-                case 2:
-                    Toast.makeText(getContext(), "Pedidos Pendientes", Toast.LENGTH_SHORT).show();
-                    break;
-            }
         }
 
     @Override
