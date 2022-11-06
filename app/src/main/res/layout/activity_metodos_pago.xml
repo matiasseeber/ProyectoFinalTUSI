@@ -50,17 +50,17 @@
         app:srcCompat="@drawable/arrowback" />
 
     <EditText
-        android:maxLength="16"
         android:id="@+id/editTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="252dp"
         android:ems="10"
         android:hint="Nro. Tarjeta"
         android:inputType="number"
+        android:maxLength="16"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +68,7 @@
         android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Nombre en tarjeta"
         android:inputType="textPersonName"
@@ -82,11 +82,11 @@
         android:id="@+id/editTextNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="Codigo de seguridad"
-        android:maxLength="3"
         android:inputType="number"
+        android:maxLength="3"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.514"
@@ -125,6 +125,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/tarjetas" />
+
+    <Spinner
+        android:id="@+id/spTarjetasUsuario"
+        android:layout_width="269dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView34" />
 
     <RadioGroup
         android:id="@+id/radioGroup"
