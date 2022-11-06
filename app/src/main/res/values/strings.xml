@@ -46,7 +46,7 @@
     <string name="ElegirMetodoPago">Elegir un método de pago</string>
     <string name="Efectivo">Efectivo</string>
     <string name="Tarjeta">Tarjeta</string>
-    <string name="$">$</string>
+    <string name="Peso">$</string>
 
     <!-- GENERAL -->
 
