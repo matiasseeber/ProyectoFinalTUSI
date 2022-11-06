@@ -63,15 +63,30 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
 
         if (idUsuario == -1 || idUsuario == -1) return false;
 
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-        PreparedStatement preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado) values (?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
-        preparedStatement.setInt(1, idUsuario);
-        preparedStatement.setInt(2, idComercioSeleccionado);
-        preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
-        preparedStatement.setFloat(4, pedidoCabecera.getTotal());
-        preparedStatement.setInt(5, 1);
-        insertedRows = preparedStatement.executeUpdate();
+        Connection con;
+        PreparedStatement preparedStatement;
+        if(pedidoCabecera.isEfectivo()){
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
+            preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado) values (?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, idUsuario);
+            preparedStatement.setInt(2, idComercioSeleccionado);
+            preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
+            preparedStatement.setFloat(4, pedidoCabecera.getTotal());
+            preparedStatement.setInt(5, 1);
+            insertedRows = preparedStatement.executeUpdate();
+        }else if(pedidoCabecera.getTarjeta().getId() != -1){
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
+            preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, id_Tarjeta) values (?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+            preparedStatement.setInt(1, idUsuario);
+            preparedStatement.setInt(2, idComercioSeleccionado);
+            preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
+            preparedStatement.setFloat(4, pedidoCabecera.getTotal());
+            preparedStatement.setInt(5, 1);
+            preparedStatement.setInt(6, pedidoCabecera.getTarjeta().getId());
+            insertedRows = preparedStatement.executeUpdate();
+        }
 
         if (insertedRows == -1) return false;
 
@@ -81,6 +96,7 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
         Statement st = con.createStatement();
         ResultSet rs = st.executeQuery("SELECT * from PedidosCabecera;");
+
         while(rs.next()){
             insertedId = rs.getInt("id");
         }
