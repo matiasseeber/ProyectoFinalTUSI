@@ -3,7 +3,7 @@ package Entidades;
 public class Tarjeta {
     private int id;
     private Clientes cliente;
-    private int numTarjeta;
+    private String numTarjeta;
     private String tipoTarjeta;
     private int codSeguridad;
     public Tarjeta(){}
@@ -12,11 +12,11 @@ public class Tarjeta {
         return id;
     }
 
-    public int getNumTarjeta() {
+    public String getNumTarjeta() {
         return numTarjeta;
     }
 
-    public void setNumTarjeta(int numTarjeta) {
+    public void setNumTarjeta(String numTarjeta) {
         this.numTarjeta = numTarjeta;
     }
 
@@ -46,5 +46,13 @@ public class Tarjeta {
 
     public void setCodSeguridad(int codSeguridad) {
         this.codSeguridad = codSeguridad;
+    }
+
+    @Override
+    public String toString() {
+        if(id == -1)
+            return "Nueva tarjeta";
+        String subString = numTarjeta.substring(11, 15);
+        return "**** **** **** " + subString + " - " + tipoTarjeta;
     }
 }
