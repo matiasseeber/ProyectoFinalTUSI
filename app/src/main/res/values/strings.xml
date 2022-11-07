@@ -68,6 +68,7 @@
     <string name="ConfirmacionEliminarProducto">¿Esta seguro de eliminar este producto?</string>
     <string name="Confirmar">Confirmar</string>
     <string name="IngresarIdentificacion">Ingrese su mail para validar su identidad</string>
+    <string name="entregar">ENTREGAR</string>
 
 
 </resources>

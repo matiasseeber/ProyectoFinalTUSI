@@ -67,7 +67,8 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
-    public float setAverageReviews(Comercio com){
+    public float setAverageReviews(Integer Id){
+       float Puntuacion=0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -76,15 +77,18 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "select * from Comercios left join Calificaciones on Comercios.id = Calificaciones.id_Comercio where Comercios.id = " + com.getId() + ";";
+            String query = "SELECT TRUNCATE(AVG(CA.puntuacion),1) FROM Comercios CO INNER JOIN Calificaciones CA ON CA.Id_Comercio = CO.Id WHERE CO.id = " + Id + ";";
             ResultSet rs = st.executeQuery(
                     query
             );
-            com.setPromedioCalificaciones(Helpers.returnBussinessRatingAverage(rs));
+            rs.beforeFirst();
+            while(rs.next()){
+                Puntuacion=rs.getFloat(1);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return com.getPromedioCalificaciones();
+        return Puntuacion;
     }
 
     public void CargarComercios() {
@@ -106,6 +110,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 float distance = 0;
                 Comercio comercio1 = new Comercio();
                 comercio1.setId(rs.getInt(1));
+                comercio1.setPromedioCalificaciones(setAverageReviews(rs.getInt(1)));
                 comercio1.setName(rs.getString(2));
                 comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(5)));
                 comercio1.setAddress(rs.getString(12) + " - " + rs.getString(4));

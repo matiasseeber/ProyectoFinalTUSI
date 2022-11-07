@@ -19,8 +19,7 @@
         <activity
             android:name=".PopUp_Pedidos_Comercio"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            />
+            android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
             android:name=".Pedido_Usuario"
             android:exported="false" />
