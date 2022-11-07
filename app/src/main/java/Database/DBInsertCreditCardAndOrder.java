@@ -59,21 +59,6 @@ public class DBInsertCreditCardAndOrder extends AsyncTask<Boolean, Void, Boolean
         this.activity = activity;
     }
 
-    public int returnIdTarjeta(Long numTarjeta){
-        try{
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            Statement st = con.createStatement();
-            ResultSet rs = st.executeQuery("Select * from Tarjetas where numTarjeta = " + numTarjeta);
-            if(rs.next()){
-                return rs.getInt("id");
-            }
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-        return -1;
-    }
-
     public boolean insertCard() {
         int insertedRows = 0;
         Tarjeta tarjeta = pedidoCabecera.getTarjeta();
@@ -88,10 +73,6 @@ public class DBInsertCreditCardAndOrder extends AsyncTask<Boolean, Void, Boolean
             insertedRows = preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
-        }
-        if(insertedRows == 1){
-            int idTarjeta = returnIdTarjeta(Long.parseLong(tarjeta.getNumTarjeta()));
-            pedidoCabecera.getTarjeta().setId(idTarjeta);
         }
         return insertedRows == 1;
     }

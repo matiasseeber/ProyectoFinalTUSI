@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import Entidades.PedidoCabecera;
 import Entidades.PedidoDetalle;
+import Entidades.Tarjeta;
 import Helpers.Helpers;
 
 public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
@@ -55,6 +56,21 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         this.activity = activity;
     }
 
+    public int returnIdTarjeta(Long numTarjeta){
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery("Select * from Tarjetas where numTarjeta = " + numTarjeta);
+            if(rs.next()){
+                return rs.getInt("id");
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return -1;
+    }
+
     public boolean insertPedido() throws ClassNotFoundException, SQLException {
         int insertedRows = 0;
 
@@ -62,6 +78,13 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         int idComercioSeleccionado = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getInt("idComercioSeleccionado", -1);
 
         if (idUsuario == -1 || idUsuario == -1) return false;
+
+        Tarjeta tarjeta = pedidoCabecera.getTarjeta();
+
+        int idTarjeta = returnIdTarjeta(Long.parseLong(tarjeta.getNumTarjeta()));
+        pedidoCabecera.getTarjeta().setId(idTarjeta);
+
+        if(idTarjeta == -1) return false;
 
         Connection con;
         PreparedStatement preparedStatement;
