@@ -9,6 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import Database.DBLoadAllDeliveredOrders;
+import Database.DBLoadAllNotDeliveredOrders;
+import Helpers.Helpers;
+
 public class FragmentPedidoEntregado extends Fragment {
 
     private GridView grvPedidosSinEntregarComercio;
@@ -28,9 +32,25 @@ public class FragmentPedidoEntregado extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_pedido_entregado, container, false);
-        msg = (View) view.findViewById(R.id.msgNoTienesPedidosSinEntregarComercios);
+        msg = (View) view.findViewById(R.id.msgImgSinPedidosEntregadosComercio);
         msg.setVisibility(View.GONE);
-        grvPedidosSinEntregarComercio = (GridView) view.findViewById(R.id.grvPedidosSinEntregarComercio);
+        grvPedidosSinEntregarComercio = (GridView) view.findViewById(R.id.grvPedidosEntregadosComercios);
+        LoadAllOrders();
         return view;
+    }
+
+    public void LoadAllOrders(){
+        DBLoadAllDeliveredOrders dbLoadAllDeliveredOrders = new DBLoadAllDeliveredOrders();
+        dbLoadAllDeliveredOrders.setId_comercio(Helpers.getUserId(getContext()));
+        dbLoadAllDeliveredOrders.setGrid(grvPedidosSinEntregarComercio);
+        dbLoadAllDeliveredOrders.setContext(getContext());
+        dbLoadAllDeliveredOrders.setMsg(msg);
+        dbLoadAllDeliveredOrders.execute();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadAllOrders();
     }
 }
