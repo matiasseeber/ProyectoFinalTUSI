@@ -8,23 +8,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tp_final.PopUp_AgregarProducto;
 import com.example.tp_final.PopUp_Pedidos_Comercio;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
 
 import Entidades.PedidoCabecera;
-import Entidades.Producto;
 
-public class PedidosPendientesComercioAdapter extends BaseAdapter {
+public class PedidosEntregadosComercioAdapter extends BaseAdapter {
     private ArrayList<PedidoCabecera> elementos;
     private Context context;
 
-    public PedidosPendientesComercioAdapter(Context context, ArrayList<PedidoCabecera> elementos) {
+    public PedidosEntregadosComercioAdapter(Context context, ArrayList<PedidoCabecera> elementos) {
         this.context = context;
         this.elementos = elementos;
     }
@@ -51,7 +48,7 @@ public class PedidosPendientesComercioAdapter extends BaseAdapter {
         View view = convertView;
 
         if (convertView == null){
-            view = inflater.inflate(R.layout.grid_template_pedidos_pendientes,null);
+            view = inflater.inflate(R.layout.grid_template_pedidos_entregados,null);
         }
 
         PedidoCabecera pedidoCabecera = getItem(position);

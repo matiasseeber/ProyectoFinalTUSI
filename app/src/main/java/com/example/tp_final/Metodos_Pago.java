@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import Database.DBInsertCreditCardAndOrder;
+import Database.DBInsertPedido;
 import Database.DBLoadCreditCardsInSpinner;
 import Entidades.PedidoCabecera;
 import Entidades.PedidoDetalle;
@@ -55,10 +56,13 @@ public class Metodos_Pago extends AppCompatActivity {
                     txtNroTarjeta.setText(tarjeta.getNumTarjeta());
                     nombreTarjeta.setText(tarjeta.getCliente().getNombre() + " " + tarjeta.getCliente().getApellido());
                     codSeguridad.setText("***");
-                    if(tarjeta.getTipoTarjeta() == "Crédito")
+                    if(tarjeta.getTipoTarjeta().equals("Crédito")){
                         btnCredito.setChecked(true);
-                    else
+                        btnDebito.setChecked(false);
+                    }else{
+                        btnCredito.setChecked(false);
                         btnDebito.setChecked(true);
+                    }
                     enabled = false;
                 }else{
                     txtNroTarjeta.setText("");
@@ -103,9 +107,11 @@ public class Metodos_Pago extends AppCompatActivity {
         PedidoCabecera pedidoCabecera = gson.fromJson(getIntent().getStringExtra("pedidoCabecera"), PedidoCabecera.class);
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setNumTarjeta(txtNroTarjeta.getText().toString());
-        String tipoTarjeta = btnCredito.isChecked() ? btnCredito.getText().toString() : btnDebito.getText().toString();
-        tarjeta.setTipoTarjeta(tipoTarjeta);
-        tarjeta.setCodSeguridad(Integer.parseInt(codSeguridad.getText().toString()));
+        if(spTarjetasUsuario.getSelectedItemPosition() == 0){
+            String tipoTarjeta = btnCredito.isChecked() ? btnCredito.getText().toString() : btnDebito.getText().toString();
+            tarjeta.setTipoTarjeta(tipoTarjeta);
+            tarjeta.setCodSeguridad(Integer.parseInt(codSeguridad.getText().toString()));
+        }
         pedidoCabecera.setTarjeta(tarjeta);
         return pedidoCabecera;
     }
@@ -132,15 +138,22 @@ public class Metodos_Pago extends AppCompatActivity {
 
     public void ClickFinish(View view) {
         if (!isFormValid()) return;
+        PedidoCabecera pedidoCabecera = jsonParsePedidoCabecera();
+        ArrayList<PedidoDetalle> pedidoDetalleArrayList = jsonParsePedidoDetalle();
         if (spTarjetasUsuario.getVisibility() == View.GONE || spTarjetasUsuario.getSelectedItemPosition() == 0) {
             DBInsertCreditCardAndOrder dbInsertCreditCardAndOrder = new DBInsertCreditCardAndOrder();
             dbInsertCreditCardAndOrder.setActivity(this);
             dbInsertCreditCardAndOrder.setContext(getApplicationContext());
-            dbInsertCreditCardAndOrder.setPedidoCabecera(jsonParsePedidoCabecera());
-            dbInsertCreditCardAndOrder.setPedidoDetalleArrayList(jsonParsePedidoDetalle());
+            dbInsertCreditCardAndOrder.setPedidoCabecera(pedidoCabecera);
+            dbInsertCreditCardAndOrder.setPedidoDetalleArrayList(pedidoDetalleArrayList);
             dbInsertCreditCardAndOrder.execute();
         } else {
-
+            DBInsertPedido insertPedido = new DBInsertPedido();
+            pedidoCabecera.setPedidoDetalles(pedidoDetalleArrayList);
+            insertPedido.setPedidoCabecera(pedidoCabecera);
+            insertPedido.setContext(getApplicationContext());
+            insertPedido.setActivity(this);
+            insertPedido.execute();
         }
     }
 }

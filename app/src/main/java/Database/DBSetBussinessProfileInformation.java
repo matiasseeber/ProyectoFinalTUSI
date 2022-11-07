@@ -134,7 +134,8 @@ public class DBSetBussinessProfileInformation extends AsyncTask<Boolean, Void, B
                 comercio.setPassword(rs.getString("contraseña"));
                 wasComercioSet = true;
             }
-            comercio.setPromedioCalificaciones(Helpers.returnBussinessRatingAverage(rs));
+            String promedio = String.valueOf(Helpers.returnBussinessRatingAverage(rs)).substring(0, 3);
+            comercio.setPromedioCalificaciones(Float.parseFloat(promedio));
             return wasComercioSet;
         } catch (Exception e) {
             e.printStackTrace();
