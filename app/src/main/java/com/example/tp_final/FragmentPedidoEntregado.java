@@ -7,8 +7,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 public class FragmentPedidoEntregado extends Fragment {
+
+    private GridView grvPedidosSinEntregarComercio;
+    private View msg;
 
     public FragmentPedidoEntregado() {
         // Required empty public constructor
@@ -23,6 +27,10 @@ public class FragmentPedidoEntregado extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pedido_entregado, container, false);
+        View view = inflater.inflate(R.layout.fragment_pedido_entregado, container, false);
+        msg = (View) view.findViewById(R.id.msgNoTienesPedidosSinEntregarComercios);
+        msg.setVisibility(View.GONE);
+        grvPedidosSinEntregarComercio = (GridView) view.findViewById(R.id.grvPedidosSinEntregarComercio);
+        return view;
     }
 }

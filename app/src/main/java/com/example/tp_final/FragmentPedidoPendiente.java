@@ -33,12 +33,22 @@ public class FragmentPedidoPendiente extends Fragment {
         viewNoTienesPedidosPendientesComercio = (View) view.findViewById(R.id.viewNoTienesPedidosPendientesComercio);
         viewNoTienesPedidosPendientesComercio.setVisibility(View.GONE);
         grvPedidosPendientesComercio = (GridView) view.findViewById(R.id.grvPedidosPendientesComercio);
+        LoadAllOrders();
+        return view;
+    }
+
+    public void LoadAllOrders(){
         DBLoadAllPendingOrders dbLoadAllPendingOrders = new DBLoadAllPendingOrders();
         dbLoadAllPendingOrders.setId_comercio(Helpers.getUserId(getContext()));
         dbLoadAllPendingOrders.setGrid(grvPedidosPendientesComercio);
         dbLoadAllPendingOrders.setContext(getContext());
         dbLoadAllPendingOrders.setMsg(viewNoTienesPedidosPendientesComercio);
         dbLoadAllPendingOrders.execute();
-        return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        LoadAllOrders();
     }
 }

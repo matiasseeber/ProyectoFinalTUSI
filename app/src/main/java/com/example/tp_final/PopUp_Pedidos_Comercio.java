@@ -9,12 +9,12 @@ public class PopUp_Pedidos_Comercio extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.Theme_TP_FINAL_TemaPopUp);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up_pedidos_comercio);
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.60));
+        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.85));
     }
 }

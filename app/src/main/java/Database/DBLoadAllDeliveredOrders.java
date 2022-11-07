@@ -5,8 +5,6 @@ import android.os.AsyncTask;
 import android.view.View;
 import android.widget.GridView;
 
-import com.mysql.jdbc.Blob;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,9 +14,10 @@ import java.util.ArrayList;
 import Entidades.Clientes;
 import Entidades.PedidoCabecera;
 import Entidades.Producto;
-import adapters.PedidosPendientesComercioAdapter;
+import adapters.PedidosEntregadosComercioAdapter;
+import adapters.PedidosSinEntregarComercioAdapter;
 
-public class DBLoadAllPendingOrders extends AsyncTask<Boolean, Void, Boolean> {
+public class DBLoadAllDeliveredOrders extends AsyncTask<Boolean, Void, Boolean> {
 
     private GridView grid;
     private Context context;
@@ -28,7 +27,7 @@ public class DBLoadAllPendingOrders extends AsyncTask<Boolean, Void, Boolean> {
 
     private ArrayList<Producto> productos;
 
-    public DBLoadAllPendingOrders() {
+    public DBLoadAllDeliveredOrders() {
     }
 
     public View getMsg() {
@@ -73,7 +72,7 @@ public class DBLoadAllPendingOrders extends AsyncTask<Boolean, Void, Boolean> {
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id where  PedidosCabecera.estado = 1 and PedidosCabecera.id_Comercio = " + id_comercio + ";";
+            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id where PedidosCabecera.estado = 4 and PedidosCabecera.id_Comercio = " + id_comercio + ";";
             ResultSet rs = st.executeQuery(
                     query
             );
@@ -103,6 +102,6 @@ public class DBLoadAllPendingOrders extends AsyncTask<Boolean, Void, Boolean> {
         if (pedidoCabeceras.size() == 0 && msg != null)
             msg.setVisibility(View.VISIBLE);
         if (pedidoCabeceras.size() != 0)
-            grid.setAdapter(new PedidosPendientesComercioAdapter(context, pedidoCabeceras));
+            grid.setAdapter(new PedidosEntregadosComercioAdapter(context, pedidoCabeceras));
     }
 }
