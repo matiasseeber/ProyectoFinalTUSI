@@ -50,7 +50,7 @@
         app:srcCompat="@drawable/circle3" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnModificarUsuario_Cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
@@ -61,7 +61,7 @@
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnEliminarCuenta_Cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -86,7 +86,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/txtNombre_cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -95,7 +95,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textV"
+                android:id="@+id/txtApellido_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -104,7 +104,7 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName5"
+                android:id="@+id/txtNombreUsuario_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
@@ -114,7 +114,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txtEmail_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -122,8 +122,8 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/editTextTextPersonName6"
+            <EditText
+                android:id="@+id/txtDireccion_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -134,17 +134,28 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextc"
+                android:id="@+id/txtContraseña_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/ContraseñaComercio"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
                 android:textSize="20dp" />
 
+            <EditText
+                android:id="@+id/txtVericarContraseña_Cuenta"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Repetir Contraseña"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="20dp" />
             <TextView
-                android:id="@+id/textVi"
+                android:id="@+id/txtSexo_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
