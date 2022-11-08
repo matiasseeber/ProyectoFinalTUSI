@@ -79,13 +79,6 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
 
         if (idUsuario == -1 || idUsuario == -1) return false;
 
-        Tarjeta tarjeta = pedidoCabecera.getTarjeta();
-
-        int idTarjeta = returnIdTarjeta(Long.parseLong(tarjeta.getNumTarjeta()));
-        pedidoCabecera.getTarjeta().setId(idTarjeta);
-
-        if(idTarjeta == -1) return false;
-
         Connection con;
         PreparedStatement preparedStatement;
         if(pedidoCabecera.isEfectivo()){
@@ -98,17 +91,27 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
             preparedStatement.setFloat(4, pedidoCabecera.getTotal());
             preparedStatement.setInt(5, 1);
             insertedRows = preparedStatement.executeUpdate();
-        }else if(pedidoCabecera.getTarjeta().getId() != -1){
-            Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, id_Tarjeta) values (?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
-            preparedStatement.setInt(1, idUsuario);
-            preparedStatement.setInt(2, idComercioSeleccionado);
-            preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
-            preparedStatement.setFloat(4, pedidoCabecera.getTotal());
-            preparedStatement.setInt(5, 1);
-            preparedStatement.setInt(6, pedidoCabecera.getTarjeta().getId());
-            insertedRows = preparedStatement.executeUpdate();
+        }else{
+            Tarjeta tarjeta = pedidoCabecera.getTarjeta();
+
+            int idTarjeta = returnIdTarjeta(Long.parseLong(tarjeta.getNumTarjeta()));
+            pedidoCabecera.getTarjeta().setId(idTarjeta);
+
+            if(idTarjeta == -1) return false;
+
+            if(pedidoCabecera.getTarjeta().getId() != -1){
+                Class.forName("com.mysql.jdbc.Driver");
+                con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
+                preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, id_Tarjeta) values (?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                preparedStatement.setInt(1, idUsuario);
+                preparedStatement.setInt(2, idComercioSeleccionado);
+                preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
+                preparedStatement.setFloat(4, pedidoCabecera.getTotal());
+                preparedStatement.setInt(5, 1);
+                preparedStatement.setInt(6, pedidoCabecera.getTarjeta().getId());
+                insertedRows = preparedStatement.executeUpdate();
+            }
+
         }
 
         if (insertedRows == -1) return false;

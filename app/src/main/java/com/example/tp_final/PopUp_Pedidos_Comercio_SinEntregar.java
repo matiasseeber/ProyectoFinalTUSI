@@ -1,35 +1,33 @@
 package com.example.tp_final;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import java.util.HashSet;
+import androidx.appcompat.app.AppCompatActivity;
 
 import Database.DBCambiarEstadoDePedidoComercio;
 import Database.DBLoadOrderInfo;
 
-public class PopUp_Pedidos_Comercio extends AppCompatActivity {
+public class PopUp_Pedidos_Comercio_SinEntregar extends AppCompatActivity {
 
     private GridView dgvPedidosUsuariosComercio;
     private TextView txtTotalPedidoPendienteComercio;
     private int idPedido;
-
+    private Button btnEntregar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.Theme_TP_FINAL_TemaPopUp);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pop_up_pedidos_comercio);
+        setContentView(R.layout.activity_pop_up_pedidos_comercio_sinentregar);
 
         dgvPedidosUsuariosComercio = (GridView) findViewById(R.id.grvDetallePedidoComercioSinEntregar);
         txtTotalPedidoPendienteComercio = (TextView) findViewById(R.id.txtTotalPedidoSinEntregarComercio);
+        btnEntregar = (Button) findViewById(R.id.btnEntregarPedidosComercioSinEntregar);
 
         idPedido = getIntent().getIntExtra("idPedidoCabecera", -1);
 
@@ -43,17 +41,17 @@ public class PopUp_Pedidos_Comercio extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.85));
+
+        btnEntregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnClickEntregar();
+            }
+        });
     }
 
     public void ModificarEstadoOrden(int estado){
         DBCambiarEstadoDePedidoComercio dbCambiarEstadoDePedidoComercio = new DBCambiarEstadoDePedidoComercio();
-
-        if(estado == 3){
-            SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-            HashSet<String> detallePedido = (HashSet<String>) sh.getStringSet("detallePedido", null);
-            dbCambiarEstadoDePedidoComercio.setDetallePedido(detallePedido);
-        }
-
         dbCambiarEstadoDePedidoComercio.setIdPedido(idPedido);
         dbCambiarEstadoDePedidoComercio.setActivity(this);
         dbCambiarEstadoDePedidoComercio.setContext(getApplicationContext());
@@ -61,11 +59,7 @@ public class PopUp_Pedidos_Comercio extends AppCompatActivity {
         dbCambiarEstadoDePedidoComercio.execute();
     }
 
-    public void OnClickAceptar(View view){
-        ModificarEstadoOrden(3);
-    }
-
-    public void OnClickRechazar(View view){
-        ModificarEstadoOrden(2);
+    public void OnClickEntregar(){
+        ModificarEstadoOrden(4);
     }
 }

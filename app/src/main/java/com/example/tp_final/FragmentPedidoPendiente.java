@@ -33,7 +33,6 @@ public class FragmentPedidoPendiente extends Fragment {
         viewNoTienesPedidosPendientesComercio = (View) view.findViewById(R.id.viewNoTienesPedidosPendientesComercio);
         viewNoTienesPedidosPendientesComercio.setVisibility(View.GONE);
         grvPedidosPendientesComercio = (GridView) view.findViewById(R.id.grvPedidosPendientesComercio);
-        LoadAllOrders();
         return view;
     }
 
