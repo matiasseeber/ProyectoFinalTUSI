@@ -13,7 +13,8 @@
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pedido_usuario.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_agregar_producto.xml" value="0.33" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_finalpedido.xml" value="0.1762917933130699" />
-        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_comercio.xml" value="0.1762917933130699" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_comercio.xml" value="0.514745308310992" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_comercio_sinentregar.xml" value="0.33" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_entregados_comercio.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_validacion_comercio.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_rating.xml" value="0.1" />
@@ -28,7 +29,9 @@
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/fragment_pedidos.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/fragment_pedidos__comercio.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_comercios.xml" value="0.25" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_entregado_usuarios.xml" value="0.29030797101449274" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_usuario.xml" value="0.5" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_usuario_comercio.xml" value="0.5" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedidos_entregados.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedidos_pendientes.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedidos_pendientes_usuarios.xml" value="0.1762917933130699" />
@@ -57,10 +60,6 @@
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_agregar_producto.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_eliminar_producto_comercio.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_finalpedido.xml" value="0.3625" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_pedidos_comercio.xml" value="0.3625" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_pedidos_comercio_sinentregar.xml" value="0.3625" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_pedidos_entregados_comercio.xml" value="0.3625" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_sinproductos_comercio.xml" value="0.3484375" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_pop_up_validacion_comercio.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_productos_abm_comercio.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/activity_rating.xml" value="0.3625" />
@@ -83,9 +82,7 @@
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/fragment_pedidos__comercio.xml" value="0.3484375" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/fragment_second.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_comercios.xml" value="0.33" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedido_entregado_usuarios.xml" value="0.2276923076923077" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedido_usuario.xml" value="0.3625" />
-        <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedido_usuario_comercio.xml" value="0.23333333333333334" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedidos_aentregar_usuarios.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedidos_entregados.xml" value="0.3625" />
         <entry key="..\:/Users/matia/Desktop/Matias Alves/Facultad/TUSI/2do Cuatrimestre/Seminario/ProyectoFinalTUSI/app/src/main/res/layout/grid_template_pedidos_pendientes.xml" value="0.3625" />

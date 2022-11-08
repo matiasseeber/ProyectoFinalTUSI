@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tp_final.PopUp_Pedidos_Comercio;
+import com.example.tp_final.PopUp_Pedidos_Comercio_SinEntregar;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
@@ -53,18 +54,19 @@ public class PedidosSinEntregarComercioAdapter extends BaseAdapter {
 
         PedidoCabecera pedidoCabecera = getItem(position);
 
+        TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
+        TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
+        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PopUp_Pedidos_Comercio.class);
+                Intent intent = new Intent(context, PopUp_Pedidos_Comercio_SinEntregar.class);
+                intent.putExtra("idPedidoCabecera", pedidoCabecera.getId());
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });
-
-        TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
-        TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
-        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
 
         txtNombreClientePedidosComercio.setText(pedidoCabecera.getCliente().getNombreUsuario());
         txtTotalPedidoComercio.setText(String.valueOf(pedidoCabecera.getTotal()));
