@@ -47,6 +47,10 @@
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog" />
         <activity
+            android:name=".PopUp_Pedidos_Comercio_SinEntregar"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
             android:name=".Productos_ABM_Comercio"
             android:exported="false" />
         <activity

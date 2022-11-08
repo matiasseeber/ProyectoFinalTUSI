@@ -115,7 +115,7 @@ public class DBLoadAllProducts extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if(productos.size() == 0 && pibitoDeHombros != null) pibitoDeHombros.setVisibility(View.VISIBLE);
+        if(productos.size() == 0 && pibitoDeHombros != null) pibitoDeHombros.setVisibility(View.VISIBLE); else pibitoDeHombros.setVisibility(View.GONE);
         if(!isClientSide)
             grid.setAdapter(new ProductsAdapter(context, productos));
         else

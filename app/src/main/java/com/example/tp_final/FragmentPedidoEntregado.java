@@ -35,7 +35,6 @@ public class FragmentPedidoEntregado extends Fragment {
         msg = (View) view.findViewById(R.id.msgImgSinPedidosEntregadosComercio);
         msg.setVisibility(View.GONE);
         grvPedidosSinEntregarComercio = (GridView) view.findViewById(R.id.grvPedidosEntregadosComercios);
-        LoadAllOrders();
         return view;
     }
 

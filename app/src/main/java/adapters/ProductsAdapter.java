@@ -21,7 +21,6 @@ import Entidades.Producto;
 public class ProductsAdapter extends BaseAdapter {
     private ArrayList<Producto> elementos;
     private Context context;
-    private EditText txtEstrellas;
 
     public ProductsAdapter(Context context, ArrayList<Producto> elementos) {
         this.context = context;

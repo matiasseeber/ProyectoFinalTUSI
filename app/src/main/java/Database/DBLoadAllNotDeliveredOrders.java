@@ -22,7 +22,7 @@ public class DBLoadAllNotDeliveredOrders extends AsyncTask<Boolean, Void, Boolea
     private GridView grid;
     private Context context;
     private int id_comercio;
-    private ArrayList<PedidoCabecera> pedidoCabeceras;
+    private ArrayList<PedidoCabecera> pedidoCabeceras  = new ArrayList<PedidoCabecera>();;
     private View msg;
 
     private ArrayList<Producto> productos;
@@ -63,7 +63,6 @@ public class DBLoadAllNotDeliveredOrders extends AsyncTask<Boolean, Void, Boolea
     }
 
     public void CargarPedidosPendientes() {
-        pedidoCabeceras = new ArrayList<PedidoCabecera>();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -101,7 +100,6 @@ public class DBLoadAllNotDeliveredOrders extends AsyncTask<Boolean, Void, Boolea
     protected void onPostExecute(Boolean response) {
         if (pedidoCabeceras.size() == 0 && msg != null)
             msg.setVisibility(View.VISIBLE);
-        if (pedidoCabeceras.size() != 0)
-            grid.setAdapter(new PedidosSinEntregarComercioAdapter(context, pedidoCabeceras));
+        grid.setAdapter(new PedidosSinEntregarComercioAdapter(context, pedidoCabeceras));
     }
 }

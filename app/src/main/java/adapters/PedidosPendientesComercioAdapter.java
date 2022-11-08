@@ -56,18 +56,19 @@ public class PedidosPendientesComercioAdapter extends BaseAdapter {
 
         PedidoCabecera pedidoCabecera = getItem(position);
 
+        TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
+        TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
+        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, PopUp_Pedidos_Comercio.class);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("idPedidoCabecera", pedidoCabecera.getId());
                 context.startActivity(intent);
             }
         });
-
-        TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
-        TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
-        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
 
         txtNombreClientePedidosComercio.setText(pedidoCabecera.getCliente().getNombreUsuario());
         txtTotalPedidoComercio.setText(String.valueOf(pedidoCabecera.getTotal()));
