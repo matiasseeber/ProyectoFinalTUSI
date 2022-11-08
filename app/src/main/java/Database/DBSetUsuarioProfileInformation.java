@@ -17,7 +17,7 @@ public class DBSetUsuarioProfileInformation  extends AsyncTask<Boolean, Void, Bo
     private Clientes clientes;
     private TextView nombre=null;
     private TextView apellido=null;
-    private EditText nombreDeUsuario=null;
+    private TextView nombreDeUsuario=null;
     private TextView email=null;
     private EditText direccion=null;
     private EditText contraseña=null;
@@ -35,9 +35,9 @@ public class DBSetUsuarioProfileInformation  extends AsyncTask<Boolean, Void, Bo
 
     public void setApellido(TextView apellido) {this.apellido = apellido;}
 
-    public EditText getNombreDeUsuario() {return nombreDeUsuario;}
+    public TextView getNombreDeUsuario() {return nombreDeUsuario;}
 
-    public void setNombreDeUsuario(EditText nombreDeUsuario) {this.nombreDeUsuario = nombreDeUsuario;}
+    public void setNombreDeUsuario(TextView nombreDeUsuario) {this.nombreDeUsuario = nombreDeUsuario;}
 
     public TextView getEmail() {return email;}
 
@@ -95,7 +95,7 @@ public class DBSetUsuarioProfileInformation  extends AsyncTask<Boolean, Void, Bo
     protected void onPostExecute(Boolean response){
     if(nombre != null)nombre.setText(clientes.getNombre());
     if(apellido != null)apellido.setText(clientes.getApellido());
-    if(nombreDeUsuario != null)nombreDeUsuario.setText(clientes.getNombreUsuario());
+   if(nombreDeUsuario != null)nombreDeUsuario.setText(clientes.getNombreUsuario());
     if(email != null)email.setText(clientes.getEmail());
     if(direccion != null)direccion.setText(clientes.getDireccion());
     if(contraseña != null && Validarcontraseña != null)contraseña.setText(clientes.getContraseña());

@@ -39,16 +39,16 @@ public class DBUpdateUsarioInfo extends AsyncTask<Boolean, Void, Boolean> {
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            PreparedStatement preparedStatement = con.prepareStatement("Update Clientes set nombre = ? ,apellido = ? ,nombreUsuario = ? ,email = ?,direccion = ?,contraseña = ?, sexo = ?, where id = ?;", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = con.prepareStatement("Update Clientes set direccion = ?,contraseña = ?, where id = ?;", Statement.RETURN_GENERATED_KEYS);
             //preparedStatement.setString(1, comercio.getName());
-            preparedStatement.setString(1,clientes.getNombre());
-            preparedStatement.setString(2,clientes.getApellido());
-            preparedStatement.setString(3,clientes.getNombreUsuario());
-            preparedStatement.setString(4,clientes.getEmail());
-            preparedStatement.setString(5,clientes.getDireccion());
-            preparedStatement.setString(6,clientes.getContraseña());
-            preparedStatement.setString(7,clientes.getSexo());
-            preparedStatement.setInt(8, clientes.getId());
+            //preparedStatement.setString(1,clientes.getNombre());
+            //preparedStatement.setString(2,clientes.getApellido());
+           //preparedStatement.setString(3,clientes.getNombreUsuario());
+            //preparedStatement.setString(3,clientes.getEmail());
+            preparedStatement.setString(1,clientes.getDireccion());
+            preparedStatement.setString(2,clientes.getContraseña());
+            //preparedStatement.setString(6,clientes.getSexo());
+            preparedStatement.setInt(3, clientes.getId());
 
             afectedRows = preparedStatement.executeUpdate();
 

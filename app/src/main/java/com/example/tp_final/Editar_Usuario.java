@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import Database.DBDeleteUsuario;
 import Database.DBSetUsuarioProfileInformation;
 import Database.DBUpdateUsarioInfo;
@@ -22,7 +24,7 @@ public class Editar_Usuario extends AppCompatActivity {
     private Button btnEliminar;
     private TextView nombre;
     private TextView apellido;
-    private EditText nombreDeUsuario;
+    private TextView nombreDeUsuario;
     private TextView email;
     private EditText direccion;
     private EditText contraseña;
@@ -32,17 +34,17 @@ public class Editar_Usuario extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_editar_usuario);
+        setContentView(R.layout.fragment_cuenta);
 
         btnModificar=(Button) findViewById(R.id.btnModificarUsuario_Cuenta);
         btnEliminar=(Button)  findViewById(R.id.btnEliminarCuenta_Cuenta);
-        nombre=(TextView) findViewById(R.id.txtNombre_cuenta);
-        apellido=(TextView) findViewById(R.id.txtApellido_Cuenta);
-        nombreDeUsuario=(EditText) findViewById(R.id.txtNombreUsuario_Cuenta);
+        nombre=(TextView) findViewById(R.id.txtNombre_usuario);
+        apellido=(TextView) findViewById(R.id.txtApellido_usuario);
+        nombreDeUsuario=(TextView) findViewById(R.id.txtNombreUsuario_Cuenta);
         email=(TextView) findViewById(R.id.txtEmail_Cuenta);
         direccion=(EditText) findViewById(R.id.txtDireccion_Cuenta);
         contraseña=(EditText) findViewById(R.id.txtContraseña_Cuenta);
-        validarContraseña = (EditText) findViewById(R.id.txtVericarContraseña_Cuenta);
+        validarContraseña = (EditText) findViewById(R.id.txtContraseñaValidar_cuenta);
         sexo=(TextView) findViewById(R.id.txtSexo_Cuenta);
 
         btnModificar.setOnClickListener(new View.OnClickListener() {
@@ -96,8 +98,7 @@ public class Editar_Usuario extends AppCompatActivity {
         //validar que el nombre de usuario ya existe
         if(nombreDeUsuario.getText().toString().isEmpty()){
             nombreDeUsuario.setError(requiredError);
-            isFormValid = false;
-        }
+            isFormValid = false;}
 
         //validar que el email no exista
         if(email.getText().toString().isEmpty()){

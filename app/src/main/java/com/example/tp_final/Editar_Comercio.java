@@ -17,9 +17,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.time.ZoneId;
-
-import Database.DBLoadAllProducts;
 import Database.DBSetBussinessProfileInformation;
 import Database.DBUpdateBussinesInfo;
 import Entidades.Comercio;
@@ -44,7 +41,7 @@ public class Editar_Comercio extends AppCompatActivity {
 
         btnPick=(Button) findViewById(R.id.btnSeleccionarImg);
         imgV = (ImageView) findViewById(R.id.imgViewComercioEdit);
-        nombre = (EditText) findViewById(R.id.editTextTextPersonName5);
+        nombre = (EditText) findViewById(R.id.txtNombreUsuario_Cuenta);
         email = (TextView) findViewById(R.id.textViewEmail);
         cuil = (TextView) findViewById(R.id.textViewCUIL);
         direccion = (EditText) findViewById(R.id.editTextDireccion);
