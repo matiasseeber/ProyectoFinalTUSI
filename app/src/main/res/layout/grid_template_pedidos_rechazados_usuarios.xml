@@ -14,7 +14,7 @@
         android:textAllCaps="false"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.278"
         app:layout_constraintStart_toEndOf="@+id/imageView48"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -22,30 +22,30 @@
         android:id="@+id/txtTotalPedidoComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
+        app:layout_constraintStart_toEndOf="@+id/imageView48"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
-        android:id="@+id/txtPrecioProducto"
+        android:id="@+id/txtTotalPedidoComercio4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="10dp"
-        android:text="$"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="8dp"
+        android:text="TextView"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTotalPedidoComercio"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
         android:id="@+id/txtIdPedidoComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
         android:visibility="invisible"
         app:layout_constraintStart_toEndOf="@+id/txtNombreClientePedidosComercio"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +56,7 @@
         android:layout_height="66dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/reject"
+        android:src="@drawable/comercio"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

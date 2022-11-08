@@ -7,7 +7,7 @@
     tools:context=".PopUp_Pedidos_Comercio">
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btncerrarPedidoComercioSinentregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="332dp"
@@ -26,7 +26,7 @@
         android:layout_marginTop="160dp"
         android:alpha="0.6"
         app:layout_constraintStart_toEndOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2"
+        app:layout_constraintTop_toBottomOf="@+id/btncerrarPedidoComercioSinentregar"
         app:srcCompat="@drawable/circle2" />
 
     <ImageView

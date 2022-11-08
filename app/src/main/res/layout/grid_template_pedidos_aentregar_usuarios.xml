@@ -22,22 +22,22 @@
         android:id="@+id/txtTotalPedidoComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
+        app:layout_constraintStart_toEndOf="@+id/imageView48"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
-        android:id="@+id/txtPrecioProducto"
+        android:id="@+id/txtTotalPedidoComercio3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="118dp"
-        android:layout_marginTop="10dp"
-        android:text="$"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:text="TextView"
         android:textSize="18dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txtTotalPedidoComercio"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
@@ -69,7 +69,7 @@
         android:layout_marginTop="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/delivery" />
+        android:src="@drawable/comercio" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

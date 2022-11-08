@@ -14,13 +14,14 @@ import java.util.HashSet;
 
 import Database.DBCambiarEstadoDePedidoComercio;
 import Database.DBLoadOrderInfo;
+import android.widget.ImageButton;
 
 public class PopUp_Pedidos_Comercio extends AppCompatActivity {
 
     private GridView dgvPedidosUsuariosComercio;
     private TextView txtTotalPedidoPendienteComercio;
     private int idPedido;
-
+    private ImageButton btnCerrar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,10 +40,16 @@ public class PopUp_Pedidos_Comercio extends AppCompatActivity {
         dbLoadOrderInfo.setGrid(dgvPedidosUsuariosComercio);
         dbLoadOrderInfo.setTotal(txtTotalPedidoPendienteComercio);
         dbLoadOrderInfo.execute();
+        btnCerrar = (ImageButton) findViewById(R.id.btncerrarPedidoComercioSinentregar);
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.85));
+
+    }
+
+    public void Cerrar(View view){
+        this.finish();
     }
 
     public void ModificarEstadoOrden(int estado){

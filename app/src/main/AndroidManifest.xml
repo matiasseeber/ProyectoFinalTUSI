@@ -17,6 +17,13 @@
         android:theme="@style/Theme.TP_FINAL"
         tools:targetApi="31">
         <activity
+            android:name=".PopUp_Cabecera_Comprobante"
+            android:exported="false" />
+        <activity
+            android:name=".PopUp_Cabecera_Pedidos_Usuarios"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Dialog" />
+        <activity
             android:name=".PopUp_Pedidos_Comercio"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Dialog" />
