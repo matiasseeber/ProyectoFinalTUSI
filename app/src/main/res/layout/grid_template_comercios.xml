@@ -47,22 +47,22 @@
         android:id="@+id/txtEstrellas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
         android:layout_marginTop="17dp"
+        android:layout_marginEnd="5dp"
         android:text="4.0"
-        android:textSize="20dp"
+        android:textSize="15dp"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imgEstrellas"
+        app:layout_constraintEnd_toStartOf="@+id/imgEstrellas"
         app:layout_constraintTop_toTopOf="parent">
 
     </TextView>
 
     <ImageView
         android:id="@+id/imgEstrellas"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="225dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="17dp"
         android:src="@drawable/star"
         app:layout_constraintStart_toEndOf="@+id/imgLogoComercio"
         app:layout_constraintTop_toTopOf="parent"></ImageView>

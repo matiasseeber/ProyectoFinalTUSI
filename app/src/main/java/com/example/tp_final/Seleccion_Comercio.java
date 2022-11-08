@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.text.Layout;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -78,6 +80,11 @@ public class Seleccion_Comercio extends AppCompatActivity {
         txtCarrito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                int cantCarrito = sqLite_openHelper.ReturnQuantity();
+                if(cantCarrito == 0){
+                    Toast.makeText(getApplicationContext(), "Debe de tener al menos un producto seleccionado para ver su pedido.", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 Intent intent = new Intent(getApplicationContext(),Pedido_Usuario.class);
                 startActivity(intent);
             }
