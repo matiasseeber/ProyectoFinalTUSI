@@ -28,7 +28,6 @@ import Entidades.Comercio;
 public class BussinesAdapter extends BaseAdapter {
     private ArrayList<Comercio> elementos;
     private Context context;
-    private EditText txtEstrellas;
 
     public BussinesAdapter(Context context, ArrayList<Comercio> elementos) {
         this.context = context;
@@ -84,7 +83,15 @@ public class BussinesAdapter extends BaseAdapter {
         String formatedDistance = String.valueOf(distancia).replace(".0", "");
         txtDistancia.setText(formatedDistance + " KM");
 
-        txtEstrellas.setText(String.valueOf(comercio.getPromedioCalificaciones()));
+        String calificaciones = "";
+
+        if(comercio.getPromedioCalificaciones() > 0){
+            calificaciones = String.valueOf(comercio.getPromedioCalificaciones());
+        }else{
+            calificaciones = "Sin valoraciones";
+        }
+
+        txtEstrellas.setText(calificaciones);
         txtIdComercio.setText(String.valueOf(comercio.getId()));
         txtNombreComercio.setText(String.valueOf(comercio.getName()));
         txtDireccion.setText(comercio.getAddress());

@@ -131,7 +131,7 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
             if (descripcion != null)
                 descripcion.setText(producto.getDescripcion());
             if (stock != null)
-                stock.setText(String.valueOf("Stock: " + producto.getStock()));
+                stock.setText(String.valueOf(producto.getStock()));
             if (precio != null)
                 precio.setText(String.valueOf(producto.getPrecio()));
             if (imageView != null)

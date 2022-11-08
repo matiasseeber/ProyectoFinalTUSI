@@ -53,6 +53,7 @@ public class PedidosEntregadosComercioAdapter extends BaseAdapter {
 
         PedidoCabecera pedidoCabecera = getItem(position);
 
+        /*
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,6 +62,7 @@ public class PedidosEntregadosComercioAdapter extends BaseAdapter {
                 context.startActivity(intent);
             }
         });
+         */
 
         TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
         TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);

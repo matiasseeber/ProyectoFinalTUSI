@@ -33,6 +33,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private ArrayList<Comercio> comercios;
     private int distancia = 0;
+    private int puntuacion = 0;
 
     public DBComercio() {
     }
@@ -51,6 +52,14 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
         this.distancia = distancia;
     }
 
+    public int getPuntuacion() {
+        return puntuacion;
+    }
+
+    public void setPuntuacion(int puntuacion) {
+        this.puntuacion = puntuacion;
+    }
+
     public GridView getGrid() {
         return grid;
     }
@@ -67,8 +76,8 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
         this.context = context;
     }
 
-    public float setAverageReviews(Integer Id){
-       float Puntuacion=0;
+    public float setAverageReviews(Integer Id) {
+        float Puntuacion = 0;
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(
@@ -82,8 +91,8 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                     query
             );
             rs.beforeFirst();
-            while(rs.next()){
-                Puntuacion=rs.getFloat(1);
+            while (rs.next()) {
+                Puntuacion = rs.getFloat(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -103,7 +112,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
             Statement st = con.createStatement();
             String query = "Select * from Comercios inner join Localidades on Comercios.cod_localidad = Localidades.id;";
             ResultSet rs = st.executeQuery(
-                query
+                    query
             );
 
             while (rs.next()) {
@@ -115,17 +124,17 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 comercio1.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(5)));
                 comercio1.setAddress(rs.getString(12) + " - " + rs.getString(4));
                 Geocoder geocoder = new Geocoder(context, Locale.getDefault());
-                try{
+                try {
                     List<Address> addresses = geocoder.getFromLocationName(rs.getString(4), 1);
-                    if(addresses.size() > 0){
+                    if (addresses.size() > 0) {
 
                         double latitud = addresses.get(0).getLatitude();
                         double logitude = addresses.get(0).getLongitude();
 
-                        String direccionCliente = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("address","");
+                        String direccionCliente = context.getSharedPreferences("MySharedPref", Context.MODE_PRIVATE).getString("address", "");
                         List<Address> direccionClienteList = geocoder.getFromLocationName(direccionCliente, 1);
 
-                        if(direccionClienteList.size() > 0){
+                        if (direccionClienteList.size() > 0) {
                             double latitudCliente = direccionClienteList.get(0).getLatitude();
                             double logitudeCliente = direccionClienteList.get(0).getLongitude();
 
@@ -143,15 +152,34 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                             distance /= 1000;
                         }
                     }
-                } catch (Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
 
-                //comercio1.setPromedioCalificaciones(setAverageReviews(comercio1));
-
-                if(distancia == 0 || distance <= distancia){
+                if (distancia == 0 || distance <= distancia) {
                     comercio1.setDistancia(distance);
-                    comercios.add(comercio1);
+                } else {
+                    break;
+                }
+
+                float puntuacionComercio = comercio1.getPromedioCalificaciones();
+
+                switch (puntuacion) {
+                    case 1:
+                        if (puntuacionComercio >= 1 && puntuacionComercio < 3)
+                            comercios.add(comercio1);
+                        break;
+                    case 2:
+                        if (puntuacionComercio >= 3 && puntuacionComercio < 4)
+                            comercios.add(comercio1);
+                        break;
+                    case 3:
+                        if (puntuacionComercio >= 4 && puntuacionComercio <= 5)
+                            comercios.add(comercio1);
+                        break;
+                    default:
+                        comercios.add(comercio1);
+                        break;
                 }
             }
         } catch (Exception e) {
