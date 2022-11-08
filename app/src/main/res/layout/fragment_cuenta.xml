@@ -9,6 +9,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/imageView38"
         android:layout_width="367dp"
@@ -43,32 +44,32 @@
         app:srcCompat="@drawable/circle3" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btnModificarUsuario_Cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="144dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
 
         android:text="@string/Modificar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnEliminarCuenta_Cuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="72dp"
         android:layout_marginEnd="120dp"
-        android:backgroundTint="#CD1D1D"
         android:text="Eliminar cuenta"
+        android:backgroundTint="#CD1D1D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView5" />
 
     <ScrollView
         android:id="@+id/scrollView5"
-        android:layout_width="match_parent"
-        android:layout_height="364dp"
-        android:layout_marginTop="165dp"
+        android:layout_width="409dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -79,7 +80,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/txtNombre_cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -88,7 +89,7 @@
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textV"
+                android:id="@+id/txtApellido_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -96,18 +97,19 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <EditText
-                android:id="@+id/editTextTextPersonName5"
+            <TextView
+                android:id="@+id/txtNombreUsuario_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/NombreUsuario"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
                 android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/textView8"
+                android:id="@+id/txtEmail_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -115,8 +117,8 @@
                 android:textAlignment="center"
                 android:textSize="20dp" />
 
-            <TextView
-                android:id="@+id/editTextTextPersonName6"
+            <EditText
+                android:id="@+id/txtDireccion_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -127,30 +129,34 @@
                 android:textSize="20dp" />
 
             <EditText
-                android:id="@+id/editTextc"
+                android:id="@+id/txtContraseña_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
                 android:ems="10"
                 android:hint="@string/ContraseñaComercio"
                 android:inputType="textPersonName"
+                android:textAlignment="center"
                 android:textSize="20dp" />
 
+            <EditText
+                android:id="@+id/txtVericarContraseña_Cuenta"
+                android:layout_width="270dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:ems="10"
+                android:hint="Repetir Contraseña"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:textSize="20dp" />
             <TextView
-                android:id="@+id/textVi"
+                android:id="@+id/txtSexo_Cuenta"
                 android:layout_width="270dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:hint="@string/SexoUsuario"
                 android:textAlignment="center"
                 android:textSize="20dp" />
-
-            <Spinner
-                android:id="@+id/spinner"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="48dp" />
-
 
         </LinearLayout>
     </ScrollView>
@@ -159,7 +165,7 @@
         android:id="@+id/imageView42"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
