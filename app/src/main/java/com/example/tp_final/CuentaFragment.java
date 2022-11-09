@@ -1,5 +1,6 @@
 package com.example.tp_final;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -136,12 +137,17 @@ public class CuentaFragment extends Fragment {
 
     public void eliminarCuenta(View view){
         //llamar dbdelet
-        Clientes clientes = new Clientes();
+       Clientes clientes = new Clientes();
         clientes.setId(Helpers.getUserId(getContext()));
 
         DBDeleteUsuario delet = new DBDeleteUsuario();
         delet.setContext(view.getContext());
         delet.setId(clientes.getId());
         delet.execute();
+
     }
 }
+/*String[] Array = new String[]{"Hamburguesa doble-5-1200","Papas fritas-1-520"};
+        Intent i = new Intent(getContext(),PopUp_Cabecera_Comprobante.class);
+        i.putExtra("ArrayPedidosDetalle",Array);
+        startActivity(i);*/

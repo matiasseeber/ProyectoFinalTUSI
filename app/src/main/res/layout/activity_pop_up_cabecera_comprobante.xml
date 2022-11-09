@@ -44,10 +44,12 @@
         android:id="@+id/txtMetodoPagoComprobante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="30dp"
         android:text="Efectivo"
         android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.222"
         app:layout_constraintStart_toEndOf="@+id/txtFechaComprobante"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreComercioComprobante" />
 
@@ -64,7 +66,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_width="411dp"
+        android:layout_width="match_parent"
         android:layout_height="375dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="10dp"
@@ -73,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView51">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="411dp"
+            android:layout_width="match_parent"
             android:layout_height="374dp">
 
             <TextView
@@ -110,7 +112,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <GridView
-                android:layout_width="409dp"
+                android:layout_width="match_parent"
                 android:layout_height="332dp"
                 android:layout_marginTop="1dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -120,13 +122,12 @@
     </androidx.cardview.widget.CardView>
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btnGenerarPDF"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
         android:layout_marginTop="12dp"
-        android:onClick="GeneratePDF"
         android:text="Generar PDF"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
