@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
 
 import com.mysql.jdbc.Blob;
 
@@ -14,6 +17,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 import Entidades.PedidoCabecera;
@@ -71,6 +76,7 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         return -1;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     public boolean insertPedido() throws ClassNotFoundException, SQLException {
         int insertedRows = 0;
 
@@ -84,12 +90,16 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         if(pedidoCabecera.isEfectivo()){
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado) values (?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, fecha) values (?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, idUsuario);
             preparedStatement.setInt(2, idComercioSeleccionado);
             preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
             preparedStatement.setFloat(4, pedidoCabecera.getTotal());
             preparedStatement.setInt(5, 1);
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDateTime now = LocalDateTime.now();
+
+            preparedStatement.setString(6, dtf.format(now));
             insertedRows = preparedStatement.executeUpdate();
         }else{
             Tarjeta tarjeta = pedidoCabecera.getTarjeta();
@@ -102,13 +112,19 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
             if(pedidoCabecera.getTarjeta().getId() != -1){
                 Class.forName("com.mysql.jdbc.Driver");
                 con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-                preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, id_Tarjeta) values (?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+                preparedStatement = con.prepareStatement("Insert into PedidosCabecera (id_Cliente, id_Comercio, efectivo, total, estado, id_Tarjeta, fecha) values (?,?,?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
                 preparedStatement.setInt(1, idUsuario);
                 preparedStatement.setInt(2, idComercioSeleccionado);
                 preparedStatement.setBoolean(3, pedidoCabecera.isEfectivo());
                 preparedStatement.setFloat(4, pedidoCabecera.getTotal());
                 preparedStatement.setInt(5, 1);
                 preparedStatement.setInt(6, pedidoCabecera.getTarjeta().getId());
+
+                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                LocalDateTime now = LocalDateTime.now();
+
+                preparedStatement.setString(7, dtf.format(now));
+
                 insertedRows = preparedStatement.executeUpdate();
             }
 
@@ -145,6 +161,7 @@ public class DBInsertPedido extends AsyncTask<Boolean, Void, Boolean> {
         return true;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected Boolean doInBackground(Boolean... Boolean) {
         try {
