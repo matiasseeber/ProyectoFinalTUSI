@@ -32,10 +32,10 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.72));
 
         imgLogo = (ImageView) findViewById(R.id.imageView51);
-        nombreComercio = (TextView) findViewById(R.id.txtNombreComercioPopUpPedidoCabeceraUsuarios);
-        fecha = (TextView) findViewById(R.id.textView9);
-        metodoPago = (TextView) findViewById(R.id.textView11);
-        total = (TextView) findViewById(R.id.textView8);
+        nombreComercio = (TextView) findViewById(R.id.txtNombreComercioComprobante);
+        fecha = (TextView) findViewById(R.id.txtFechaComprobante);
+        metodoPago = (TextView) findViewById(R.id.txtMetodoPagoComprobante);
+        total = (TextView) findViewById(R.id.txtTotaPedidoPopUpCabeceraPedidosUsuario);
         grvDetallePedido = (GridView) findViewById(R.id.grvPopUpCabeceraPedidosUsuarios);
 
         DBLoadPendingOrderInfoPopUp dbLoadPendingOrderInfoPopUp = new DBLoadPendingOrderInfoPopUp();
