@@ -6,6 +6,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
@@ -19,9 +20,12 @@ import android.widget.Toast;
 
 import java.time.ZoneId;
 
+import Database.DBDeleteUsuario;
+import Database.DBEliminarComercio;
 import Database.DBLoadAllProducts;
 import Database.DBSetBussinessProfileInformation;
 import Database.DBUpdateBussinesInfo;
+import Entidades.Clientes;
 import Entidades.Comercio;
 import Helpers.Helpers;
 
@@ -36,6 +40,8 @@ public class Editar_Comercio extends AppCompatActivity {
     private EditText contraseña;
     private EditText confirmarContraseña;
     private Button btnModificarInformacionLocal;
+    private Button btnEliminarComercio;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +57,7 @@ public class Editar_Comercio extends AppCompatActivity {
         contraseña = (EditText) findViewById(R.id.editTextTextPassword);
         confirmarContraseña = (EditText) findViewById(R.id.editTextConfirmPassword);
         btnModificarInformacionLocal = (Button) findViewById(R.id.btnModificarInformacionLocal);
+        btnEliminarComercio = (Button) findViewById(R.id.btnEliminarComercio);
 
         ActivityResultLauncher<String> launcher = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
@@ -70,6 +77,13 @@ public class Editar_Comercio extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 modificarInformacion(v);
+            }
+        });
+
+        btnEliminarComercio.setOnClickListener(new View.OnClickListener(){
+
+            public void onClick(View v){
+                eliminarComercio(v);
             }
         });
 
@@ -124,6 +138,18 @@ public class Editar_Comercio extends AppCompatActivity {
         dbUpdateBussinesInfo.setComercio(comercio);
         dbUpdateBussinesInfo.setActivity(this);
         dbUpdateBussinesInfo.execute();
+    }
+
+    public void eliminarComercio(View view){
+
+        Comercio Comercio = new Comercio();
+        Comercio.setId(Helpers.getUserId(getApplicationContext()));
+
+        DBEliminarComercio delet = new DBEliminarComercio();
+        delet.setContext(view.getContext());
+        delet.setId(Comercio.getId());
+        delet.setActivity(this);
+        delet.execute();
     }
 
     public void ClickBack(View view){
