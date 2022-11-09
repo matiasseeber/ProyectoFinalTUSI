@@ -68,7 +68,7 @@ public class LoginComercio extends AppCompatActivity {
         dbCheckIfRecordExists.setContext(getApplicationContext());
         dbCheckIfRecordExists.setMessageExists("Inicio de sesion exitoso.");
         dbCheckIfRecordExists.setMessageNotExists("No existe ese usuario.");
-        dbCheckIfRecordExists.setQuery("select * from Comercios where Cuil = " + txtIdentificador.getText().toString() + " and contraseña = '" + txtContraseña.getText().toString() + "';");
+        dbCheckIfRecordExists.setQuery("select * from Comercios where Cuil = " + txtIdentificador.getText().toString() + " and contraseña = '" + txtContraseña.getText().toString() + "' and estado = 1;");
         Intent intent = new Intent(getApplicationContext(), Navigation_Drawer_Comercio.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         dbCheckIfRecordExists.setRedirectionIntent(intent);

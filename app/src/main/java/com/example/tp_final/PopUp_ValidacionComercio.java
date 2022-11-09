@@ -50,7 +50,7 @@ public class PopUp_ValidacionComercio extends AppCompatActivity {
             DBForgotPassword db = new DBForgotPassword();
             db.setContext(getApplicationContext());
             db.setComercio(comercio);
-            db.setQuery("Select * from Comercios where Email = '" + comercio.getEmail() + "' and Cuil = " + comercio.getVatNumber() + ";");
+            db.setQuery("Select * from Comercios where Email = '" + comercio.getEmail() + "' and Cuil = " + comercio.getVatNumber() + " and estado = 1;");
             db.setAccion("Validation");
             db.execute();
             this.finish();

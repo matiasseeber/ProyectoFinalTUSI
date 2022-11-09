@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.tp_final.PopUp_Pedidos_Comercio;
 import com.example.tp_final.PopUp_Pedidos_Comercio_SinEntregar;
 import com.example.tp_final.R;
 
@@ -56,7 +55,7 @@ public class PedidosSinEntregarComercioAdapter extends BaseAdapter {
 
         TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
         TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
-        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
+        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtFechaPedidoPendienteUsuario);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

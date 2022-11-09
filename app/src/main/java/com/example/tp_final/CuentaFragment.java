@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import Database.DBDeleteUsuario;
+import Database.DBSetUsuarioProfileInformation;
 import Database.DBUpdateUsarioInfo;
 import Entidades.Clientes;
 import Helpers.Helpers;
@@ -47,7 +48,6 @@ public class CuentaFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_cuenta, container, false);
 
-
         btnModificar=(Button) view.findViewById(R.id.btnModificarUsuario_Cuenta);
         btnEliminar=(Button)  view.findViewById(R.id.btnEliminarCuenta_Cuenta);
         nombre=(TextView) view.findViewById(R.id.txtNombre_cuenta);
@@ -73,26 +73,25 @@ public class CuentaFragment extends Fragment {
             public void onClick(View view){eliminarCuenta(view);}
         });
 
-        return view;
-    }
-
-
-    public void modificarInformacion(View view){
-        if(!isFormValid()) return;
         Clientes clientes = new Clientes();
         clientes.setId(Helpers.getUserId(getContext()));
-        clientes.setNombre(nombre.getText().toString());
-        clientes.setApellido(apellido.getText().toString());
-        clientes.setNombreUsuario(nombreDeUsuario.getText().toString());
-        clientes.setEmail(email.getText().toString());
-        clientes.setDireccion(direccion.getText().toString());
-        clientes.setContraseña(contraseña.getText().toString());
-        clientes.setSexo(sexo.getText().toString());
-        DBUpdateUsarioInfo DBUpdateUsarioInfo = new DBUpdateUsarioInfo();
-        DBUpdateUsarioInfo.setContext(view.getContext());
-        DBUpdateUsarioInfo.setClientes(clientes);
-        DBUpdateUsarioInfo.execute();
 
+        DBSetUsuarioProfileInformation dbSetUsuarioProfileInformation = new DBSetUsuarioProfileInformation();
+
+        dbSetUsuarioProfileInformation.setClientes(clientes);
+
+        dbSetUsuarioProfileInformation.setNombreDeUsuario(nombreDeUsuario);
+        dbSetUsuarioProfileInformation.setApellido(apellido);
+        dbSetUsuarioProfileInformation.setNombre(nombre);
+        dbSetUsuarioProfileInformation.setEmail(email);
+        dbSetUsuarioProfileInformation.setDireccion(direccion);
+        dbSetUsuarioProfileInformation.setSexo(sexo);
+        dbSetUsuarioProfileInformation.setDireccion(direccion);
+        dbSetUsuarioProfileInformation.setContraseña(contraseña);
+        dbSetUsuarioProfileInformation.setContraseña2(validarContraseña);
+        dbSetUsuarioProfileInformation.execute();
+
+        return view;
     }
 
     public boolean isFormValid(){
@@ -123,7 +122,7 @@ public class CuentaFragment extends Fragment {
             direccion.setError(requiredError);
             isFormValid = false;
         }
-        if((!contraseña.getText().toString().equals(validarContraseña.getText().toString()))){
+        if(!contraseña.getText().toString().equals(validarContraseña.getText().toString())){
             contraseña.setError("Ambas contraseñas deben coincidir");
             isFormValid = false;
         }
@@ -134,8 +133,24 @@ public class CuentaFragment extends Fragment {
         return isFormValid;
     }
 
+    public void modificarInformacion(View view){
+        if(!isFormValid()) return;
+        Clientes clientes = new Clientes();
+        clientes.setId(Helpers.getUserId(getContext()));
+        clientes.setNombre(nombre.getText().toString());
+        clientes.setApellido(apellido.getText().toString());
+        clientes.setNombreUsuario(nombreDeUsuario.getText().toString());
+        clientes.setEmail(email.getText().toString());
+        clientes.setDireccion(direccion.getText().toString());
+        clientes.setContraseña(contraseña.getText().toString());
+        clientes.setSexo(sexo.getText().toString());
+        DBUpdateUsarioInfo DBUpdateUsarioInfo = new DBUpdateUsarioInfo();
+        DBUpdateUsarioInfo.setContext(view.getContext());
+        DBUpdateUsarioInfo.setClientes(clientes);
+        DBUpdateUsarioInfo.execute();
+    }
+
     public void eliminarCuenta(View view){
-        //llamar dbdelet
         Clientes clientes = new Clientes();
         clientes.setId(Helpers.getUserId(getContext()));
 
