@@ -12,6 +12,7 @@
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_no_products.xml" value="0.18541666666666667" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pedido_usuario.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_agregar_producto.xml" value="0.9" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_cabecera_pedidos_usuarios.xml" value="0.33" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_finalpedido.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_comercio.xml" value="0.514745308310992" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/activity_pop_up_pedidos_comercio_sinentregar.xml" value="0.33" />
@@ -33,6 +34,7 @@
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/fragment_pedidos__comercio.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_comercios.xml" value="0.5" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_entregado_usuarios.xml" value="0.29030797101449274" />
+        <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_pendiente_usuario_cabecera.xml" value="0.1762917933130699" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_usuario.xml" value="0.5" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedido_usuario_comercio.xml" value="0.5" />
         <entry key="..\:/Facultad/TUSSI/CUATRIMESTRE 2/Proyectos android/TP_FINAL/app/src/main/res/layout/grid_template_pedidos_aentregar_usuarios.xml" value="0.1762917933130699" />

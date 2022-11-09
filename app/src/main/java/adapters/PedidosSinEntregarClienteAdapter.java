@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tp_final.PopUp_Cabecera_Pedidos_Usuarios;
 import com.example.tp_final.PopUp_Pedidos_Comercio;
 import com.example.tp_final.R;
 
@@ -63,7 +64,7 @@ public class PedidosSinEntregarClienteAdapter extends BaseAdapter {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PopUp_Pedidos_Comercio.class);
+                Intent intent = new Intent(context, PopUp_Cabecera_Pedidos_Usuarios.class);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("idPedidoCabecera", pedidoCabecera.getId());
                 context.startActivity(intent);
