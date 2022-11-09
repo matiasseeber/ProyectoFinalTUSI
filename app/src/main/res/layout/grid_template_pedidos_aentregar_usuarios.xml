@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtTotalPedidoComercio"
+        android:id="@+id/txtFechaPedidoPendienteUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="9dp"
@@ -30,14 +30,14 @@
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
-        android:id="@+id/txtTotalPedidoComercio3"
+        android:id="@+id/txtMetodoDePagoPedidosAEntregarClientes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
         android:text="TextView"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/txtTotalPedidoComercio"
+        app:layout_constraintStart_toEndOf="@+id/txtFechaPedidoPendienteUsuario"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView

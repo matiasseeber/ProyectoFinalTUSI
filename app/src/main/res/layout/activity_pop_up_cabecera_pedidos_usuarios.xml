@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/txtFechaPopUpPedidoCabeceraUsuarios"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PopUp_Cabecera_Pedidos_Usuarios">
@@ -61,7 +62,19 @@
         app:layout_constraintStart_toEndOf="@+id/imageView51"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreComercioComprobante" />
 
+    <TextView
+        android:id="@+id/txtTotaPedidoPopUpCabeceraPedidosUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="464dp"
+        android:text="TextView"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView51"
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreComercioComprobante" />
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="wrap_content"
         android:layout_height="375dp"
         android:layout_marginStart="1dp"
@@ -75,7 +88,7 @@
             android:layout_height="374dp">
 
             <TextView
-                android:id="@+id/textView14"
+                android:id="@+id/txtProductoPedidoCabeceraUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
@@ -86,18 +99,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/txtCantidadPedidoCabeceraUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="75dp"
                 android:layout_marginTop="16dp"
                 android:text="Cantidad"
                 android:textSize="16sp"
-                app:layout_constraintStart_toEndOf="@+id/textView14"
+                app:layout_constraintStart_toEndOf="@+id/txtProductoPedidoCabeceraUsuario"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView16"
+                android:id="@+id/txtPrecioPedidoCabeceraUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -108,11 +121,12 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <GridView
+                android:id="@+id/grvPopUpCabeceraPedidosUsuarios"
                 android:layout_width="wrap_content"
                 android:layout_height="332dp"
                 android:layout_marginTop="1dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+                app:layout_constraintTop_toBottomOf="@+id/txtProductoPedidoCabeceraUsuario" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
