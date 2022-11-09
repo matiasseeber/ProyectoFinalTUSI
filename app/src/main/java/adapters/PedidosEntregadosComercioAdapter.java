@@ -1,16 +1,12 @@
 package adapters;
 
-import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
-import com.example.tp_final.PopUp_Pedidos_Comercio;
 import com.example.tp_final.R;
 
 import java.util.ArrayList;
@@ -66,7 +62,7 @@ public class PedidosEntregadosComercioAdapter extends BaseAdapter {
 
         TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
         TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
-        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtTotalPedidoComercio);
+        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtFechaPedidoPendienteUsuario);
 
         txtNombreClientePedidosComercio.setText(pedidoCabecera.getCliente().getNombreUsuario());
         txtTotalPedidoComercio.setText(String.valueOf(pedidoCabecera.getTotal()));

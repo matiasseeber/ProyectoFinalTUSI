@@ -90,7 +90,7 @@ public class DBLoadOrderInfo extends AsyncTask<Boolean, Void, Boolean> {
                 pedidoCabecera.setId(idPedidoCabecera);
                 pedidoCabecera.setTotal(rs.getFloat("total"));
                 Producto producto = new Producto();
-                producto.setNombre(rs.getString(27));
+                producto.setNombre(rs.getString(28));
                 producto.setPrecio(rs.getFloat("precio"));
                 producto.setId(rs.getInt("id_Producto"));
                 pedidoDetalle.setProducto(producto);

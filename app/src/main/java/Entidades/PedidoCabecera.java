@@ -10,6 +10,7 @@ public class PedidoCabecera {
     private boolean efectivo;
     private Clientes cliente;
     private Comercio comercio;
+    private String fecha;
 
     public int getId() {
         return id;
@@ -17,6 +18,14 @@ public class PedidoCabecera {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public boolean isEfectivo() {

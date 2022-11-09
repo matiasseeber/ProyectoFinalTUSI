@@ -60,6 +60,8 @@ public class Editar_Usuario extends AppCompatActivity {
         });
 
 
+        /*
+
         DBSetUsuarioProfileInformation dbSetUsuarioProfileInformation = new DBSetUsuarioProfileInformation();
         Clientes clientes = new Clientes();
         clientes.setId(Helpers.getUserId(getApplicationContext()));
@@ -74,6 +76,7 @@ public class Editar_Usuario extends AppCompatActivity {
         dbSetUsuarioProfileInformation.setSexo(sexo);
         dbSetUsuarioProfileInformation.execute();
 
+         */
     }
 
     public void ClickBack(View view){
@@ -134,7 +137,6 @@ public class Editar_Usuario extends AppCompatActivity {
         DBUpdateUsarioInfo DBUpdateUsarioInfo = new DBUpdateUsarioInfo();
         DBUpdateUsarioInfo.setContext(view.getContext());
         DBUpdateUsarioInfo.setClientes(clientes);
-        DBUpdateUsarioInfo.setActivity(this);
         DBUpdateUsarioInfo.execute();
 
     }

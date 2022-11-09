@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tp_final.PopUp_Cabecera_Pedidos_Usuarios;
 import com.example.tp_final.PopUp_Pedidos_Comercio;
 import com.example.tp_final.R;
 
@@ -17,11 +19,11 @@ import java.util.ArrayList;
 
 import Entidades.PedidoCabecera;
 
-public class PedidosPendientesComercioAdapter extends BaseAdapter {
+public class PedidosSinEntregarClienteAdapter extends BaseAdapter {
     private ArrayList<PedidoCabecera> elementos;
     private Context context;
 
-    public PedidosPendientesComercioAdapter(Context context, ArrayList<PedidoCabecera> elementos) {
+    public PedidosSinEntregarClienteAdapter(Context context, ArrayList<PedidoCabecera> elementos) {
         this.context = context;
         this.elementos = elementos;
     }
@@ -48,28 +50,37 @@ public class PedidosPendientesComercioAdapter extends BaseAdapter {
         View view = convertView;
 
         if (convertView == null){
-            view = inflater.inflate(R.layout.grid_template_pedidos_pendientes,null);
+            view = inflater.inflate(R.layout.grid_template_pedidos_aentregar_usuarios,null);
         }
 
         PedidoCabecera pedidoCabecera = getItem(position);
 
-        TextView txtNombreClientePedidosComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
-        TextView txtIdPedidoComercio = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
-        TextView txtTotalPedidoComercio = (TextView) view.findViewById(R.id.txtFechaPedidoPendienteUsuario);
+        TextView txtNombreComercio = (TextView) view.findViewById(R.id.txtNombreClientePedidosComercio);
+        TextView txtFechaPedido = (TextView) view.findViewById(R.id.txtFechaPedidoPendienteUsuario);
+        TextView txtMetodoDePago = (TextView) view.findViewById(R.id.txtMetodoDePagoPedidosAEntregarClientes);
+        ImageView imageView = (ImageView) view.findViewById(R.id.imageView48);
+        TextView id = (TextView) view.findViewById(R.id.txtIdPedidoComercio);
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PopUp_Pedidos_Comercio.class);
+                Intent intent = new Intent(context, PopUp_Cabecera_Pedidos_Usuarios.class);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("idPedidoCabecera", pedidoCabecera.getId());
                 context.startActivity(intent);
             }
         });
 
-        txtNombreClientePedidosComercio.setText(pedidoCabecera.getCliente().getNombreUsuario());
-        txtTotalPedidoComercio.setText(String.valueOf(pedidoCabecera.getTotal()));
-        txtIdPedidoComercio.setText(String.valueOf(pedidoCabecera.getId()));
+        txtNombreComercio.setText(pedidoCabecera.getComercio().getName());
+        txtFechaPedido.setText(pedidoCabecera.getFecha());
+        imageView.setImageBitmap(pedidoCabecera.getComercio().getBitmap());
+        id.setText(String.valueOf(pedidoCabecera.getId()));
+
+        if(pedidoCabecera.isEfectivo()){
+            txtMetodoDePago.setText("Efectivo");
+        }else{
+            txtMetodoDePago.setText(pedidoCabecera.getTarjeta().getTipoTarjeta());
+        }
 
         return view;
     }
