@@ -7,35 +7,33 @@
 
     <TextView
         android:id="@+id/txtNombreClientePedidosComercio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="TextView"
+        android:layout_width="196dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="center"
         android:textAllCaps="false"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toEndOf="@+id/imageView48"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtTotalPedidoComercio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_width="88dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/imageView48"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
 
     <TextView
         android:id="@+id/txtTotalPedidoComercio3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:text="TextView"
+        android:layout_width="88dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/txtTotalPedidoComercio"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />
@@ -54,8 +52,8 @@
         android:id="@+id/btnAbrirDetallePedido"
         android:layout_width="38dp"
         android:layout_height="35dp"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="32dp"
         android:rotation="180"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -63,13 +61,12 @@
 
     <ImageView
         android:id="@+id/imageView48"
-        android:layout_width="63dp"
-        android:layout_height="84dp"
+        android:layout_width="89dp"
+        android:layout_height="79dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/comercio" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

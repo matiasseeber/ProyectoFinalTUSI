@@ -7,27 +7,25 @@
 
     <TextView
         android:id="@+id/txtNombreProducto"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="44dp"
-        android:text="Cereales"
+        android:layout_width="173dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="232dp"
+        android:textAlignment="viewStart"
         android:textAllCaps="false"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.051"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtCantGrvPedidoUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="68dp"
+        android:layout_height="31dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="40dp"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.415"
+        app:layout_constraintHorizontal_bias="0.52"
         app:layout_constraintStart_toStartOf="@+id/txtNombreProducto"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -43,12 +41,12 @@
 
     <TextView
         android:id="@+id/txtPrecioGrvPedidoUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="44dp"
+        android:layout_width="82dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="24dp"
         android:textSize="20dp"
-        app:layout_constraintStart_toEndOf="@+id/txtCantGrvPedidoUsuario"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 
