@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="TextView"
         android:textAllCaps="false"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +23,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginTop="10dp"
-        android:text="TextView"
         android:textSize="18dp"
         app:layout_constraintStart_toEndOf="@+id/txtPrecioProducto"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreClientePedidosComercio" />

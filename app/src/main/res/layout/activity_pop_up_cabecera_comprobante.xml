@@ -26,40 +26,38 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="26dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/comercio" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtNombreComercioComprobante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="33dp"
-        android:text="MC Donald"
+        android:layout_width="168dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/imageView51"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtMetodoPagoComprobante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="30dp"
-        android:text="Efectivo"
+        android:layout_width="75dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.222"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/txtFechaComprobante"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreComercioComprobante" />
 
     <TextView
         android:id="@+id/txtFechaComprobante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="95dp"
+        android:layout_height="39dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
-        android:text="08/11/2022"
+        android:layout_marginTop="12dp"
+        android:textAlignment="center"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imageView51"
         app:layout_constraintTop_toBottomOf="@+id/txtNombreComercioComprobante" />
@@ -82,7 +80,7 @@
                 android:id="@+id/txtProductoPedidoCabeceraUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="16dp"
                 android:text="Producto"
                 android:textSize="16sp"
@@ -93,7 +91,7 @@
                 android:id="@+id/txtCantidadPedidoCabeceraUsuario"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
+                android:layout_marginStart="45dp"
                 android:layout_marginTop="16dp"
                 android:text="Cantidad"
                 android:textSize="16sp"
