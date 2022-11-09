@@ -27,9 +27,9 @@
 
     <TextView
         android:id="@+id/textView17"
-        android:layout_width="150dp"
+        android:layout_width="175dp"
         android:layout_height="30dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
         android:textAlignment="center"
         android:textSize="18sp"
@@ -38,19 +38,19 @@
 
     <TextView
         android:id="@+id/textView18"
-        android:layout_width="68dp"
-        android:layout_height="21dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="92dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="8dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <TextView
         android:id="@+id/textView19"
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imageView52"
@@ -71,11 +71,11 @@
         android:layout_width="101dp"
         android:layout_height="37dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="13dp"
         android:text="Calificar"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/imageView52"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
     <Button
         android:id="@+id/button12"
