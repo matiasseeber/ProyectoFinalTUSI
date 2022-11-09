@@ -15,19 +15,18 @@ import Entidades.Clientes;
 import Entidades.PedidoCabecera;
 import Entidades.Producto;
 import adapters.PedidosEntregadosComercioAdapter;
-import adapters.PedidosSinEntregarComercioAdapter;
 
-public class DBLoadAllDeliveredOrders extends AsyncTask<Boolean, Void, Boolean> {
+public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boolean> {
 
     private GridView grid;
     private Context context;
-    private int id_comercio;
+    private int idCliente;
     private ArrayList<PedidoCabecera> pedidoCabeceras = new ArrayList<PedidoCabecera>();;
     private View msg;
 
     private ArrayList<Producto> productos;
 
-    public DBLoadAllDeliveredOrders() {
+    public DBLoadAllDeliveredOrdersClient() {
     }
 
     public View getMsg() {
@@ -38,12 +37,12 @@ public class DBLoadAllDeliveredOrders extends AsyncTask<Boolean, Void, Boolean> 
         this.msg = msg;
     }
 
-    public int getId_comercio() {
-        return id_comercio;
+    public int getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_comercio(int id_comercio) {
-        this.id_comercio = id_comercio;
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
     }
 
     public GridView getGrid() {
@@ -71,7 +70,7 @@ public class DBLoadAllDeliveredOrders extends AsyncTask<Boolean, Void, Boolean> 
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id where PedidosCabecera.estado = 4 and PedidosCabecera.id_Comercio = " + id_comercio + ";";
+            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id where PedidosCabecera.estado = 4 and PedidosCabecera.id_Comercio = " + idCliente + ";";
             ResultSet rs = st.executeQuery(
                     query
             );

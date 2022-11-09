@@ -9,9 +9,11 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -23,6 +25,7 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
     public Toolbar toolbar;
     public ActionBarDrawerToggle toggle;
     private TextView txtNombreUsuario;
+    private TextView logOut;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,17 @@ public class Navigation_drawer extends AppCompatActivity implements NavigationVi
         toggle.syncState();
 
         txtNombreUsuario = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtNombreUsuario);
+
+        logOut = (TextView) navigationView.getHeaderView(0).findViewById(R.id.txtLogOut);
+
+        logOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
 
         SharedPreferences sh = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
         txtNombreUsuario.setText(sh.getString("username", ""));

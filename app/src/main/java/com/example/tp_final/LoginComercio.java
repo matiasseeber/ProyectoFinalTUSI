@@ -71,6 +71,7 @@ public class LoginComercio extends AppCompatActivity {
         dbCheckIfRecordExists.setQuery("select * from Comercios where Cuil = " + txtIdentificador.getText().toString() + " and contraseña = '" + txtContraseña.getText().toString() + "' and estado = 1;");
         Intent intent = new Intent(getApplicationContext(), Navigation_Drawer_Comercio.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         dbCheckIfRecordExists.setRedirectionIntent(intent);
         dbCheckIfRecordExists.setUserName(txtIdentificador.getText().toString());
         dbCheckIfRecordExists.execute();
