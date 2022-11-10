@@ -2,12 +2,20 @@ package com.example.tp_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import Database.DBLoadPendingOrderInfoPopUp;
 
@@ -19,6 +27,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
     private TextView metodoPago;
     private TextView total;
     private GridView grvDetallePedido;
+    private TextView direccion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +46,30 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         metodoPago = (TextView) findViewById(R.id.txtMetodoPagoComprobante);
         total = (TextView) findViewById(R.id.txtTotaPedidoPopUpCabeceraPedidosUsuario);
         grvDetallePedido = (GridView) findViewById(R.id.grvPopUpCabeceraPedidosUsuarios);
+        direccion = (TextView) findViewById(R.id.textView9);
+
+        direccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String address = direccion.getText().toString();
+                Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+                List<Address> addresses = null;
+                try {
+                    addresses = geocoder.getFromLocationName(address, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (addresses.size() > 0) {
+                    double latitud = addresses.get(0).getLatitude();
+                    double logitude = addresses.get(0).getLongitude();
+                    Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + logitude + "?q=" + address);
+
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+                }
+            }
+        });
 
         DBLoadPendingOrderInfoPopUp dbLoadPendingOrderInfoPopUp = new DBLoadPendingOrderInfoPopUp();
         dbLoadPendingOrderInfoPopUp.setContext(getApplicationContext());
@@ -47,6 +80,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         dbLoadPendingOrderInfoPopUp.setNombreComercio(nombreComercio);
         dbLoadPendingOrderInfoPopUp.setMetodoPago(metodoPago);
         dbLoadPendingOrderInfoPopUp.setTotal(total);
+        dbLoadPendingOrderInfoPopUp.setDireccion(direccion);
         dbLoadPendingOrderInfoPopUp.execute();
 
     }

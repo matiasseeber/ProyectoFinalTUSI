@@ -6,7 +6,6 @@ import android.view.View;
 import android.widget.GridView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
 import com.mysql.jdbc.Blob;
 
 import java.sql.Connection;
@@ -15,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Entidades.Clientes;
 import Entidades.Comercio;
 import Entidades.PedidoCabecera;
 import Entidades.PedidoDetalle;
@@ -23,9 +21,9 @@ import Entidades.Producto;
 import Entidades.Tarjeta;
 import Helpers.Helpers;
 import adapters.PedidosEntregadosClienteAdapter;
-import adapters.PedidosEntregadosComercioAdapter;
+import adapters.PedidosPendientesClienteAdapter;
 
-public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boolean> {
+public class DBLoadAllRejectedOrdersClient extends AsyncTask<Boolean, Void, Boolean> {
 
     private GridView grid;
     private Context context;
@@ -33,8 +31,9 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
     private ArrayList<PedidoCabecera> pedidoCabeceras = new ArrayList<PedidoCabecera>();
     private View msg;
     private TextView msgText;
+    private ArrayList<PedidoDetalle> pedidoDetalleArrayList = new ArrayList<>();
 
-    public DBLoadAllDeliveredOrdersClient() {
+    public DBLoadAllRejectedOrdersClient() {
     }
 
     public TextView getMsgText() {
@@ -77,37 +76,6 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
         this.context = context;
     }
 
-    public ArrayList<PedidoDetalle> returnPedidoDetalleArrayList(int idCabecera){
-        ArrayList<PedidoDetalle> pedidoDetalleArrayList = new ArrayList<>();
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection(
-                    DataDB.urlMySQL,
-                    DataDB.user,
-                    DataDB.pass
-            );
-            Statement st = con.createStatement();
-            String query = "Select * from PedidoDetalle inner join Productos on PedidoDetalle.id_Producto = Productos.id where idCabecera = " + idCabecera + ";";
-
-            ResultSet rs = st.executeQuery(
-                    query
-            );
-
-            while (rs.next()) {
-                PedidoDetalle pedidoDetalle = new PedidoDetalle();
-                Producto producto = new Producto();
-                producto.setPrecio(rs.getFloat("precio"));
-                pedidoDetalle.setCantidad(rs.getInt("cant"));
-                producto.setNombre(rs.getString("nombre"));
-                pedidoDetalle.setProducto(producto);
-                pedidoDetalleArrayList.add(pedidoDetalle);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return pedidoDetalleArrayList;
-    }
-
     public void CargarPedidosPendientes() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -117,7 +85,7 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id inner join Comercios on PedidosCabecera.id_Comercio = Comercios.id left join Tarjetas on Tarjetas.id = PedidosCabecera.id_Tarjeta left join Calificaciones on Calificaciones.id_Pedido = PedidosCabecera.id where Clientes.id = 1 and PedidosCabecera.estado = 4;";
+            String query = "Select * from PedidosCabecera inner join PedidoDetalle on PedidoDetalle.idCabecera = PedidosCabecera.id inner join Productos on PedidoDetalle.id_Producto = Productos.id inner join Clientes on id_Cliente = Clientes.id inner join Comercios on PedidosCabecera.id_Comercio = Comercios.id left join Tarjetas on Tarjetas.id = PedidosCabecera.id_Tarjeta where Clientes.id = " + idCliente + " and PedidosCabecera.estado = 2;";
 
             ResultSet rs = st.executeQuery(
                     query
@@ -128,19 +96,24 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
                 PedidoCabecera pedidoCabecera = new PedidoCabecera();
                 pedidoCabecera.setId(rs.getInt(1));
                 pedidoCabecera.setFecha(rs.getString("fecha"));
-                pedidoCabecera.setValoracion(rs.getFloat("puntuacion"));
                 Comercio comercio = new Comercio();
-                comercio.setId(rs.getInt(21));
-                comercio.setName(rs.getString(22));
-                comercio.setAddress(rs.getString(24));
-                comercio.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(25)));
+                comercio.setName(rs.getString(35));
+                comercio.setAddress(rs.getString(37));
+                comercio.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(38)));
                 pedidoCabecera.setComercio(comercio);
                 pedidoCabecera.setTotal(rs.getFloat("total"));
                 pedidoCabecera.setEfectivo(rs.getBoolean("efectivo"));
                 Tarjeta tarjeta = new Tarjeta();
                 tarjeta.setTipoTarjeta(rs.getString("TipoTarjeta"));
                 pedidoCabecera.setTarjeta(tarjeta);
-                pedidoCabecera.setPedidoDetalles(returnPedidoDetalleArrayList(rs.getInt(1)));
+                PedidoDetalle pedidoDetalle = new PedidoDetalle();
+                Producto producto = new Producto();
+                producto.setPrecio(rs.getFloat("precio"));
+                pedidoDetalle.setCantidad(rs.getInt("cant"));
+                producto.setNombre(rs.getString(16));
+                pedidoDetalle.setProducto(producto);
+                pedidoDetalleArrayList.add(pedidoDetalle);
+                pedidoCabecera.setPedidoDetalles(pedidoDetalleArrayList);
                 pedidoCabeceras.add(pedidoCabecera);
             }
         } catch (Exception e) {
@@ -163,6 +136,6 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
             msg.setVisibility(View.GONE);
             msgText.setVisibility(View.GONE);
         }
-        grid.setAdapter(new PedidosEntregadosClienteAdapter(context, pedidoCabeceras));
+        grid.setAdapter(new PedidosPendientesClienteAdapter(context, pedidoCabeceras));
     }
 }
