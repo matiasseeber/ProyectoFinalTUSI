@@ -21,6 +21,8 @@ import android.text.TextPaint;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,9 +34,11 @@ import com.google.gson.Gson;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import Database.DBLoadPendingOrderInfoPopUp;
 import Entidades.PedidoCabecera;
 import Entidades.PedidoDetalle;
 import Entidades.Producto;
+import adapters.DetallePedidoClienteAdapter;
 
 public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
 
@@ -43,6 +47,9 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
     private TextView MetodoPago;
     private Button btnPdf;
     private String pedido;
+    private ImageView imageView;
+    private GridView gridView;
+    private TextView txtTotal;
     private PedidoCabecera formatedOrder;
     String Nombre;
     String Fecha;
@@ -59,11 +66,18 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         FechaPedido = (TextView) findViewById(R.id.txtFechaComprobante);
         MetodoPago = (TextView) findViewById(R.id.txtMetodoPagoComprobante);
         btnPdf = (Button) findViewById(R.id.btnGenerarPDF);
+        imageView = (ImageView) findViewById(R.id.imageView51);
+        gridView = (GridView) findViewById(R.id.grvPopUpCabeceraComporbante);
+        txtTotal = (TextView) findViewById(R.id.txtTotalPopUpCabeceraComprobante);
 
         pedido = getIntent().getStringExtra("pedido");
         Gson gson = new Gson();
         formatedOrder = gson.fromJson(pedido, PedidoCabecera.class);
 
+        gridView.setAdapter(new DetallePedidoClienteAdapter(getApplicationContext(), formatedOrder));
+
+        txtTotal.setText("total: " + formatedOrder.getTotal());
+        imageView.setImageBitmap(formatedOrder.getComercio().getBitmap());
         NombreComercio.setText(formatedOrder.getComercio().getName());
         FechaPedido.setText(formatedOrder.getFecha());
         if(formatedOrder.isEfectivo()){
@@ -197,7 +211,8 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         //PONER EN EL NOMBRE DEL PDF, FECHA Y NUMERO DE ORDEN
         Fecha = Fecha.replace("/", "");
         document.finishPage(pagina);
-        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), Fecha + ".pdf");
+        String nombrePDF = "Pedido_" + formatedOrder.getId() + "_" + Fecha;
+        File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), nombrePDF + ".pdf");
         try {
             document.writeTo(new FileOutputStream(file));
             Toast.makeText(this, "Su PDF fue guardado en descargas", Toast.LENGTH_LONG).show();
