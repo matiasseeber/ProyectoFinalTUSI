@@ -106,6 +106,7 @@ public class ComerciosFragment extends Fragment {
         gridView.setVerticalSpacing(5);
         DBComercio dbComercio = new DBComercio();
         dbComercio.setContext(getActivity().getApplicationContext());
+        dbComercio.setMensaje(Mensaje);
         dbComercio.setGrid(gridView);
         int index = filtroComercioLocalidadesSpinner.getSelectedItemPosition();
         switch (index){
