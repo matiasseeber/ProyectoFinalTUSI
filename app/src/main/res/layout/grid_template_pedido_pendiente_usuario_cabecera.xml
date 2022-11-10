@@ -9,7 +9,7 @@
         android:id="@+id/deleteProductBussiness2"
         android:layout_width="38dp"
         android:layout_height="35dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="35dp"
         android:rotation="180"
         app:layout_constraintEnd_toEndOf="parent"
@@ -20,8 +20,8 @@
         android:id="@+id/imageView52"
         android:layout_width="88dp"
         android:layout_height="81dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,9 +29,9 @@
         android:id="@+id/textView17"
         android:layout_width="175dp"
         android:layout_height="30dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
-        android:textAlignment="center"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="20dp"
+        android:textAlignment="gravity"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imageView52"
         app:layout_constraintTop_toTopOf="parent" />
@@ -40,8 +40,8 @@
         android:id="@+id/textView18"
         android:layout_width="92dp"
         android:layout_height="25dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="3dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -50,8 +50,8 @@
         android:id="@+id/textView19"
         android:layout_width="wrap_content"
         android:layout_height="21dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="3dp"
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imageView52"
         app:layout_constraintTop_toBottomOf="@+id/textView17" />
@@ -63,6 +63,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginTop="43dp"
         android:textSize="14sp"
+        android:visibility="gone"
         app:layout_constraintStart_toEndOf="@+id/textView17"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -70,22 +71,22 @@
         android:id="@+id/button3"
         android:layout_width="101dp"
         android:layout_height="37dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
         android:text="Calificar"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/imageView52"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
     <Button
         android:id="@+id/button12"
         android:layout_width="125dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="24dp"
         android:text="Comprobante"
         android:textSize="11sp"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

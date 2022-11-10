@@ -163,7 +163,3 @@ public class CuentaFragment extends Fragment {
 
     }
 }
-/*String[] Array = new String[]{"Hamburguesa doble-5-1200","Papas fritas-1-520"};
-        Intent i = new Intent(getContext(),PopUp_Cabecera_Comprobante.class);
-        i.putExtra("ArrayPedidosDetalle",Array);
-        startActivity(i);*/

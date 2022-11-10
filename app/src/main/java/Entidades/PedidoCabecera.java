@@ -11,6 +11,7 @@ public class PedidoCabecera {
     private Clientes cliente;
     private Comercio comercio;
     private String fecha;
+    private float valoracion;
     private Integer Estado;
 
     public Integer getEstado() {
@@ -51,6 +52,14 @@ public class PedidoCabecera {
 
     public void setPedidoDetalles(ArrayList<PedidoDetalle> pedidoDetalles) {
         this.pedidoDetalles = pedidoDetalles;
+    }
+
+    public float getValoracion() {
+        return valoracion;
+    }
+
+    public void setValoracion(float valoracion) {
+        this.valoracion = valoracion;
     }
 
     public float getTotal() {

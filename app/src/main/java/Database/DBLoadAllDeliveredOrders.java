@@ -99,7 +99,7 @@ public class DBLoadAllDeliveredOrders extends AsyncTask<Boolean, Void, Boolean> 
     @Override
     protected void onPostExecute(Boolean response) {
         if (pedidoCabeceras.size() == 0 && msg != null)
-            msg.setVisibility(View.VISIBLE);
+            msg.setVisibility(View.VISIBLE); else msg.setVisibility(View.GONE);
         grid.setAdapter(new PedidosEntregadosComercioAdapter(context, pedidoCabeceras));
     }
 }
