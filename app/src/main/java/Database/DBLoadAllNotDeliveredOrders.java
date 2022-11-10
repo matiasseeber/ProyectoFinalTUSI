@@ -98,8 +98,12 @@ public class DBLoadAllNotDeliveredOrders extends AsyncTask<Boolean, Void, Boolea
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if (pedidoCabeceras.size() == 0 && msg != null)
+        if (pedidoCabeceras.size() == 0 && msg != null){
             msg.setVisibility(View.VISIBLE);
+        }else{
+            msg.setVisibility(View.GONE);
+        }
+
         grid.setAdapter(new PedidosSinEntregarComercioAdapter(context, pedidoCabeceras));
     }
 }

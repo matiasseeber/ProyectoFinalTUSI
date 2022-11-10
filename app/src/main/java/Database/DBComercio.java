@@ -9,6 +9,7 @@ import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
 import android.os.AsyncTask;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -36,6 +37,15 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
     private ArrayList<Comercio> comercios;
     private int distancia = 0;
     private int puntuacion = 0;
+    private View Mensaje;
+
+    public View getMensaje() {
+        return Mensaje;
+    }
+
+    public void setMensaje(View mensaje) {
+        Mensaje = mensaje;
+    }
 
     public DBComercio() {
     }
@@ -197,6 +207,14 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
+        if(Mensaje != null){
+            if (comercios.size() == 0){
+                Mensaje.setVisibility(View.VISIBLE);
+            }else{
+                Mensaje.setVisibility(View.GONE);
+            }
+        }
+
         Collections.sort(comercios, new Comparator<Comercio>(){
             @Override
             public int compare(Comercio o1, Comercio o2) {
@@ -205,6 +223,7 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
                 return o1.getPromedioCalificaciones() > o2.getPromedioCalificaciones() ? -1 : 1;
             }
         });
+
         grid.setAdapter(new BussinesAdapter(context, comercios));
     }
 }

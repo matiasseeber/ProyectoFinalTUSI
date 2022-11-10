@@ -25,6 +25,7 @@ public class ComerciosFragment extends Fragment {
     private GridView gridView;
     private Spinner filtroComercioLocalidadesSpinner;
     private Spinner filtroComercioCalificacionesSpinner;
+    private View Mensaje;
 
 
     public ComerciosFragment() {
@@ -45,6 +46,7 @@ public class ComerciosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_comercio, container, false);
         filtroComercioLocalidadesSpinner = (Spinner) view.findViewById(R.id.filtroComercioLocalidadesSpinner);
         filtroComercioCalificacionesSpinner = (Spinner) view.findViewById(R.id.filtroComercioCalificacionesSpinner);
+        Mensaje = (View) view.findViewById(R.id.vwMensaje);
         ArrayList<String> filtro = new ArrayList<>();
         filtro.add("Elija una distancia...");
         filtro.add("< 10 KM");
@@ -70,6 +72,7 @@ public class ComerciosFragment extends Fragment {
         DBComercio dbComercio = new DBComercio();
         dbComercio.setContext(view.getContext());
         dbComercio.setGrid(gridView);
+        dbComercio.setMensaje(Mensaje);
         dbComercio.execute();
         filtroComercioLocalidadesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -103,6 +106,7 @@ public class ComerciosFragment extends Fragment {
         gridView.setVerticalSpacing(5);
         DBComercio dbComercio = new DBComercio();
         dbComercio.setContext(getActivity().getApplicationContext());
+        dbComercio.setMensaje(Mensaje);
         dbComercio.setGrid(gridView);
         int index = filtroComercioLocalidadesSpinner.getSelectedItemPosition();
         switch (index){
