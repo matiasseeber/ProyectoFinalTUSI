@@ -50,6 +50,7 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
     private ImageView imageView;
     private GridView gridView;
     private TextView txtTotal;
+    private TextView txtEstado;
     private PedidoCabecera formatedOrder;
     String Nombre;
     String Fecha;
@@ -69,6 +70,7 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView51);
         gridView = (GridView) findViewById(R.id.grvPopUpCabeceraComporbante);
         txtTotal = (TextView) findViewById(R.id.txtTotalPopUpCabeceraComprobante);
+        txtEstado = (TextView) findViewById(R.id.txtEstadoPedidoCabeceraComprobante);
 
         pedido = getIntent().getStringExtra("pedido");
         Gson gson = new Gson();
@@ -80,6 +82,8 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         imageView.setImageBitmap(formatedOrder.getComercio().getBitmap());
         NombreComercio.setText(formatedOrder.getComercio().getName());
         FechaPedido.setText(formatedOrder.getFecha());
+        txtEstado.setText("Entregado");
+        txtEstado.setBackgroundColor(getResources().getColor(R.color.Entregado));
         if(formatedOrder.isEfectivo()){
             MetodoPago.setText("Efectivo");
         }else{
@@ -89,7 +93,7 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        getWindow().setLayout((int) (metrics.widthPixels * 0.95), (int) (metrics.heightPixels * 0.77));
+        getWindow().setLayout((int) (metrics.widthPixels * 0.95), (int) (metrics.heightPixels * 0.79));
 
         if (!Permiso()){
             requestPermissions();
@@ -125,9 +129,10 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         TextPaint lblPrecio = new TextPaint();
         TextPaint lblTotal = new TextPaint();
         TextPaint Total = new TextPaint();
+        TextPaint Mensaje = new TextPaint();
         Paint Linea_A = new Paint();
         Paint Linea_B = new Paint();
-
+        String txtMensaje = "¡Muchas gracias por tu compra!. Has evitado que esta comida se desperdiciara.";
         Bitmap bitmap, bitmapEscala;
         Bitmap imgC1, EscalaC1;
         Bitmap imgC2, EscalaC2;
@@ -146,22 +151,26 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         titulo.setTextSize(25);
         titulo.setTextAlign(Paint.Align.CENTER);
         titulo.setColor(getResources().getColor(R.color.ic_launcher_background));
-        canvas.drawText(Titulo, 410, 320, titulo);
+        canvas.drawText(Titulo, 410, 310, titulo);
+
+        Mensaje.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL));
+        Mensaje.setTextSize(19);
+        canvas.drawText(txtMensaje, 70, 345, Mensaje);
 
         Detalle.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL));
         Detalle.setTextSize(20);
 
         lblProducto.setTypeface(Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL));
         lblProducto.setTextSize(18);
-        canvas.drawText("Producto", 140, 380, lblProducto);
+        canvas.drawText("Producto", 140, 390, lblProducto);
 
         lblCantidad.setTypeface(Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL));
         lblCantidad.setTextSize(18);
-        canvas.drawText("Cantidad", 378, 380, lblCantidad);
+        canvas.drawText("Cantidad", 378, 390, lblCantidad);
 
         lblPrecio.setTypeface(Typeface.create(Typeface.MONOSPACE, Typeface.NORMAL));
         lblPrecio.setTextSize(18);
-        canvas.drawText("Precio", 616, 380, lblPrecio);
+        canvas.drawText("Precio", 616, 390, lblPrecio);
 
         Linea_A.setColor(getResources().getColor(R.color.ic_launcher_background));
         Linea_A.setTextSize(5);
@@ -169,7 +178,7 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
 
         Linea_B.setColor(getResources().getColor(R.color.ic_launcher_background));
         Linea_B.setTextSize(10);
-        canvas.drawLine(-1, 950, 817, 950, Linea_B);
+        canvas.drawLine(-1, 940, 817, 940, Linea_B);
 
         lblTotal.setTypeface(Typeface.create(Typeface.SANS_SERIF, Typeface.NORMAL));
         lblTotal.setTextSize(41);
