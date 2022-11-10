@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="Rechazado">#D86767</color>
+    <color name="Entregado">#68C162</color>
+    <color name="Sinentregar">#CEE4B7</color>
+    <color name="Pendiente">#B1B1B1</color>
 </resources>
