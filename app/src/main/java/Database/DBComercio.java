@@ -23,6 +23,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 
@@ -195,6 +197,14 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
+        Collections.sort(comercios, new Comparator<Comercio>(){
+            @Override
+            public int compare(Comercio o1, Comercio o2) {
+                if(o1.getPromedioCalificaciones() == o2.getPromedioCalificaciones())
+                    return 0;
+                return o1.getPromedioCalificaciones() > o2.getPromedioCalificaciones() ? -1 : 1;
+            }
+        });
         grid.setAdapter(new BussinesAdapter(context, comercios));
     }
 }
