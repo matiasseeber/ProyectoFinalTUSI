@@ -2,12 +2,14 @@ package Database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tp_final.R;
 import com.google.gson.Gson;
 import com.mysql.jdbc.Blob;
 
@@ -40,6 +42,15 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
     private TextView fecha;
     private TextView metodoPago;
     private TextView total;
+    private TextView Estado;
+
+    public TextView getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(TextView estado) {
+        Estado = estado;
+    }
 
     public DBLoadPendingOrderInfoPopUp() {
     }
@@ -160,6 +171,7 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
                     Tarjeta tarjeta = new Tarjeta();
                     tarjeta.setTipoTarjeta(rs.getString("TipoTarjeta"));
                     pedidoCabecera.setTarjeta(tarjeta);
+                    pedidoCabecera.setEstado(rs.getInt(8));
                 }
                 PedidoDetalle pedidoDetalle = new PedidoDetalle();
                 Producto producto = new Producto();
@@ -191,7 +203,25 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
         }else{
             metodoPago.setText(pedidoCabecera.getTarjeta().getTipoTarjeta());
         }
-        total.setText("Total: " + String.valueOf(pedidoCabecera.getTotal()));
+        switch (pedidoCabecera.getEstado()){
+            case 1:
+                Estado.setText("Pendiente");
+                Estado.setBackgroundColor(context.getResources().getColor(R.color.Pendiente));
+                break;
+            case 2:
+                Estado.setText("Rechazado");
+                Estado.setBackgroundColor(context.getResources().getColor(R.color.Rechazado));
+                break;
+            case 3:
+                Estado.setText("Confirmado");
+                Estado.setBackgroundColor(context.getResources().getColor(R.color.Sinentregar));
+                break;
+            default:
+                Estado.setText("Entregado");
+                Estado.setBackgroundColor(context.getResources().getColor(R.color.Entregado));
+                break;
+        }
+        total.setText("Total: $" + String.valueOf(pedidoCabecera.getTotal()));
         grid.setAdapter(new DetallePedidoClienteAdapter(context, pedidoCabecera));
     }
 }

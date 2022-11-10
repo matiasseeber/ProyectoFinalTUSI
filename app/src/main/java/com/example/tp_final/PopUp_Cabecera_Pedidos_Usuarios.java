@@ -19,6 +19,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
     private TextView metodoPago;
     private TextView total;
     private GridView grvDetallePedido;
+    private TextView txtEstado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +30,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.72));
+        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.75));
 
         imgLogo = (ImageView) findViewById(R.id.imageView51);
         nombreComercio = (TextView) findViewById(R.id.txtNombreComercioComprobante);
@@ -37,6 +38,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         metodoPago = (TextView) findViewById(R.id.txtMetodoPagoComprobante);
         total = (TextView) findViewById(R.id.txtTotaPedidoPopUpCabeceraPedidosUsuario);
         grvDetallePedido = (GridView) findViewById(R.id.grvPopUpCabeceraPedidosUsuarios);
+        txtEstado = (TextView) findViewById(R.id.txtEstadoPedidoCabecera);
 
         DBLoadPendingOrderInfoPopUp dbLoadPendingOrderInfoPopUp = new DBLoadPendingOrderInfoPopUp();
         dbLoadPendingOrderInfoPopUp.setContext(getApplicationContext());
@@ -47,6 +49,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         dbLoadPendingOrderInfoPopUp.setNombreComercio(nombreComercio);
         dbLoadPendingOrderInfoPopUp.setMetodoPago(metodoPago);
         dbLoadPendingOrderInfoPopUp.setTotal(total);
+        dbLoadPendingOrderInfoPopUp.setEstado(txtEstado);
         dbLoadPendingOrderInfoPopUp.execute();
 
     }

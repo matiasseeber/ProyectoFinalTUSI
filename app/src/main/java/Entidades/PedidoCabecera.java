@@ -11,6 +11,15 @@ public class PedidoCabecera {
     private Clientes cliente;
     private Comercio comercio;
     private String fecha;
+    private Integer Estado;
+
+    public Integer getEstado() {
+        return Estado;
+    }
+
+    public void setEstado(Integer estado) {
+        Estado = estado;
+    }
 
     public int getId() {
         return id;
