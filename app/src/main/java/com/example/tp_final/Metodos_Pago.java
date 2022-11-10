@@ -116,6 +116,15 @@ public class Metodos_Pago extends AppCompatActivity {
         return pedidoCabecera;
     }
 
+    public void setSelectedSpinnerIndexIfCardAlreadyExists(){
+        for(int i = 0; i < spTarjetasUsuario.getCount(); i++){
+            Tarjeta tarjeta = (Tarjeta) spTarjetasUsuario.getItemAtPosition(i);
+            if(tarjeta.getNumTarjeta() != null && tarjeta.getNumTarjeta().equals(txtNroTarjeta.getText().toString())){
+                spTarjetasUsuario.setSelection(i);
+            }
+        }
+    }
+
     public boolean isFormValid() {
         Boolean isFormValid = true;
         if (txtNroTarjeta.getText().toString().length() != 16) {
@@ -133,6 +142,7 @@ public class Metodos_Pago extends AppCompatActivity {
         if(!btnCredito.isChecked() && !btnDebito.isChecked()){
             Toast.makeText(getApplicationContext(), "Se debe seleccionar el tipo de tarjeta.", Toast.LENGTH_LONG).show();
         }
+        if(isFormValid) setSelectedSpinnerIndexIfCardAlreadyExists();
         return isFormValid;
     }
 
