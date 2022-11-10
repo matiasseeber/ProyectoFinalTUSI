@@ -7,6 +7,17 @@
     tools:context=".PopUp_Cabecera_Comprobante">
 
 
+    <TextView
+        android:id="@+id/txtEstadoPedidoCabeceraComprobante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView51" />
+
     <ImageView
         android:id="@+id/imageView49"
         android:layout_width="34dp"
@@ -67,7 +78,7 @@
         android:layout_width="match_parent"
         android:layout_height="375dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         app:cardBackgroundColor="#E6F8E6"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView51">
