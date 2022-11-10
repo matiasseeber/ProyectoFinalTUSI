@@ -40,6 +40,7 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
     private TextView fecha;
     private TextView metodoPago;
     private TextView total;
+    private TextView direccion;
 
     public DBLoadPendingOrderInfoPopUp() {
     }
@@ -50,6 +51,14 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
 
     public void setIdPedidoCabecera(int idPedidoCabecera) {
         this.idPedidoCabecera = idPedidoCabecera;
+    }
+
+    public TextView getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(TextView direccion) {
+        this.direccion = direccion;
     }
 
     public PedidoCabecera getPedidoCabecera() {
@@ -153,6 +162,7 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
                     pedidoCabecera.setFecha(rs.getString("fecha"));
                     Comercio comercio = new Comercio();
                     comercio.setName(rs.getString(35));
+                    comercio.setAddress(rs.getString(37));
                     comercio.setBitmap(Helpers.getBitmapFromBytes((Blob) rs.getBlob(38)));
                     pedidoCabecera.setComercio(comercio);
                     pedidoCabecera.setTotal(rs.getFloat("total"));
@@ -186,6 +196,7 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
         imgLogo.setImageBitmap(pedidoCabecera.getComercio().getBitmap());
         nombreComercio.setText(pedidoCabecera.getComercio().getName());
         fecha.setText(pedidoCabecera.getFecha());
+        direccion.setText(pedidoCabecera.getComercio().getAddress());
         if(pedidoCabecera.isEfectivo()){
             metodoPago.setText("Efectivo");
         }else{
