@@ -8,9 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.tp_final.PopUp_Cabecera_Comprobante;
 import com.example.tp_final.PopUp_Cabecera_Pedidos_Usuarios;
 import com.example.tp_final.R;
 import com.google.gson.Gson;
@@ -60,13 +62,18 @@ public class PedidosEntregadosClienteAdapter extends BaseAdapter {
         TextView txtMetodoDePago = (TextView) view.findViewById(R.id.textView18);
         ImageView imageView = (ImageView) view.findViewById(R.id.imageView52);
         TextView txtObjecto = (TextView) view.findViewById(R.id.textView20);
+        Button comprobanteBtn = (Button) view.findViewById(R.id.button12);
 
-        view.setOnClickListener(new View.OnClickListener() {
+        Gson gson = new Gson();
+        String pedido = gson.toJson(pedidoCabecera);
+        txtObjecto.setText(pedido);
+
+        comprobanteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, PopUp_Cabecera_Pedidos_Usuarios.class);
+                Intent intent = new Intent(context.getApplicationContext(), PopUp_Cabecera_Comprobante.class);
                 intent.setFlags(FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("idPedidoCabecera", pedidoCabecera.getId());
+                intent.putExtra("pedido", pedido);
                 context.startActivity(intent);
             }
         });
@@ -80,10 +87,6 @@ public class PedidosEntregadosClienteAdapter extends BaseAdapter {
         }else{
             txtMetodoDePago.setText(pedidoCabecera.getTarjeta().getTipoTarjeta());
         }
-
-        Gson gson = new Gson();
-        String pedido = gson.toJson(pedidoCabecera);
-        txtObjecto.setText(pedido);
 
         return view;
     }

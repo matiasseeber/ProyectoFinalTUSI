@@ -49,6 +49,7 @@ public class FragmentPedidoEntregadoCliente extends Fragment {
         dbLoadAllDeliveredOrdersClient.setMsg(imgWarning);
         dbLoadAllDeliveredOrdersClient.setGrid(gridView);
         dbLoadAllDeliveredOrdersClient.setMsgText(txtWarning);
+        dbLoadAllDeliveredOrdersClient.setContext(getContext());
         dbLoadAllDeliveredOrdersClient.setIdCliente(Helpers.getUserId(getContext()));
         dbLoadAllDeliveredOrdersClient.execute();
     }
