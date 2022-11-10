@@ -14,7 +14,7 @@ public class Comercio {
     private String password;
     private boolean estado;
     private float distancia;
-private float PromedioCalificaciones;
+    private float PromedioCalificaciones;
     public Comercio() {
     }
 

@@ -91,13 +91,12 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
 
         getWindow().setLayout((int) (metrics.widthPixels * 0.95), (int) (metrics.heightPixels * 0.77));
 
-        if (Permiso()) {
-            Toast.makeText(this, "Permiso aceptado", Toast.LENGTH_LONG).show();
-        } else {
+        if (!Permiso()){
             requestPermissions();
         }
 
         btnPdf.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.R)
             @Override
             public void onClick(View v) {
                 Nombre = NombreComercio.getText().toString();
