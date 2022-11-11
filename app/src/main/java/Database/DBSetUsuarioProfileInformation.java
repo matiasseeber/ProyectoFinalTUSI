@@ -1,6 +1,7 @@
 package Database;
 
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -23,7 +24,8 @@ public class DBSetUsuarioProfileInformation extends AsyncTask<Boolean, Void, Boo
     private TextView sexo = null;
     private TextView contraseña;
     private TextView contraseña2;
-
+    private Button btnModificar;
+    private Button btnEliminar;
 
     public DBSetUsuarioProfileInformation() {
     }
@@ -50,6 +52,22 @@ public class DBSetUsuarioProfileInformation extends AsyncTask<Boolean, Void, Boo
 
     public void setNombreDeUsuario(TextView nombreDeUsuario) {
         this.nombreDeUsuario = nombreDeUsuario;
+    }
+
+    public Button getBtnModificar() {
+        return btnModificar;
+    }
+
+    public void setBtnModificar(Button btnModificar) {
+        this.btnModificar = btnModificar;
+    }
+
+    public Button getBtnEliminar() {
+        return btnEliminar;
+    }
+
+    public void setBtnEliminar(Button btnEliminar) {
+        this.btnEliminar = btnEliminar;
     }
 
     public TextView getNombre() {
@@ -141,5 +159,7 @@ public class DBSetUsuarioProfileInformation extends AsyncTask<Boolean, Void, Boo
         if (sexo != null) sexo.setText(clientes.getSexo());
         if (contraseña != null) contraseña.setText(clientes.getContraseña());
         if (contraseña2 != null) contraseña2.setText(clientes.getContraseña());
+        if(btnModificar != null) btnModificar.setEnabled(response);
+        if(btnEliminar != null) btnEliminar.setEnabled(response);
     }
 }

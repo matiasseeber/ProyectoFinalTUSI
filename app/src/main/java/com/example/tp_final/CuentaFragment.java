@@ -60,6 +60,9 @@ public class CuentaFragment extends Fragment {
         validarContraseña = (EditText) view.findViewById(R.id.txtVericarContraseña_Cuenta);
         sexo=(TextView) view.findViewById(R.id.txtSexo_Cuenta);
 
+        btnModificar.setEnabled(false);
+        btnEliminar.setEnabled(false);
+
         btnModificar.setOnClickListener(new View.OnClickListener() {
             @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
@@ -89,6 +92,8 @@ public class CuentaFragment extends Fragment {
         dbSetUsuarioProfileInformation.setSexo(sexo);
         dbSetUsuarioProfileInformation.setDireccion(direccion);
         dbSetUsuarioProfileInformation.setContraseña(contraseña);
+        dbSetUsuarioProfileInformation.setBtnEliminar(btnEliminar);
+        dbSetUsuarioProfileInformation.setBtnModificar(btnModificar);
         dbSetUsuarioProfileInformation.setContraseña2(validarContraseña);
         dbSetUsuarioProfileInformation.execute();
 

@@ -2,7 +2,9 @@ package com.example.tp_final;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +57,13 @@ public class LoginUsuario extends AppCompatActivity {
         redirectOnLogin.setContext(getApplicationContext());
         String query = "Select * from Clientes where nombreUsuario = '" + txtNombre.getText().toString() + "' and contraseña = '" + txtContraseña.getText().toString() + "'";
         redirectOnLogin.setQuery(query);
+
+        SharedPreferences sharedPref = getApplicationContext().getSharedPreferences(
+                "MySharedPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPref.edit();
+        myEdit.putString("password", txtContraseña.getText().toString());
+        myEdit.commit();
+
         Intent intent = new Intent(getApplicationContext(), Navigation_drawer.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         redirectOnLogin.setRedirectionIntent(intent);

@@ -18,6 +18,7 @@ public class DBUpdateUsarioInfo extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private Clientes clientes;
 
+
     public DBUpdateUsarioInfo() {
     }
 
@@ -36,7 +37,7 @@ public class DBUpdateUsarioInfo extends AsyncTask<Boolean, Void, Boolean> {
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
             PreparedStatement preparedStatement = con.prepareStatement("Update Clientes set direccion = ?,contraseña = ? where id = ?;", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1,clientes.getDireccion());
-            preparedStatement.setString(2,clientes.getContraseña());
+            preparedStatement.setString(2, !clientes.getContraseña().isEmpty() ? clientes.getContraseña() : Helpers.getBussinesPassword(context));
             preparedStatement.setInt(3, clientes.getId());
 
             afectedRows = preparedStatement.executeUpdate();
