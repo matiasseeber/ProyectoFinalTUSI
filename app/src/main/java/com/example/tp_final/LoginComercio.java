@@ -83,6 +83,7 @@ public class LoginComercio extends AppCompatActivity {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         dbCheckIfRecordExists.setRedirectionIntent(intent);
+        dbCheckIfRecordExists.setActivity(this);
         dbCheckIfRecordExists.setUserName(txtIdentificador.getText().toString());
         dbCheckIfRecordExists.execute();
     }

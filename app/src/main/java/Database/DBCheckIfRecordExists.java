@@ -1,10 +1,13 @@
 package Database;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -20,6 +23,7 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
     private String direccion = null;
     private String userName = null;
     private int id;
+    private Activity activity;
 
     public DBCheckIfRecordExists() {
     }
@@ -38,6 +42,14 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
 
     public void setRedirectionIntent(Intent redirectionIntent) {
         this.redirectionIntent = redirectionIntent;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public String getQuery() {
@@ -110,6 +122,8 @@ public class DBCheckIfRecordExists extends AsyncTask<Boolean, Void, Boolean> {
                 myEdit.putInt("id", id);
                 myEdit.commit();
             }
+
+            if(activity != null) ActivityCompat.finishAffinity(activity);
 
             if (redirectionIntent != null)
                 context.startActivity(redirectionIntent);
