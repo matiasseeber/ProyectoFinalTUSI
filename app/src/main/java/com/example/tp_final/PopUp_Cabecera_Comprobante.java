@@ -259,5 +259,8 @@ public class PopUp_Cabecera_Comprobante extends AppCompatActivity {
         }
     }
 
+    public void ClickClose(View view){
+        this.finish();
+    }
 
 }
