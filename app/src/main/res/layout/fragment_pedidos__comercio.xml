@@ -8,7 +8,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="709dp">
 
         <ImageView
             android:id="@+id/imageView46"
@@ -28,13 +28,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView46"
-            />
+            app:layout_constraintTop_toBottomOf="@+id/imageView46" />
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/ViewPager"
             android:layout_width="match_parent"
-            android:layout_height="483dp"
+            android:layout_height="470dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/TabPedidos" />
 
