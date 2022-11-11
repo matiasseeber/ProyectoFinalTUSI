@@ -29,6 +29,7 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
     private GridView grvDetallePedido;
     private TextView direccion;
     private TextView txtEstado;
+    private TextView txtIdPedido;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +49,15 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         total = (TextView) findViewById(R.id.txtTotaPedidoPopUpCabeceraPedidosUsuario);
         grvDetallePedido = (GridView) findViewById(R.id.grvPopUpCabeceraPedidosUsuarios);
         direccion = (TextView) findViewById(R.id.textView9);
-
+        txtIdPedido = (TextView) findViewById(R.id.txtIdPedidoPopUpCabeceraPedidosUsuarios);
         txtEstado = (TextView) findViewById(R.id.txtEstadoPedidoCabecera);
+
+        int idPedido = getIntent().getIntExtra("idPedidoCabecera", -1);
+        txtIdPedido.setText("ID del pedido: " + String.valueOf(idPedido));
 
         DBLoadPendingOrderInfoPopUp dbLoadPendingOrderInfoPopUp = new DBLoadPendingOrderInfoPopUp();
         dbLoadPendingOrderInfoPopUp.setContext(getApplicationContext());
-        dbLoadPendingOrderInfoPopUp.setIdPedidoCabecera(getIntent().getIntExtra("idPedidoCabecera", -1));
+        dbLoadPendingOrderInfoPopUp.setIdPedidoCabecera(idPedido);
         dbLoadPendingOrderInfoPopUp.setGrid(grvDetallePedido);
         dbLoadPendingOrderInfoPopUp.setFecha(fecha);
         dbLoadPendingOrderInfoPopUp.setImgLogo(imgLogo);
