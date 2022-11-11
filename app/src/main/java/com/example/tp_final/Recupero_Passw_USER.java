@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -32,11 +33,22 @@ public class Recupero_Passw_USER extends AppCompatActivity {
     }
 
     public boolean isFormValid(){
-        if(!txtContrasenia_User_recupero.getText().toString().equals(txtContrasenia_User_recupero_Conf.getText().toString())){
-            txtContrasenia_User_recupero.setError("Ambas contraseñas deben ser iguales");
-            return false;
+        boolean isFormValid = true;
+        if(txtContrasenia_User_recupero.getText().toString().isEmpty()){
+            txtContrasenia_User_recupero.setError("Este es un campo requerido.");
+            isFormValid = false;
         }
-        return true;
+        if(txtContrasenia_User_recupero_Conf.getText().toString().isEmpty()){
+            txtContrasenia_User_recupero_Conf.setError("Este es un campo requerido.");
+            isFormValid = false;
+        }
+        if(isFormValid){
+            if(!txtContrasenia_User_recupero.getText().toString().equals(txtContrasenia_User_recupero_Conf.getText().toString())){
+                Toast.makeText(getApplicationContext(), "Ambas contraseñas deben ser iguales", Toast.LENGTH_LONG).show();
+                isFormValid = false;
+            }
+        }
+        return isFormValid;
 
     }
 
@@ -49,6 +61,7 @@ public class Recupero_Passw_USER extends AppCompatActivity {
         Clientes clientes = new Clientes();
         clientes.setId(getIntent().getIntExtra("UsuarioID",0));
         clientes.setContraseña(txtContrasenia_User_recupero.getText().toString());
+        db.setActivity(this);
         db.setClientes(clientes);
         db.execute();
     }

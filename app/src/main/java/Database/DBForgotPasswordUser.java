@@ -1,5 +1,6 @@
 package Database;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -24,6 +25,7 @@ public class DBForgotPasswordUser extends AsyncTask<Boolean,Void,Boolean> {
     private String message;
     private String accion;
     private String query;
+    private Activity activity;
 
     public Context getContext() {return context;}
 
@@ -44,6 +46,14 @@ public class DBForgotPasswordUser extends AsyncTask<Boolean,Void,Boolean> {
     public String getQuery() {return query;}
 
     public void setQuery(String query) {this.query = query;}
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
 
     public DBForgotPasswordUser(){
     }
@@ -109,9 +119,10 @@ public class DBForgotPasswordUser extends AsyncTask<Boolean,Void,Boolean> {
                 if(!response)  {
                     //emptyAllControls();
                     message = "No hay ningún Cliente registrado con ese DNI y EMAIL ingresado.";
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 if(response)  {
+                    activity.finish();
                     Intent intent = new Intent(context, Recupero_Passw_USER.class);
                     intent.putExtra("UsuarioID", clientes.getId());
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -122,6 +133,7 @@ public class DBForgotPasswordUser extends AsyncTask<Boolean,Void,Boolean> {
                 if(response)  {
                     //emptyAllControls();
                     message = "Tu contraseña ha sido restaurada exitosamente.";
+                    activity.finish();
                 }
                 else{
                     message = "Tu contraseña no pudo ser restaurada.";

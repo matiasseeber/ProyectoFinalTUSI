@@ -49,10 +49,10 @@ public class PopUp_RecuperoContrasenia_usuario extends AppCompatActivity {
             DBForgotPasswordUser db = new DBForgotPasswordUser();
             db.setContext(getApplicationContext());
             db.setClientes(clientes);
+            db.setActivity(this);
             db.setQuery("Select * from Clientes where dni = '" + clientes.getDni() + "' and email = '" + clientes.getEmail() + "' and estado = 1");
             db.setAccion("Validation");
             db.execute();
-            this.finish();
         }
     }
 
