@@ -205,10 +205,12 @@ public class DBComercio extends AsyncTask<Boolean, Void, Boolean> {
 
     @Override
     protected void onPostExecute(Boolean response) {
-        if (comercios.size() == 0 && Mensaje != null){
-            Mensaje.setVisibility(View.VISIBLE);
-        }else{
-            Mensaje.setVisibility(View.GONE);
+        if(Mensaje != null){
+            if (comercios.size() == 0){
+                Mensaje.setVisibility(View.VISIBLE);
+            }else{
+                Mensaje.setVisibility(View.GONE);
+            }
         }
         grid.setAdapter(new BussinesAdapter(context, comercios));
     }
