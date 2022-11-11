@@ -107,7 +107,7 @@ public class Metodos_Pago extends AppCompatActivity {
         PedidoCabecera pedidoCabecera = gson.fromJson(getIntent().getStringExtra("pedidoCabecera"), PedidoCabecera.class);
         Tarjeta tarjeta = new Tarjeta();
         tarjeta.setNumTarjeta(txtNroTarjeta.getText().toString());
-        if(spTarjetasUsuario.getSelectedItemPosition() == 0){
+        if(spTarjetasUsuario.getSelectedItemPosition() == 0 || spTarjetasUsuario.getSelectedItemPosition() == -1){
             String tipoTarjeta = btnCredito.isChecked() ? btnCredito.getText().toString() : btnDebito.getText().toString();
             tarjeta.setTipoTarjeta(tipoTarjeta);
             tarjeta.setCodSeguridad(Integer.parseInt(codSeguridad.getText().toString()));

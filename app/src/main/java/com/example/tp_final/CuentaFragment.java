@@ -12,12 +12,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
+import Database.DBDeleteCreditCard;
 import Database.DBDeleteUsuario;
+import Database.DBLoadCreditCardsInSpinner;
 import Database.DBSetUsuarioProfileInformation;
 import Database.DBUpdateUsarioInfo;
 import Entidades.Clientes;
+import Entidades.Tarjeta;
 import Helpers.Helpers;
 
 public class CuentaFragment extends Fragment {
@@ -32,6 +37,8 @@ public class CuentaFragment extends Fragment {
     private EditText contraseña;
     private TextView sexo;
     private EditText validarContraseña;
+    private ImageView deleteCard;
+    private Spinner spnTarjetas;
     private View view;
 
     public CuentaFragment() {
@@ -59,6 +66,8 @@ public class CuentaFragment extends Fragment {
         contraseña=(EditText) view.findViewById(R.id.txtContraseña_Cuenta);
         validarContraseña = (EditText) view.findViewById(R.id.txtVericarContraseña_Cuenta);
         sexo=(TextView) view.findViewById(R.id.txtSexo_Cuenta);
+        spnTarjetas = (Spinner) view.findViewById(R.id.spnTarjetasUsuarios);
+        deleteCard = (ImageView) view.findViewById(R.id.imageView55);
 
         btnModificar.setEnabled(false);
         btnEliminar.setEnabled(false);
@@ -76,6 +85,26 @@ public class CuentaFragment extends Fragment {
             @Override
             public void onClick(View view){eliminarCuenta(view);}
         });
+
+        deleteCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Tarjeta tarjeta = (Tarjeta) spnTarjetas.getSelectedItem();
+                DBDeleteCreditCard dbDeleteCreditCard = new DBDeleteCreditCard();
+                dbDeleteCreditCard.setTarjeta(tarjeta);
+                dbDeleteCreditCard.setContext(getContext());
+                dbDeleteCreditCard.setDeleteBtn(deleteCard);
+                dbDeleteCreditCard.setSpinner(spnTarjetas);
+                dbDeleteCreditCard.execute();
+            }
+        });
+
+        DBLoadCreditCardsInSpinner dbLoadCreditCardsInSpinner = new DBLoadCreditCardsInSpinner();
+        dbLoadCreditCardsInSpinner.setSpinner(spnTarjetas);
+        dbLoadCreditCardsInSpinner.setContext(getContext());
+        dbLoadCreditCardsInSpinner.setDeleteBtn(deleteCard);
+        dbLoadCreditCardsInSpinner.setAddNewCardOption(false);
+        dbLoadCreditCardsInSpinner.execute();
 
         Clientes clientes = new Clientes();
         clientes.setId(Helpers.getUserId(getContext()));

@@ -65,11 +65,12 @@ public class DBInsertCreditCardAndOrder extends AsyncTask<Boolean, Void, Boolean
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection(DataDB.urlMySQL, DataDB.user, DataDB.pass);
-            PreparedStatement preparedStatement = con.prepareStatement("Insert into Tarjetas (id_Cliente, TipoTarjeta, numTarjeta, codSeguridad) values (?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement preparedStatement = con.prepareStatement("Insert into Tarjetas (id_Cliente, TipoTarjeta, numTarjeta, codSeguridad, estado) values (?, ?, ?, ?, ?);", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, pedidoCabecera.getCliente().getId());
             preparedStatement.setString(2, tarjeta.getTipoTarjeta());
             preparedStatement.setString(3, tarjeta.getNumTarjeta());
             preparedStatement.setInt(4, tarjeta.getCodSeguridad());
+            preparedStatement.setBoolean(5, true);
             insertedRows = preparedStatement.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
