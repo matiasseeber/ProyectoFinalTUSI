@@ -11,4 +11,5 @@
     <color name="Entregado">#68C162</color>
     <color name="Sinentregar">#CEE4B7</color>
     <color name="Pendiente">#B1B1B1</color>
+    <color name="goToMaps">#2200ff</color>
 </resources>

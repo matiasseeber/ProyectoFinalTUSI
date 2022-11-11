@@ -141,6 +141,7 @@ public class Metodos_Pago extends AppCompatActivity {
         }
         if(!btnCredito.isChecked() && !btnDebito.isChecked()){
             Toast.makeText(getApplicationContext(), "Se debe seleccionar el tipo de tarjeta.", Toast.LENGTH_LONG).show();
+            isFormValid = false;
         }
         if(isFormValid) setSelectedSpinnerIndexIfCardAlreadyExists();
         return isFormValid;

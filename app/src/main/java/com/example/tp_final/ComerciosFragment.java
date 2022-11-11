@@ -69,11 +69,7 @@ public class ComerciosFragment extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.dgvComercios);
         gridView.setVerticalSpacing(5);
-        DBComercio dbComercio = new DBComercio();
-        dbComercio.setContext(view.getContext());
-        dbComercio.setGrid(gridView);
-        dbComercio.setMensaje(Mensaje);
-        dbComercio.execute();
+
         filtroComercioLocalidadesSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,6 +97,15 @@ public class ComerciosFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        DBComercio dbComercio = new DBComercio();
+        dbComercio.setContext(getContext());
+        dbComercio.setGrid(gridView);
+        dbComercio.setMensaje(Mensaje);
+        dbComercio.execute();
+    }
 
     public void OnItemSelected(){
         gridView.setVerticalSpacing(5);

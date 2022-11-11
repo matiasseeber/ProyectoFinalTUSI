@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Database.DBInsertProduct;
 import Database.DBLoadSingleProductInfo;
@@ -84,8 +85,35 @@ public class Productos_ABM_Comercio extends AppCompatActivity {
         this.finish();
     }
 
+    public boolean isFormValid(){
+        boolean isFormValid = true;
+        String requiredError = "Este campo es requerido.";
+        if(imageView.getDrawable() == null){
+            Toast.makeText(getApplicationContext(), "Se debe de seleccionar una imagen.", Toast.LENGTH_LONG).show();
+            isFormValid = false;
+        }
+        if(nombre.getText().toString().isEmpty()) {
+            nombre.setError(requiredError);
+            isFormValid = false;
+        }
+        if(stock.getText().toString().isEmpty()) {
+            stock.setError(requiredError);
+            isFormValid = false;
+        }
+        if(descripcion.getText().toString().isEmpty()) {
+            descripcion.setError(requiredError);
+            isFormValid = false;
+        }
+        if(precio.getText().toString().isEmpty()) {
+            precio.setError(requiredError);
+            isFormValid = false;
+        }
+        return isFormValid;
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void ClickAdd(View view){
+        if(!isFormValid()) return;
         DBInsertProduct dbInsertProduct = new DBInsertProduct();
         Context context = view.getContext();
         Producto producto = new Producto();

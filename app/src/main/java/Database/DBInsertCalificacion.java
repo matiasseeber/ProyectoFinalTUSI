@@ -76,7 +76,7 @@ public class DBInsertCalificacion extends AsyncTask<Boolean, Void, Boolean> {
             preparedStatement.setInt(1, pedidoCabecera.getId());
             preparedStatement.setInt(2, Helpers.getUserId(context));
             preparedStatement.setInt(3, pedidoCabecera.getComercio().getId());
-            preparedStatement.setFloat(4, puntuacion);
+            preparedStatement.setFloat(4, puntuacion != 0 ? puntuacion : 0.5F);
             insertedRows = preparedStatement.executeUpdate();
         }catch (Exception e){
             e.printStackTrace();

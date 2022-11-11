@@ -117,7 +117,7 @@ public class DBLoadAllDeliveredOrdersClient extends AsyncTask<Boolean, Void, Boo
                     DataDB.pass
             );
             Statement st = con.createStatement();
-            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id inner join Comercios on PedidosCabecera.id_Comercio = Comercios.id left join Tarjetas on Tarjetas.id = PedidosCabecera.id_Tarjeta left join Calificaciones on Calificaciones.id_Pedido = PedidosCabecera.id where Clientes.id = 1 and PedidosCabecera.estado = 4;";
+            String query = "Select * from PedidosCabecera inner join Clientes on id_Cliente = Clientes.id inner join Comercios on PedidosCabecera.id_Comercio = Comercios.id left join Tarjetas on Tarjetas.id = PedidosCabecera.id_Tarjeta left join Calificaciones on Calificaciones.id_Pedido = PedidosCabecera.id where Clientes.id = " + idCliente + " and PedidosCabecera.estado = 4;";
 
             ResultSet rs = st.executeQuery(
                     query

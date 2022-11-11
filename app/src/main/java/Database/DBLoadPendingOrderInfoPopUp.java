@@ -1,8 +1,14 @@
 package Database;
 
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Geocoder;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.GridView;
@@ -13,12 +19,15 @@ import com.example.tp_final.R;
 import com.google.gson.Gson;
 import com.mysql.jdbc.Blob;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
 
 import Entidades.Comercio;
 import Entidades.PedidoCabecera;
@@ -208,7 +217,33 @@ public class DBLoadPendingOrderInfoPopUp extends AsyncTask<Boolean, Void, Boolea
         imgLogo.setImageBitmap(pedidoCabecera.getComercio().getBitmap());
         nombreComercio.setText(pedidoCabecera.getComercio().getName());
         fecha.setText(pedidoCabecera.getFecha());
-        direccion.setText(pedidoCabecera.getComercio().getAddress());
+        direccion.setText("Ver en google maps");
+        direccion.setTextColor(context.getResources().getColor(R.color.goToMaps));
+
+        direccion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String address = pedidoCabecera.getComercio().getAddress();
+                Geocoder geocoder = new Geocoder(context, Locale.getDefault());
+                List<Address> addresses = null;
+                try {
+                    addresses = geocoder.getFromLocationName(address, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (addresses.size() > 0) {
+                    double latitud = addresses.get(0).getLatitude();
+                    double logitude = addresses.get(0).getLongitude();
+                    Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + logitude + "?q=" + address);
+
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setFlags(FLAG_ACTIVITY_NEW_TASK);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    context.startActivity(mapIntent);
+                }
+            }
+        });
+
         if(pedidoCabecera.isEfectivo()){
             metodoPago.setText("Efectivo");
         }else{

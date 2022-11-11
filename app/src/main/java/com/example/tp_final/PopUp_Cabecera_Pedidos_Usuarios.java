@@ -49,28 +49,6 @@ public class PopUp_Cabecera_Pedidos_Usuarios extends AppCompatActivity {
         grvDetallePedido = (GridView) findViewById(R.id.grvPopUpCabeceraPedidosUsuarios);
         direccion = (TextView) findViewById(R.id.textView9);
 
-        direccion.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String address = direccion.getText().toString();
-                Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
-                List<Address> addresses = null;
-                try {
-                    addresses = geocoder.getFromLocationName(address, 1);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                if (addresses.size() > 0) {
-                    double latitud = addresses.get(0).getLatitude();
-                    double logitude = addresses.get(0).getLongitude();
-                    Uri gmmIntentUri = Uri.parse("geo:" + latitud + "," + logitude + "?q=" + address);
-
-                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
-                    mapIntent.setPackage("com.google.android.apps.maps");
-                    startActivity(mapIntent);
-                }
-            }
-        });
         txtEstado = (TextView) findViewById(R.id.txtEstadoPedidoCabecera);
 
         DBLoadPendingOrderInfoPopUp dbLoadPendingOrderInfoPopUp = new DBLoadPendingOrderInfoPopUp();

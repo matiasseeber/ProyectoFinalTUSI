@@ -124,9 +124,9 @@ public class DBForgotPassword extends AsyncTask<Boolean, Void, Boolean> {
             case "Validation":
                 if(!response)  {
                     //emptyAllControls();
-                    message = "No hay ningún Comercio registrado con el mail ingresado.";
+                    message = "No hay ningún Comercio registrado con la combinacion de CUIL y Email ingresada.";
+                    Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 }
-                Toast.makeText(context, message, Toast.LENGTH_LONG).show();
                 if(response)  {
                     Intent intent = new Intent(context, Recupero_Passw.class);
                     intent.putExtra("ComercioID", comercio.getId());

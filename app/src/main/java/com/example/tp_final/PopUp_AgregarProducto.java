@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -35,6 +36,7 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
     private TextView txtDescripcion;
     private TextView txtStock;
     private int idProducto;
+    private Button btnAñadir;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,8 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
         txtPrecio = (TextView) findViewById(R.id.txtPrecioProdSeleccionado);
         txtDescripcion = (TextView) findViewById(R.id.txtDescripcionProdSeleccionado);
         txtStock = (TextView) findViewById(R.id.txtStockProdSeleccionado);
+        btnAñadir = (Button) findViewById(R.id.button);
+        btnAñadir.setEnabled(false);
 
         idProducto = getIntent().getIntExtra("idProducto", -1);
 
@@ -56,6 +60,7 @@ public class PopUp_AgregarProducto extends AppCompatActivity {
         dbLoadSingleProductInfo.setNombre(txtNombreProd);
         dbLoadSingleProductInfo.setId(idProducto);
         dbLoadSingleProductInfo.setContext(getApplicationContext());
+        dbLoadSingleProductInfo.setBtn(btnAñadir);
         dbLoadSingleProductInfo.setPrecio(txtPrecio);
         dbLoadSingleProductInfo.setStock(txtStock);
         dbLoadSingleProductInfo.setImageView(imgProducto);

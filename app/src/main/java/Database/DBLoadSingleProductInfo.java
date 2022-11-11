@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,10 +29,19 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
     private TextView stock;
     private TextView precio;
     private ImageView imageView;
+    private Button btn;
     private Bitmap bitmap;
     private int id;
 
     public DBLoadSingleProductInfo() {
+    }
+
+    public Button getBtn() {
+        return btn;
+    }
+
+    public void setBtn(Button btn) {
+        this.btn = btn;
     }
 
     public int getId() {
@@ -115,7 +125,7 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return producto != null ? true : false;
+        return producto != null;
     }
 
     @Override
@@ -136,6 +146,7 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
                 precio.setText(String.valueOf(producto.getPrecio()));
             if (imageView != null)
                 imageView.setImageBitmap(bitmap);
+            btn.setEnabled(btn != null);
         } else {
             Toast.makeText(context, "No se pudo cargar la informacion del producto seleccionado.", Toast.LENGTH_LONG).show();
         }
