@@ -20,6 +20,9 @@
         android:theme="@style/Theme.TP_FINAL"
         tools:targetApi="31">
         <activity
+            android:name=".PopUp_RecuperoContrasenia_usuario"
+            android:exported="false" />
+        <activity
             android:name=".Recupero_Passw_Comercio"
             android:exported="false" />
         <activity
