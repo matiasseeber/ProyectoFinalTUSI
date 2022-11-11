@@ -40,7 +40,7 @@ public class PopUp_Pedidos_Comercio_SinEntregar extends AppCompatActivity {
 
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.85));
+        getWindow().setLayout((int) (metrics.widthPixels * 0.92),(int) (metrics.heightPixels * 0.93));
 
         btnEntregar.setOnClickListener(new View.OnClickListener() {
             @Override

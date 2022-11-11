@@ -13,7 +13,7 @@
         <GridView
             android:id="@+id/grvPedidosPendientesCliente"
             android:layout_width="match_parent"
-            android:layout_height="525dp"
+            android:layout_height="490dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

@@ -6,6 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".PopUp_Pedidos_Comercio_SinEntregar">
 
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="153dp"
+        android:text="Producto"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="11dp"
+        android:text="Cantidad"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toEndOf="@+id/textView22"
+        app:layout_constraintTop_toBottomOf="@+id/imgProductoSeleccionado" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="153dp"
+        android:layout_marginEnd="55dp"
+        android:text="Precio"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageButton
         android:id="@+id/btncerrarPedidoComercioSinentregar"
         android:layout_width="wrap_content"
@@ -66,16 +102,15 @@
         android:id="@+id/grvDetallePedidoComercioSinEntregar"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="180dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
-    </GridView>
+        app:layout_constraintTop_toTopOf="parent"></GridView>
 
     <Button
         android:id="@+id/btnEntregarPedidosComercioSinEntregar"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="116dp"
+        android:layout_marginTop="90dp"
         android:text="@string/entregar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -86,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="140dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="28dp"
         android:text="@string/Peso"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +131,7 @@
         android:id="@+id/txtTotalPedidoSinEntregarComercio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="36dp"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toBottomOf="@+id/imageView17" />
