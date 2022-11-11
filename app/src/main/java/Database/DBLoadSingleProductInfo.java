@@ -146,7 +146,8 @@ public class DBLoadSingleProductInfo extends AsyncTask<Boolean, Void, Boolean> {
                 precio.setText(String.valueOf(producto.getPrecio()));
             if (imageView != null)
                 imageView.setImageBitmap(bitmap);
-            btn.setEnabled(btn != null);
+            if(btn != null)
+                btn.setEnabled(btn != null);
         } else {
             Toast.makeText(context, "No se pudo cargar la informacion del producto seleccionado.", Toast.LENGTH_LONG).show();
         }

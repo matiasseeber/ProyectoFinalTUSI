@@ -158,6 +158,7 @@ public class RegistroComercio extends AppCompatActivity {
         Localidad localidad = (Localidad)spnLocalidades.getSelectedItem();
         comercio.setLocalidad(localidad);
         DBInsertBussines dbInsertBussines = new DBInsertBussines();
+        dbInsertBussines.setActivity(this);
         dbInsertBussines.setContext(getApplicationContext());
         dbInsertBussines.setComercio(comercio);
         dbInsertBussines.setMessage("El registro fue dado de alta correctamente.");

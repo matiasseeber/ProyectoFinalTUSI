@@ -1,11 +1,14 @@
 package Database;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.core.app.ActivityCompat;
 
 import com.example.tp_final.LoginComercio;
 import com.example.tp_final.LoginUsuario;
@@ -25,8 +28,17 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
     private Context context;
     private Comercio comercio;
     private String message = "";
+    private Activity activity;
 
     public DBInsertBussines() {
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Comercio getComercio() {
@@ -105,6 +117,7 @@ public class DBInsertBussines extends AsyncTask<Boolean, Void, Boolean> {
     protected void onPostExecute(Boolean response) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
         if(response)  {
+            ActivityCompat.finishAffinity(activity);
             Intent intent = new Intent(context, LoginComercio.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);

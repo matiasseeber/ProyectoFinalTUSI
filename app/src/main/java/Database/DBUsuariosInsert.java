@@ -8,6 +8,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.core.app.ActivityCompat;
+
 import com.example.tp_final.LoginUsuario;
 import com.example.tp_final.R;
 import com.example.tp_final.RegistroUsuario;
@@ -25,6 +27,7 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
     private Context context;
     private Clientes usuario;
     private String message;
+    private Activity activity;
 
     private ArrayList<EditText> editTexts;
 
@@ -38,6 +41,14 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
     public DBUsuariosInsert(Context context, Clientes cliente){
         this.context = context;
         this.usuario = cliente;
+    }
+
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
     }
 
     public Context getContext() {
@@ -116,6 +127,7 @@ public class DBUsuariosInsert extends AsyncTask<Boolean, Void, Boolean>{
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
         if(response)  {
             Intent intent = new Intent(context, LoginUsuario.class);
+            ActivityCompat.finishAffinity(activity);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         }

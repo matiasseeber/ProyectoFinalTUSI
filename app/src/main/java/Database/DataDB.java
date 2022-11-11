@@ -3,20 +3,22 @@ package Database;
 public class DataDB {
 
     /*
+   From: bounces+2831340-016d-jybvphtnlvtoiruvcw=tmmbt.com@email.freemysqlhosting.net
+
     Subject: Your Database is setup
 
     Hi
 
-    Your account number is: 692968
+    Your account number is: 702699
 
     Your new database is now ready to use.
 
     To connect to your database use these details
 
     Server: sql10.freemysqlhosting.net
-    Name: sql10553569
-    Username: sql10553569
-    Password: rQ4tK61kpY
+    Name: sql10562334
+    Username: sql10562334
+    Password: IfK61l2ynj
     Port number: 3306
 
     phpMyAdmin
@@ -34,9 +36,9 @@ public class DataDB {
     //Información de la BD
     public static String host="sql10.freemysqlhosting.net";
     public static String port="3306";
-    public static String nameBD="sql10553569";
-    public static String user="sql10553569";
-    public static String pass="rQ4tK61kpY";
+    public static String nameBD="sql10562334";
+    public static String user="sql10562334";
+    public static String pass="IfK61l2ynj";
 
     //Información para la conexion
     public static String urlMySQL = "jdbc:mysql://" + host + ":" + port + "/"+nameBD;

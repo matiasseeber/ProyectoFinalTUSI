@@ -154,6 +154,7 @@ public class RegistroUsuario extends AppCompatActivity {
         clientes.setEmail(txtEmail.getText().toString());
         clientes.setContraseña(txtPassword.getText().toString());
         DBUsuariosInsert db = new DBUsuariosInsert(this.getApplicationContext(), clientes);
+        db.setActivity(this);
         db.setEditTexts(editTexts);
         db.execute();
     }
