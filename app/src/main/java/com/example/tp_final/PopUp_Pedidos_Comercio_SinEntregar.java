@@ -62,4 +62,8 @@ public class PopUp_Pedidos_Comercio_SinEntregar extends AppCompatActivity {
     public void OnClickEntregar(){
         ModificarEstadoOrden(4);
     }
+
+    public void Cerrar(View view){
+        this.finish();
+    }
 }
